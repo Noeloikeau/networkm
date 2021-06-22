@@ -610,8 +610,8 @@ def sort_graph(g : nx.MultiDiGraph,
             new_node_sorting+=[(g.inverse_mapping[node],rank)]
         node_sorting=new_node_sorting
 
-    g.sorting={s:[v for v in g.nodes if sidis.get(nodes_by,v)==s]
-        for n,s in dict(node_sorting).items()}
+    sorting=nx.utils.groups(dict(node_sorting))
+    g.sorting={k:list(v) for k,v in sorting.items()}
 
 # Cell
 class Network(nx.MultiDiGraph):

@@ -304,7 +304,7 @@ each time this func is called.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;a&#39;: array([0.8971959])}</pre>
+<pre>{&#39;a&#39;: array([0.39487206])}</pre>
 </div>
 
 </div>
@@ -337,7 +337,7 @@ each time this func is called.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;a&#39;: array([0.78453067])}</pre>
+<pre>{&#39;a&#39;: array([0.82915321])}</pre>
 </div>
 
 </div>
@@ -403,7 +403,7 @@ each time this func is called.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;b&#39;: 1, &#39;a&#39;: 0.24122385637900057}</pre>
+<pre>{&#39;b&#39;: 1, &#39;a&#39;: 0.30381956973271806}</pre>
 </div>
 
 </div>
@@ -471,7 +471,7 @@ The inner dict is given to the corresponding node.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>NodeDataView({0: {&#39;a&#39;: array([0.17119544])}, 1: {&#39;a&#39;: array([0.83759006])}, 2: {&#39;a&#39;: array([0.40167796])}})</pre>
+<pre>NodeDataView({0: {&#39;a&#39;: array([0.3092636])}, 1: {&#39;a&#39;: array([0.38798102])}, 2: {&#39;a&#39;: array([0.40887628])}})</pre>
 </div>
 
 </div>
@@ -505,7 +505,7 @@ The inner dict is given to the corresponding node.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>NodeDataView({0: {&#39;a&#39;: array([0.17119544]), &#39;b&#39;: 1}, 1: {&#39;a&#39;: array([0.83759006])}, 2: {&#39;a&#39;: array([0.40167796])}})</pre>
+<pre>NodeDataView({0: {&#39;a&#39;: array([0.3092636]), &#39;b&#39;: 1}, 1: {&#39;a&#39;: array([0.38798102])}, 2: {&#39;a&#39;: array([0.40887628])}})</pre>
 </div>
 
 </div>
@@ -539,7 +539,7 @@ The inner dict is given to the corresponding node.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>NodeDataView({0: {&#39;a&#39;: array([0.17119544]), &#39;b&#39;: 1}, 1: {&#39;a&#39;: array([0.83759006])}, 2: {&#39;a&#39;: array([0.40167796]), &#39;c&#39;: 2}})</pre>
+<pre>NodeDataView({0: {&#39;a&#39;: array([0.3092636]), &#39;b&#39;: 1}, 1: {&#39;a&#39;: array([0.38798102])}, 2: {&#39;a&#39;: array([0.40887628]), &#39;c&#39;: 2}})</pre>
 </div>
 
 </div>
@@ -739,7 +739,7 @@ The inner dict is given to the corresponding edge.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</pre>
+<pre>[&#39;b&#39;, &#39;a&#39;, &#39;c&#39;]</pre>
 </div>
 
 </div>
@@ -871,8 +871,8 @@ ordering of the nodes in the graph.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;a&#39;: array([0.17119544, 0.83759006, 0.40167796]),
- &#39;b&#39;: array([1, None, None], dtype=object),
+<pre>{&#39;b&#39;: array([1, None, None], dtype=object),
+ &#39;a&#39;: array([0.3092636 , 0.38798102, 0.40887628]),
  &#39;c&#39;: array([None, None, 2], dtype=object)}</pre>
 </div>
 
@@ -1080,7 +1080,7 @@ the kwarg equalities hold in the graph.</p>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[(0, {&#39;a&#39;: array([0.17119544]), &#39;b&#39;: 1}), (1, {&#39;a&#39;: array([0.83759006])}), (2, {&#39;a&#39;: array([0.40167796]), &#39;c&#39;: 2})]
+<pre>[(0, {&#39;a&#39;: array([0.3092636]), &#39;b&#39;: 1}), (1, {&#39;a&#39;: array([0.38798102])}), (2, {&#39;a&#39;: array([0.40887628]), &#39;c&#39;: 2})]
 </pre>
 </div>
 </div>
@@ -1284,7 +1284,7 @@ the kwarg equalities hold in the graph.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>([1], ([0], [(0, 0, 0)]))</pre>
+<pre>([0], [(0, 0, 0)])</pre>
 </div>
 
 </div>
@@ -1489,7 +1489,7 @@ Returns the paths as lists of node labels.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="edge_to_tree" class="doc_header"><code>edge_to_tree</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/network.py#L359" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>edge_to_tree</code>(<strong><code>g</code></strong>, <strong><code>edges</code></strong>:<code>Union</code>[<code>tuple</code>, <code>List</code>[<code>tuple</code>]], <strong><code>lengths</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>, <code>List</code>[<code>int</code>]]=<em><code>1</code></em>, <strong><code>labels</code></strong>:<code>Dict</code>[<code>str</code>, <code>callable</code>]=<em><code>{'trunk': &lt;function &lt;lambda&gt; at 0x000002DF9FFA5708&gt;, 'branch': &lt;function &lt;lambda&gt; at 0x000002DF9FFA5798&gt;}</code></em>)</p>
+<h4 id="edge_to_tree" class="doc_header"><code>edge_to_tree</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/network.py#L359" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>edge_to_tree</code>(<strong><code>g</code></strong>, <strong><code>edges</code></strong>:<code>Union</code>[<code>tuple</code>, <code>List</code>[<code>tuple</code>]], <strong><code>lengths</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>, <code>List</code>[<code>int</code>]]=<em><code>1</code></em>, <strong><code>labels</code></strong>:<code>Dict</code>[<code>str</code>, <code>callable</code>]=<em><code>{'trunk': &lt;function &lt;lambda&gt; at 0x000002BCCDAB5678&gt;, 'branch': &lt;function &lt;lambda&gt; at 0x000002BCCDAB5708&gt;}</code></em>)</p>
 </blockquote>
 <p>Convert an edge or list of edges with a tree path (or list of tree paths),
 which connect the previous endpoints of the edge through new nodes.
@@ -2356,31 +2356,17 @@ graph after sorting
 |0   |1           |2         |
 |3   |            |2         |
 
+nodes after sorting and relabeling [0, 1, 2, 3]
+edges after sorting and relabeling [(0, 0), (0, 1), (1, 1), (1, 2), (2, 0), (3, 0)]
+
+graph after sorting and relabeling
+|Node|Predecessors|Successors|
+|0   |0, 2, 3     |0, 1      |
+|1   |0, 1        |1, 2      |
+|2   |1           |0         |
+|3   |            |0         |
+
 </pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
-<span class="ansi-red-intense-fg ansi-bold">AttributeError</span>                            Traceback (most recent call last)
-<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-70-d2f072cae27f&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">     13</span> print_graph<span class="ansi-yellow-intense-fg ansi-bold">(</span>g<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">     14</span> 
-<span class="ansi-green-intense-fg ansi-bold">---&gt; 15</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>sort_graph<span class="ansi-yellow-intense-fg ansi-bold">(</span>G<span class="ansi-yellow-intense-fg ansi-bold">,</span>relabel<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-green-intense-fg ansi-bold">True</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">     16</span> print<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#39;nodes after sorting and relabeling&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> G<span class="ansi-yellow-intense-fg ansi-bold">.</span>nodes<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">     17</span> print<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#39;edges after sorting and relabeling&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> G<span class="ansi-yellow-intense-fg ansi-bold">.</span>edges<span class="ansi-yellow-intense-fg ansi-bold">(</span>keys<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-green-intense-fg ansi-bold">False</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-69-9289ab26fb68&gt;</span> in <span class="ansi-cyan-fg">sort_graph</span><span class="ansi-blue-intense-fg ansi-bold">(g, nodes_by, node_key, node_args, nodes_ascending, edges_by, edge_key, edge_args, edges_ascending, relabel)</span>
-<span class="ansi-green-fg">     58</span>     <span class="ansi-green-intense-fg ansi-bold">if</span> relabel<span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">     59</span>         relabel_graph<span class="ansi-yellow-intense-fg ansi-bold">(</span>g<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">---&gt; 60</span><span class="ansi-yellow-intense-fg ansi-bold">         </span><span class="ansi-green-intense-fg ansi-bold">for</span> val<span class="ansi-yellow-intense-fg ansi-bold">,</span>nodes <span class="ansi-green-intense-fg ansi-bold">in</span> node_sorting<span class="ansi-yellow-intense-fg ansi-bold">.</span>items<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">     61</span>             <span class="ansi-green-intense-fg ansi-bold">for</span> i <span class="ansi-green-intense-fg ansi-bold">in</span> range<span class="ansi-yellow-intense-fg ansi-bold">(</span>len<span class="ansi-yellow-intense-fg ansi-bold">(</span>nodes<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">     62</span>                 nodes<span class="ansi-yellow-intense-fg ansi-bold">[</span>i<span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">=</span>g<span class="ansi-yellow-intense-fg ansi-bold">.</span>mapping<span class="ansi-yellow-intense-fg ansi-bold">[</span>nodes<span class="ansi-yellow-intense-fg ansi-bold">[</span>i<span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">]</span>
-
-<span class="ansi-red-intense-fg ansi-bold">AttributeError</span>: &#39;list&#39; object has no attribute &#39;items&#39;</pre>
 </div>
 </div>
 
@@ -2417,6 +2403,115 @@ graph after sorting
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>nodes before sorting [&#39;a&#39;, &#39;c&#39;, &#39;b&#39;, &#39;d&#39;]
+edges before sorting [(&#39;a&#39;, &#39;c&#39;), (&#39;c&#39;, &#39;b&#39;), (&#39;c&#39;, &#39;c&#39;), (&#39;b&#39;, &#39;a&#39;), (&#39;b&#39;, &#39;b&#39;), (&#39;d&#39;, &#39;c&#39;)]
+
+graph before sorting
+|Node|Predecessors|Successors|
+|a   |b           |c         |
+|c   |a, c, d     |b, c      |
+|b   |b, c        |a, b      |
+|d   |            |c         |
+
+nodes after sorting [&#39;c&#39;, &#39;b&#39;, &#39;a&#39;, &#39;d&#39;]
+edges after sorting [(&#39;c&#39;, &#39;c&#39;), (&#39;c&#39;, &#39;b&#39;), (&#39;b&#39;, &#39;b&#39;), (&#39;b&#39;, &#39;a&#39;), (&#39;a&#39;, &#39;c&#39;), (&#39;d&#39;, &#39;c&#39;)]
+
+graph after sorting
+|Node|Predecessors|Successors|
+|c   |d, a, c     |c, b      |
+|b   |b, c        |b, a      |
+|a   |b           |c         |
+|d   |            |c         |
+
+nodes after sorting and relabeling [0, 1, 2, 3]
+edges after sorting and relabeling [(0, 0), (0, 1), (1, 1), (1, 2), (2, 0), (3, 0)]
+
+graph after sorting and relabeling
+|Node|Predecessors|Successors|
+|0   |0, 2, 3     |0, 1      |
+|1   |0, 1        |1, 2      |
+|2   |1           |0         |
+|3   |            |0         |
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">sorting</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{3: [0], 2: [1], 1: [2], 0: [3]}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">sorting</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{3: [&#39;c&#39;], 2: [&#39;b&#39;], 1: [&#39;a&#39;], 0: [&#39;d&#39;]}</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -2496,6 +2591,27 @@ and easy manipulation of node/edge properties.</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;__main__.Network object at 0x000001E8B5CF2608&gt;
+|Node|Predecessors|Successors|
+|0   |0, 2, 3     |0, 1      |
+|1   |0, 1        |1, 2      |
+|2   |1           |0         |
+|3   |            |0         |</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -2510,6 +2626,22 @@ and easy manipulation of node/edge properties.</p>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([2, 1, 0, 3])</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -2530,6 +2662,22 @@ and easy manipulation of node/edge properties.</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([4, 3, 2, 1, 0, 5])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -2544,6 +2692,22 @@ and easy manipulation of node/edge properties.</p>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>NodeDataView({0: {&#39;n&#39;: 2}, 1: {&#39;n&#39;: 1}, 2: {&#39;n&#39;: 0}, 3: {&#39;n&#39;: 3}})</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -2564,6 +2728,22 @@ and easy manipulation of node/edge properties.</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>OutMultiEdgeDataView([(0, 0, {&#39;e&#39;: 4}), (0, 1, {&#39;e&#39;: 3}), (1, 1, {&#39;e&#39;: 2}), (1, 2, {&#39;e&#39;: 1}), (2, 0, {&#39;e&#39;: 0}), (3, 0, {&#39;e&#39;: 5})])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -2578,6 +2758,22 @@ and easy manipulation of node/edge properties.</p>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>([2], [(3, 0, 0)])</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -2598,6 +2794,23 @@ and easy manipulation of node/edge properties.</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[0, 0, 0],
+       [3, 0, 0]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -2612,6 +2825,22 @@ and easy manipulation of node/edge properties.</p>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[0, 1, 2, 3]])</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -2649,6 +2878,29 @@ and easy manipulation of node/edge properties.</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;__main__.Network object at 0x000001E8B5CF2608&gt;
+|Node|Predecessors|Successors|
+|0   |2, 4, 5     |1, 4      |
+|1   |1, 0        |1, 2      |
+|2   |1           |0         |
+|4   |0           |0         |
+|5   |3           |0         |
+|3   |            |5         |</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -2664,6 +2916,27 @@ and easy manipulation of node/edge properties.</p>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;__main__.Network object at 0x000001E8B5CF2608&gt;
+|Node|Predecessors|Successors|
+|0   |3, 2, 0     |0, 1      |
+|1   |1, 0        |1, 2      |
+|2   |1           |0         |
+|3   |            |0         |</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -2685,6 +2958,22 @@ and easy manipulation of node/edge properties.</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>InMultiEdgeView([(3, 0, 0), (2, 0, 0), (0, 0, 0), (1, 1, 0), (0, 1, 0), (1, 2, 0)])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -2700,6 +2989,22 @@ and easy manipulation of node/edge properties.</p>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>OutMultiEdgeView([(0, 0, 0), (0, 1, 0), (1, 1, 0), (1, 2, 0), (2, 0, 0), (3, 0, 0)])</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
