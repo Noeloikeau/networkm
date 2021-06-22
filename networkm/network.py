@@ -605,6 +605,10 @@ def sort_graph(g : nx.MultiDiGraph,
     #relabel to new ranking if desired
     if relabel:
         relabel_graph(g)
+        new_node_sorting=[]
+        for node,rank in node_sorting:
+            new_node_sorting+=[(g.inverse_mapping[node],rank)]
+        node_sorting=new_node_sorting
 
     g.sorting={s:[v for v in g.nodes if sidis.get(nodes_by,v)==s]
         for n,s in dict(node_sorting).items()}
@@ -656,7 +660,6 @@ class Network(nx.MultiDiGraph):
 
     def relabel(self,mapping=None):
         relabel_graph(self,mapping)
-        self.sort()
 
 
     def node_attrs(self):
