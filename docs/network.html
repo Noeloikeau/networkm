@@ -304,7 +304,7 @@ each time this func is called.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;a&#39;: array([0.39487206])}</pre>
+<pre>{&#39;a&#39;: array([0.67813006])}</pre>
 </div>
 
 </div>
@@ -337,7 +337,7 @@ each time this func is called.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;a&#39;: array([0.82915321])}</pre>
+<pre>{&#39;a&#39;: array([0.91111202])}</pre>
 </div>
 
 </div>
@@ -403,7 +403,7 @@ each time this func is called.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;b&#39;: 1, &#39;a&#39;: 0.30381956973271806}</pre>
+<pre>{&#39;b&#39;: 1, &#39;a&#39;: 0.29900289579870254}</pre>
 </div>
 
 </div>
@@ -471,7 +471,7 @@ The inner dict is given to the corresponding node.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>NodeDataView({0: {&#39;a&#39;: array([0.3092636])}, 1: {&#39;a&#39;: array([0.38798102])}, 2: {&#39;a&#39;: array([0.40887628])}})</pre>
+<pre>NodeDataView({0: {&#39;a&#39;: array([0.80414852])}, 1: {&#39;a&#39;: array([0.12232492])}, 2: {&#39;a&#39;: array([0.19537688])}})</pre>
 </div>
 
 </div>
@@ -505,7 +505,7 @@ The inner dict is given to the corresponding node.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>NodeDataView({0: {&#39;a&#39;: array([0.3092636]), &#39;b&#39;: 1}, 1: {&#39;a&#39;: array([0.38798102])}, 2: {&#39;a&#39;: array([0.40887628])}})</pre>
+<pre>NodeDataView({0: {&#39;a&#39;: array([0.80414852]), &#39;b&#39;: 1}, 1: {&#39;a&#39;: array([0.12232492])}, 2: {&#39;a&#39;: array([0.19537688])}})</pre>
 </div>
 
 </div>
@@ -539,7 +539,7 @@ The inner dict is given to the corresponding node.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>NodeDataView({0: {&#39;a&#39;: array([0.3092636]), &#39;b&#39;: 1}, 1: {&#39;a&#39;: array([0.38798102])}, 2: {&#39;a&#39;: array([0.40887628]), &#39;c&#39;: 2}})</pre>
+<pre>NodeDataView({0: {&#39;a&#39;: array([0.80414852]), &#39;b&#39;: 1}, 1: {&#39;a&#39;: array([0.12232492])}, 2: {&#39;a&#39;: array([0.19537688]), &#39;c&#39;: 2}})</pre>
 </div>
 
 </div>
@@ -739,7 +739,7 @@ The inner dict is given to the corresponding edge.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&#39;b&#39;, &#39;a&#39;, &#39;c&#39;]</pre>
+<pre>[&#39;b&#39;, &#39;c&#39;, &#39;a&#39;]</pre>
 </div>
 
 </div>
@@ -872,8 +872,8 @@ ordering of the nodes in the graph.</p>
 
 <div class="output_text output_subarea output_execute_result">
 <pre>{&#39;b&#39;: array([1, None, None], dtype=object),
- &#39;a&#39;: array([0.3092636 , 0.38798102, 0.40887628]),
- &#39;c&#39;: array([None, None, 2], dtype=object)}</pre>
+ &#39;c&#39;: array([None, None, 2], dtype=object),
+ &#39;a&#39;: array([0.80414852, 0.12232492, 0.19537688])}</pre>
 </div>
 
 </div>
@@ -1080,7 +1080,7 @@ the kwarg equalities hold in the graph.</p>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[(0, {&#39;a&#39;: array([0.3092636]), &#39;b&#39;: 1}), (1, {&#39;a&#39;: array([0.38798102])}), (2, {&#39;a&#39;: array([0.40887628]), &#39;c&#39;: 2})]
+<pre>[(0, {&#39;a&#39;: array([0.80414852]), &#39;b&#39;: 1}), (1, {&#39;a&#39;: array([0.12232492])}), (2, {&#39;a&#39;: array([0.19537688]), &#39;c&#39;: 2})]
 </pre>
 </div>
 </div>
@@ -1284,7 +1284,7 @@ the kwarg equalities hold in the graph.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>([0], [(0, 0, 0)])</pre>
+<pre>([0], ([0], [(0, 0, 0)]))</pre>
 </div>
 
 </div>
@@ -1489,7 +1489,7 @@ Returns the paths as lists of node labels.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="edge_to_tree" class="doc_header"><code>edge_to_tree</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/network.py#L359" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>edge_to_tree</code>(<strong><code>g</code></strong>, <strong><code>edges</code></strong>:<code>Union</code>[<code>tuple</code>, <code>List</code>[<code>tuple</code>]], <strong><code>lengths</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>, <code>List</code>[<code>int</code>]]=<em><code>1</code></em>, <strong><code>labels</code></strong>:<code>Dict</code>[<code>str</code>, <code>callable</code>]=<em><code>{'trunk': &lt;function &lt;lambda&gt; at 0x000002BCCDAB5678&gt;, 'branch': &lt;function &lt;lambda&gt; at 0x000002BCCDAB5708&gt;}</code></em>)</p>
+<h4 id="edge_to_tree" class="doc_header"><code>edge_to_tree</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/network.py#L359" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>edge_to_tree</code>(<strong><code>g</code></strong>, <strong><code>edges</code></strong>:<code>Union</code>[<code>tuple</code>, <code>List</code>[<code>tuple</code>]], <strong><code>lengths</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>, <code>List</code>[<code>int</code>]]=<em><code>1</code></em>, <strong><code>labels</code></strong>:<code>Dict</code>[<code>str</code>, <code>callable</code>]=<em><code>{'trunk': &lt;function &lt;lambda&gt; at 0x0000022354482678&gt;, 'branch': &lt;function &lt;lambda&gt; at 0x0000022354482708&gt;}</code></em>)</p>
 </blockquote>
 <p>Convert an edge or list of edges with a tree path (or list of tree paths),
 which connect the previous endpoints of the edge through new nodes.
@@ -2599,7 +2599,7 @@ and easy manipulation of node/edge properties.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;__main__.Network object at 0x000001E8B5CF2608&gt;
+<pre>&lt;__main__.Network object at 0x000001EDDF28A4C8&gt;
 |Node|Predecessors|Successors|
 |0   |0, 2, 3     |0, 1      |
 |1   |0, 1        |1, 2      |
@@ -2886,7 +2886,7 @@ and easy manipulation of node/edge properties.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;__main__.Network object at 0x000001E8B5CF2608&gt;
+<pre>&lt;__main__.Network object at 0x000001EDDF28A4C8&gt;
 |Node|Predecessors|Successors|
 |0   |2, 4, 5     |1, 4      |
 |1   |1, 0        |1, 2      |
@@ -2927,7 +2927,7 @@ and easy manipulation of node/edge properties.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;__main__.Network object at 0x000001E8B5CF2608&gt;
+<pre>&lt;__main__.Network object at 0x000001EDDF28A4C8&gt;
 |Node|Predecessors|Successors|
 |0   |3, 2, 0     |0, 1      |
 |1   |1, 0        |1, 2      |
