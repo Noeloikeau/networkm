@@ -1,24 +1,47 @@
-# Project name here
-> Summary description here.
+# networkm
+> Network Models based on networkx MultiDiGraph objects endowed with dynamics. `Graph Functions` contains various manipulation tools for MultiDiGraphs. `Model Functions` contains methods of simulating these graphs as coupled, time-delayed differential equations with noise. `Network Class` contains the culmination of these functions in a single class object for pipelined analysis. 
 
-
-This file will become your README and also the index of your documentation.
 
 ## Install
 
-`pip install your_project_name`
+NYI: `pip install networkm`
 
 ## How to use
 
-Fill me in please! Don't forget code examples:
+NYI: Check out the other pages for examples
 
+```python
+m=Network()
 ```
-1+1
+
+    dde_integrator : Elapsed time: 0.2559 seconds
+    
+
+
+![png](docs/images/output_4_1.png)
+
+
+
+![png](docs/images/output_4_2.png)
+
+
+```python
+m
 ```
 
 
 
 
-    2
+    <networkm.network_class.Network object at 0x00000273C9D74288>
+    |Node|Predecessors|Successors|
+    |0   |16, 17, 31  |16        |
+    |1   |16, 17, 18  |17        |
+    |2   |17, 18, 19  |18        |
+    |3   |18, 19, 20  |19        |
+    ...
+    |28  |12          |11, 13, 12|
+    |29  |13          |12, 14, 13|
+    |30  |14          |13, 15, 14|
+    |31  |15          |14, 0, 15 |
 
 

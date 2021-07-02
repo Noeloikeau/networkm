@@ -27,7 +27,8 @@ index = {"ring": "00_graph_functions.ipynb",
          "dde_integrator": "01_model_functions.ipynb",
          "parse_initial_conditions": "01_model_functions.ipynb",
          "plot_graph": "01_model_functions.ipynb",
-         "graph_model": "01_model_functions.ipynb"}
+         "graph_model": "01_model_functions.ipynb",
+         "Network": "02_network_class.ipynb"}
 
 modules = ["graph_functions.py",
            "model_functions.py",
