@@ -14,7 +14,7 @@ NYI: Check out the other pages for examples
 m=Network()
 ```
 
-    dde_integrator : Elapsed time: 0.2559 seconds
+    dde_integrator : Elapsed time: 0.1091 seconds
     
 
 
@@ -32,7 +32,7 @@ m
 
 
 
-    <networkm.network_class.Network object at 0x00000273C9D74288>
+    <networkm.network_class.Network object at 0x000002121B8DFF08>
     |Node|Predecessors|Successors|
     |0   |16, 17, 31  |16        |
     |1   |16, 17, 18  |17        |

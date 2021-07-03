@@ -10,7 +10,6 @@ with warnings.catch_warnings(): #ignore warnings
     import networkx as nx
     import numpy as np
     import sidis
-    from sidis import XOR,NOT,COPY
     rng=sidis.RNG(0)
     import matplotlib.pyplot as plt
     import typing

@@ -26,6 +26,21 @@ nb_path: "00_graph_functions.ipynb"
     
 <div class="cell border-box-sizing code_cell rendered">
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Warming up integrator; subsequent calls will be accelerated.
+dde_integrator : Elapsed time: 1.0304 seconds
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -47,9 +62,9 @@ nb_path: "00_graph_functions.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="ring" class="doc_header"><code>ring</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L21" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>ring</code>(<strong><code>N</code></strong>:<code>int</code>=<em><code>3</code></em>, <strong><code>left</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>right</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>loop</code></strong>:<code>bool</code>=<em><code>False</code></em>)</p>
+<h4 id="ring" class="doc_header"><code>ring</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L20" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>ring</code>(<strong><code>N</code></strong>:<code>int</code>=<em><code>3</code></em>, <strong><code>left</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>right</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>loop</code></strong>:<code>bool</code>=<em><code>False</code></em>)</p>
 </blockquote>
-<p>Return <code>g</code>, a ring topology networkx graph with <code>N</code> nodes.
+<p>Return <a href="/networkm/model_functions.html#g"><code>g</code></a>, a ring topology networkx graph with <code>N</code> nodes.
 Booleans <code>left</code>, <code>right</code>, <code>loop</code> determine the directed edges.</p>
 
 </div>
@@ -97,7 +112,7 @@ Booleans <code>left</code>, <code>right</code>, <code>loop</code> determine the 
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="print_graph" class="doc_header"><code>print_graph</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L70" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>print_graph</code>(<strong><code>g</code></strong>:<code>MultiDiGraph</code>, <strong><code>string</code></strong>=<em><code>False</code></em>)</p>
+<h4 id="print_graph" class="doc_header"><code>print_graph</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L69" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>print_graph</code>(<strong><code>g</code></strong>:<code>MultiDiGraph</code>, <strong><code>string</code></strong>=<em><code>False</code></em>)</p>
 </blockquote>
 <p>Print the 'node', predecessors', and 'successors' for every node in graph <code>g</code>.
 The predecessors are the nodes flowing into a node,
@@ -169,7 +184,7 @@ and the successors are the nodes flowing out.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="parse_kwargs" class="doc_header"><code>parse_kwargs</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L95" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>parse_kwargs</code>(<strong>**<code>kwargs</code></strong>)</p>
+<h4 id="parse_kwargs" class="doc_header"><code>parse_kwargs</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L94" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>parse_kwargs</code>(<strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
 <p>Evaluate delayed function calls by assigning
 attributes as (func, <em>arg) tuples.
@@ -219,7 +234,7 @@ each time this func is called.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;a&#39;: array([0.52135754])}</pre>
+<pre>{&#39;a&#39;: array([0.91925208])}</pre>
 </div>
 
 </div>
@@ -252,7 +267,7 @@ each time this func is called.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;a&#39;: array([0.56044048])}</pre>
+<pre>{&#39;a&#39;: array([0.20043044])}</pre>
 </div>
 
 </div>
@@ -318,7 +333,7 @@ each time this func is called.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;b&#39;: 1, &#39;a&#39;: 0.8940417624250778}</pre>
+<pre>{&#39;b&#39;: 1, &#39;a&#39;: 0.42269967320400115}</pre>
 </div>
 
 </div>
@@ -340,7 +355,7 @@ each time this func is called.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="give_nodes" class="doc_header"><code>give_nodes</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L116" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>give_nodes</code>(<strong><code>g</code></strong>:<code>MultiDiGraph</code>, <strong><code>data</code></strong>:<code>Dict</code>[<code>Hashable</code>, <code>dict</code>]=<em><code>None</code></em>, <strong><code>nodes</code></strong>:<code>Iterable</code>[<code>T_co</code>]=<em><code>None</code></em>, <strong>**<code>kwargs</code></strong>)</p>
+<h4 id="give_nodes" class="doc_header"><code>give_nodes</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L115" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>give_nodes</code>(<strong><code>g</code></strong>:<code>MultiDiGraph</code>, <strong><code>data</code></strong>:<code>Dict</code>[<code>Hashable</code>, <code>dict</code>]=<em><code>None</code></em>, <strong><code>nodes</code></strong>:<code>Iterable</code>[<code>T_co</code>]=<em><code>None</code></em>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
 <p>Parse and apply any 'kwargs' to a set of 'nodes'.
 If given, 'data' is a dict-of-dicts keyed by node.
@@ -386,7 +401,7 @@ The inner dict is given to the corresponding node.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>NodeDataView({0: {&#39;a&#39;: array([0.78581905])}, 1: {&#39;a&#39;: array([0.92514087])}, 2: {&#39;a&#39;: array([0.87044932])}})</pre>
+<pre>NodeDataView({0: {&#39;a&#39;: array([0.8802404])}, 1: {&#39;a&#39;: array([0.63753581])}, 2: {&#39;a&#39;: array([0.71935982])}})</pre>
 </div>
 
 </div>
@@ -420,7 +435,7 @@ The inner dict is given to the corresponding node.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>NodeDataView({0: {&#39;a&#39;: array([0.78581905]), &#39;b&#39;: 1}, 1: {&#39;a&#39;: array([0.92514087])}, 2: {&#39;a&#39;: array([0.87044932])}})</pre>
+<pre>NodeDataView({0: {&#39;a&#39;: array([0.8802404]), &#39;b&#39;: 1}, 1: {&#39;a&#39;: array([0.63753581])}, 2: {&#39;a&#39;: array([0.71935982])}})</pre>
 </div>
 
 </div>
@@ -454,7 +469,7 @@ The inner dict is given to the corresponding node.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>NodeDataView({0: {&#39;a&#39;: array([0.78581905]), &#39;b&#39;: 1}, 1: {&#39;a&#39;: array([0.92514087])}, 2: {&#39;a&#39;: array([0.87044932]), &#39;c&#39;: 2}})</pre>
+<pre>NodeDataView({0: {&#39;a&#39;: array([0.8802404]), &#39;b&#39;: 1}, 1: {&#39;a&#39;: array([0.63753581])}, 2: {&#39;a&#39;: array([0.71935982]), &#39;c&#39;: 2}})</pre>
 </div>
 
 </div>
@@ -476,7 +491,7 @@ The inner dict is given to the corresponding node.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="give_edges" class="doc_header"><code>give_edges</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L160" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>give_edges</code>(<strong><code>g</code></strong>:<code>MultiDiGraph</code>, <strong><code>data</code></strong>:<code>Dict</code>[<code>Hashable</code>, <code>dict</code>]=<em><code>None</code></em>, <strong><code>edges</code></strong>:<code>Iterable</code>[<code>T_co</code>]=<em><code>None</code></em>, <strong>**<code>kwargs</code></strong>)</p>
+<h4 id="give_edges" class="doc_header"><code>give_edges</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L159" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>give_edges</code>(<strong><code>g</code></strong>:<code>MultiDiGraph</code>, <strong><code>data</code></strong>:<code>Dict</code>[<code>Hashable</code>, <code>dict</code>]=<em><code>None</code></em>, <strong><code>edges</code></strong>:<code>Iterable</code>[<code>T_co</code>]=<em><code>None</code></em>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
 <p>Parse and apply any 'kwargs' to a set of 'edges'.
 If given, 'data' is a dict-of-dicts keyed by edge.
@@ -578,7 +593,7 @@ The inner dict is given to the corresponding edge.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="node_attrs" class="doc_header"><code>node_attrs</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L185" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>node_attrs</code>(<strong><code>g</code></strong>)</p>
+<h4 id="node_attrs" class="doc_header"><code>node_attrs</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L184" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>node_attrs</code>(<strong><code>g</code></strong>)</p>
 </blockquote>
 <p>Unique node data keys.</p>
 
@@ -621,7 +636,7 @@ The inner dict is given to the corresponding edge.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&#39;a&#39;, &#39;c&#39;, &#39;b&#39;]</pre>
+<pre>[&#39;c&#39;, &#39;a&#39;, &#39;b&#39;]</pre>
 </div>
 
 </div>
@@ -643,7 +658,7 @@ The inner dict is given to the corresponding edge.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="edge_attrs" class="doc_header"><code>edge_attrs</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L193" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>edge_attrs</code>(<strong><code>g</code></strong>)</p>
+<h4 id="edge_attrs" class="doc_header"><code>edge_attrs</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L192" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>edge_attrs</code>(<strong><code>g</code></strong>)</p>
 </blockquote>
 <p>Unique edge data keys.</p>
 
@@ -708,7 +723,7 @@ The inner dict is given to the corresponding edge.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="node_data" class="doc_header"><code>node_data</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L201" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>node_data</code>(<strong><code>g</code></strong>, <strong>*<code>args</code></strong>)</p>
+<h4 id="node_data" class="doc_header"><code>node_data</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L200" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>node_data</code>(<strong><code>g</code></strong>, <strong>*<code>args</code></strong>)</p>
 </blockquote>
 <p>Return node attributes 'args' as an array.
 NOTE: The ordering of the array corresponds to the
@@ -753,8 +768,8 @@ ordering of the nodes in the graph.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;a&#39;: array([0.78581905, 0.92514087, 0.87044932]),
- &#39;c&#39;: array([None, None, 2], dtype=object),
+<pre>{&#39;c&#39;: array([None, None, 2], dtype=object),
+ &#39;a&#39;: array([0.8802404 , 0.63753581, 0.71935982]),
  &#39;b&#39;: array([1, None, None], dtype=object)}</pre>
 </div>
 
@@ -777,7 +792,7 @@ ordering of the nodes in the graph.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="edge_data" class="doc_header"><code>edge_data</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L219" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>edge_data</code>(<strong><code>g</code></strong>, <strong>*<code>args</code></strong>)</p>
+<h4 id="edge_data" class="doc_header"><code>edge_data</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L218" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>edge_data</code>(<strong><code>g</code></strong>, <strong>*<code>args</code></strong>)</p>
 </blockquote>
 <p>Return edge attributes 'args' as an array.
 NOTE: The ordering of the array corresponds to the
@@ -844,7 +859,7 @@ ordering of the edges in the graph.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="argwhere" class="doc_header"><code>argwhere</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L236" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>argwhere</code>(<strong>*<code>args</code></strong>:<code>List</code>[<code>ndarray</code>])</p>
+<h4 id="argwhere" class="doc_header"><code>argwhere</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L235" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>argwhere</code>(<strong>*<code>args</code></strong>:<code>List</code>[<code>ndarray</code>])</p>
 </blockquote>
 <p>Simplified version of np.argwhere for multiple arrays.
 Returns list of indices where args hold.</p>
@@ -947,7 +962,7 @@ Returns list of indices where args hold.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="kwargwhere" class="doc_header"><code>kwargwhere</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L258" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>kwargwhere</code>(<strong><code>g</code></strong>:<code>MultiDiGraph</code>, <strong>**<code>kwargs</code></strong>:<code>Dict</code>[<code>str</code>, <code>Any</code>])</p>
+<h4 id="kwargwhere" class="doc_header"><code>kwargwhere</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L257" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>kwargwhere</code>(<strong><code>g</code></strong>:<code>MultiDiGraph</code>, <strong>**<code>kwargs</code></strong>:<code>Dict</code>[<code>str</code>, <code>Any</code>])</p>
 </blockquote>
 <p>Return the node and edges where
 the kwarg equalities hold in the graph.</p>
@@ -989,7 +1004,7 @@ the kwarg equalities hold in the graph.</p>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[(0, {&#39;a&#39;: array([0.78581905]), &#39;b&#39;: 1}), (1, {&#39;a&#39;: array([0.92514087])}), (2, {&#39;a&#39;: array([0.87044932]), &#39;c&#39;: 2})]
+<pre>[(0, {&#39;a&#39;: array([0.8802404]), &#39;b&#39;: 1}), (1, {&#39;a&#39;: array([0.63753581])}), (2, {&#39;a&#39;: array([0.71935982]), &#39;c&#39;: 2})]
 </pre>
 </div>
 </div>
@@ -1142,7 +1157,7 @@ the kwarg equalities hold in the graph.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="where" class="doc_header"><code>where</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L293" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>where</code>(<strong><code>g</code></strong>, <strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>)</p>
+<h4 id="where" class="doc_header"><code>where</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L292" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>where</code>(<strong><code>g</code></strong>, <strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
 <p>Combine the 'argwhere' and 'kwargwhere' functions for the graph.</p>
 
@@ -1207,7 +1222,7 @@ the kwarg equalities hold in the graph.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="convert_edges" class="doc_header"><code>convert_edges</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L322" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>convert_edges</code>(<strong><code>g</code></strong>:<code>MultiDiGraph</code>, <strong><code>edges</code></strong>:<code>Union</code>[<code>NoneType</code>, <code>tuple</code>, <code>List</code>[<code>tuple</code>]]=<em><code>None</code></em>, <strong><code>lengths</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>, <code>dict</code>]=<em><code>1</code></em>, <strong><code>node_data</code></strong>:<code>dict</code>=<em><code>{}</code></em>, <strong><code>label</code></strong>:<code>callable</code>=<em><code>&lt;lambda&gt;</code></em>, <strong>**<code>edge_data</code></strong>)</p>
+<h4 id="convert_edges" class="doc_header"><code>convert_edges</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L321" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>convert_edges</code>(<strong><code>g</code></strong>:<code>MultiDiGraph</code>, <strong><code>edges</code></strong>:<code>Union</code>[<code>NoneType</code>, <code>tuple</code>, <code>List</code>[<code>tuple</code>]]=<em><code>None</code></em>, <strong><code>lengths</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>, <code>dict</code>]=<em><code>1</code></em>, <strong><code>node_data</code></strong>:<code>dict</code>=<em><code>{}</code></em>, <strong><code>label</code></strong>:<code>callable</code>=<em><code>&lt;lambda&gt;</code></em>, <strong>**<code>edge_data</code></strong>)</p>
 </blockquote>
 <p>Converts <code>edges</code> in <code>g</code> to paths of the given <code>lengths</code>.
 The new paths follow a tree structure, and each new node
@@ -1391,7 +1406,7 @@ made from new nodes equal to the lengths associated with each path.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="relabel_graph" class="doc_header"><code>relabel_graph</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L388" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>relabel_graph</code>(<strong><code>g</code></strong>:<code>MultiDiGraph</code>, <strong><code>mapping</code></strong>:<code>Union</code>[<code>NoneType</code>, <code>callable</code>, <code>dict</code>]=<em><code>None</code></em>)</p>
+<h4 id="relabel_graph" class="doc_header"><code>relabel_graph</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L387" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>relabel_graph</code>(<strong><code>g</code></strong>:<code>MultiDiGraph</code>, <strong><code>mapping</code></strong>:<code>Union</code>[<code>NoneType</code>, <code>callable</code>, <code>dict</code>]=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Relabel nodes in place with desired 'mapping', and store the
 <code>mapping</code> and <code>inverse_mapping</code> as attributes of <code>g</code>.
@@ -1527,7 +1542,7 @@ as keys and new node labels as values.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="sort_graph" class="doc_header"><code>sort_graph</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L448" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>sort_graph</code>(<strong><code>g</code></strong>:<code>MultiDiGraph</code>, <strong><code>nodes_by</code></strong>=<em><code>'in_degree'</code></em>, <strong><code>node_key</code></strong>=<em><code>&lt;lambda&gt;</code></em>, <strong><code>node_args</code></strong>=<em><code>()</code></em>, <strong><code>nodes_ascending</code></strong>=<em><code>True</code></em>, <strong><code>edges_by</code></strong>=<em><code>None</code></em>, <strong><code>edge_key</code></strong>=<em><code>None</code></em>, <strong><code>edge_args</code></strong>=<em><code>()</code></em>, <strong><code>edges_ascending</code></strong>=<em><code>False</code></em>, <strong><code>relabel</code></strong>=<em><code>False</code></em>)</p>
+<h4 id="sort_graph" class="doc_header"><code>sort_graph</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L447" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>sort_graph</code>(<strong><code>g</code></strong>:<code>MultiDiGraph</code>, <strong><code>nodes_by</code></strong>=<em><code>'in_degree'</code></em>, <strong><code>node_key</code></strong>=<em><code>&lt;lambda&gt;</code></em>, <strong><code>node_args</code></strong>=<em><code>()</code></em>, <strong><code>nodes_ascending</code></strong>=<em><code>True</code></em>, <strong><code>edges_by</code></strong>=<em><code>None</code></em>, <strong><code>edge_key</code></strong>=<em><code>None</code></em>, <strong><code>edge_args</code></strong>=<em><code>()</code></em>, <strong><code>edges_ascending</code></strong>=<em><code>False</code></em>, <strong><code>relabel</code></strong>=<em><code>False</code></em>)</p>
 </blockquote>
 <p>Sort the graph in place by changing node and edge order.
 See <code>sidis.sort</code> documentation for explanation of by, key, and args.
@@ -1636,7 +1651,7 @@ Sorting result: g.sorting
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Converted 00_graph_functions.ipynb.
 Converted 01_model_functions.ipynb.
-Converted 03_network_class.ipynb.
+Converted 02_network_class.ipynb.
 Converted index.ipynb.
 </pre>
 </div>
