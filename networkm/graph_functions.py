@@ -185,16 +185,22 @@ def node_attrs(g):
     '''
     Unique node data keys.
     '''
-    return list(set(sidis.flatten([list(t[-1].keys())
-                        for t in list(g.nodes(data=True))])))
+    attrs=[]
+    for n in g.nodes:
+        for attr in g.nodes[n]:
+            attrs+=[attr]
+    return list(set(attrs))
 
 # Cell
 def edge_attrs(g):
     '''
     Unique edge data keys.
     '''
-    return list(set(sidis.flatten([list(t[-1].keys())
-                        for t in list(g.edges(data=True))])))
+    attrs=[]
+    for e in g.edges:
+        for attr in g.edges[e]:
+            attrs+=[attr]
+    return list(set(attrs))
 
 # Cell
 def node_data(g,*args):

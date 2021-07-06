@@ -11,10 +11,10 @@ NYI: `pip install networkm`
 NYI: Check out the other pages for examples
 
 ```python
-m=Network()
+m=BooleanNetwork()
 ```
 
-    dde_integrator : Elapsed time: 0.1091 seconds
+    bool_integral : Elapsed time: 0.0104 seconds
     
 
 
@@ -32,7 +32,7 @@ m
 
 
 
-    <networkm.network_class.Network object at 0x000002121B8DFF08>
+    <networkm.network_class.BooleanNetwork object at 0x0000026272339508>
     |Node|Predecessors|Successors|
     |0   |16, 17, 31  |16        |
     |1   |16, 17, 18  |17        |
