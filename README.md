@@ -8,6 +8,16 @@
 
 ## How to use
 
+```python
+import networkm
+from networkm import *
+```
+
+    Warming up integrator; future calls will be accelerated.
+    bool_integral : Elapsed time: 2.7308 seconds
+    bool_integral_risefall : Elapsed time: 1.9508 seconds
+    
+
 Check out the other pages for detailed examples; here we showcase two example `BooleanNetworks`. Any Boolean Network has dynamics of the form
 
     tau*dxdt=-x(t)+f(y(t-d))+noise
@@ -22,6 +32,13 @@ The repressilator is a ring of 3 nodes which connect to their left neighbor and 
 g=ring(N=3,left=True,right=False,loop=False)
 print_graph(g)
 ```
+
+    |Node|Predecessors|Successors|
+    |0   |1           |2         |
+    |1   |2           |0         |
+    |2   |0           |1         |
+    
+    
 
 We model this with the simplest case, as follows. We give each node the NOT function. This function is executed differentially with a time-constant of 1. The node receives its neighbors state instantly; we put no explicit time-delays along edges, and include no noise. We initialize one node to 1, and hold all nodes at their steady-state value from this configuration for the default value of one time-constant. Then they are released and have the following dynamics:
 
@@ -41,9 +58,27 @@ m=BooleanNetwork(g=ring(N=3,left=True,right=False,loop=False),
                 )
 ```
 
+    bool_integral : Elapsed time: 2.2616 seconds
+    
+
+
+![png](docs/images/output_8_1.png)
+
+
 ```python
 m
 ```
+
+
+
+
+    <networkm.network_class.BooleanNetwork object at 0x000002E5E6754348>
+    |Node|Predecessors|Successors|
+    |0   |1           |2         |
+    |1   |2           |0         |
+    |2   |0           |1         |
+
+
 
 For a more complex example we consider a "Hybrid Boolean Network" composed of a multiplexer - which forces inital conditions using a clock - connected to a chaotic ring network, which executes the XOR function. This has real-world implications in e.g cryptography and physically unclonable functions (PUF) as an HBN-PUF - see https://ieeexplore.ieee.org/document/9380284.
 
@@ -81,9 +116,37 @@ m=BooleanNetwork(g = ring(N=16,right=True,left=True,loop=True),
          )
 ```
 
+    bool_integral_risefall : Elapsed time: 0.0169 seconds
+    
+
+
+![png](docs/images/output_11_1.png)
+
+
+
+![png](docs/images/output_11_2.png)
+
+
 ```python
 m
 ```
+
+
+
+
+    <networkm.network_class.BooleanNetwork object at 0x000002E5E5232CC8>
+    |Node|Predecessors|Successors|
+    |0   |16, 17, 31  |16        |
+    |1   |16, 17, 18  |17        |
+    |2   |17, 18, 19  |18        |
+    |3   |18, 19, 20  |19        |
+    ...
+    |28  |12          |11, 12, 13|
+    |29  |13          |12, 13, 14|
+    |30  |14          |13, 14, 15|
+    |31  |15          |0, 14, 15 |
+
+
 
 ```python
 sidis.refresh()
