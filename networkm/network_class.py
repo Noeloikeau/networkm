@@ -21,31 +21,41 @@ with warnings.catch_warnings(): #ignore warnings
 # Cell
 class BooleanNetwork(nx.MultiDiGraph):
     '''
-    Generic network model class. Has base functionality for incorporating
-    a network and simulating its dynamics, as well as executing arbitrary
-    routines. Can pass a network `g`, `node_data`, `edge_data`, and `kwargs`
-    which get placed as attributes. `routines` is a list of functions,
-    args, kwargs, and optional string attributes, which specify a list
-    of functions to execute over the args and kwargs, and whether to set
-    the result as an attribute of the model. This allows for arbitrary
-    executions of routines. Finally, `derivative`, `integrator`, and
-    `visualizer` specify the state-change and plotting functions.
+    Model the dynamics of the graph `g` by giving the node attributes
 
-    Parameters:
-        g : incoming graph data
-        node_data : dict containing
-            a : node sigmoid parameter, use np.inf for rounding
-            tau : node time constant, use scalar for single time constant,
-                or tuple (rise,fall) for rise and fall behavior
-            f : node boolean function
-        edge_data : dict containing
-            delay : time-delay along the given edge
-            replace : None for no edge replacement,
-                or a dict containing node attributes of the new
-                nodes replacing that edge
-        T : integration time
-        dt : integration timestep
-        epsilon : noise amplitude for positive-definite uniformly random
+        f : logical function
+
+        a : sigmoid function
+
+        tau : time constant
+
+    and edge attributes
+
+        delay : time-delay
+
+    and parses each of these arguments if given as a tuple of a
+
+    randomization function and its args; see `parse_kwargs`.
+
+    Converts any edges with the given `edge_replacements` (see
+
+    `convert_edges` function for arguments); useful for `MPX`.
+
+    Sorts the graph in place using `sort_graph` in order to produce
+
+    an iterable with `bool_model_iter`. See also `setup_bool_integral`.
+
+    Initializes the dynamics to `init` using the hold times `hold`;
+
+    see `bool_initial_conditions`. Integrates with `bool_integral`
+
+    and `bool_integral_risefall` if `tau` is given as an array of
+
+    [rise_time,fall_time]. Returns the node state array `x`
+
+    and optionally plots the resulting dynamics with `plot_graph`.
+
+    Includes most functions from the `graph_functions` library.
     '''
     def __init__(self,
                  g = ring(N=16,left=True,right=True,loop=True),

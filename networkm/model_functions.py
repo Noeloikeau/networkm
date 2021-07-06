@@ -249,18 +249,28 @@ def bool_initial_conditions(g,
         #default to hold time of 1
         if hold is None:
             hold = np.array([1 for i in g.nodes])
+        else:
+            hold = np.array(hold)
 
     return init,hold
 
 # Cell
-def setup_bool_integral(g,
-                   init=None,
-                   hold=None,
-                   T=15,
-                   dt=0.01,
-                   noise=0.01,
-                   steady=True
+def setup_bool_integral(g : nx.MultiDiGraph,
+                   init : Optional[List[float]] = None,
+                   hold : Optional[List[int]] = None,
+                   T : int = 15,
+                   dt : float = 0.01,
+                   noise : float = 0.01,
+                   steady : bool = True
                   ):
+    '''
+    Setup the Boolean integral with the list of initial conditions `init`
+    and times to hold the nodes to those values `hold`. If `steady`, will
+    transform the initial conditions to their steady-state valus using the
+    dynamical functions `f`. `T`, `dt` determine the time and timestep
+    of the integal. `noise` is the amplitude of noise on each node
+    randomly drawn from [0,noise].
+    '''
 
     iterator = bool_model_iter(g)
     T=int(T/dt)
@@ -289,17 +299,33 @@ def setup_bool_integral(g,
 # Cell
 @sidis.timer
 @njit
-def bool_integral(iterator,
-              time_delays,
-              sigmoid_constants,
-              time_constants,
-              predecessors,
-              noise,
-              initial_conditions,
-              hold_times,
-              dt
+def bool_integral(iterator : np.ndarray,
+                  time_delays : np.ndarray,
+                  sigmoid_constants : np.ndarray,
+                  time_constants : np.ndarray,
+                  predecessors : np.ndarray,
+                  noise : np.ndarray,
+                  initial_conditions : np.ndarray,
+                  hold_times : np.ndarray,
+                  dt : float
              ):
-
+    '''
+    Jit accelerated integral for boolean networks.
+    See `bool_integral_setup` and `bool_model_iter`.
+    Loops over time and the iterator and returns the
+    node state `x` of shape (T,N) where N is number
+    of nodes. Sets the `initial_conditions` explicitly
+    using `hold_times` for each node.
+    The `time_delays` and `predecessors` are arrays
+    ordered by edge index in the ordered graph.
+    Slices are taken and the arrays are reshaped.
+    Then, the squeezed input states of each neighbor
+    are applied to the logical function of each node
+    using the mask lookup table defined in the Boolean
+    functions themselves. The Bool func output is then
+    squeezed again, and the derivative calculated
+    with the Euler method.
+    '''
     x=np.zeros(noise.shape).astype(np.float64)
     dx=np.zeros(x.shape[-1]).astype(np.float64)
 
@@ -341,18 +367,27 @@ def bool_integral(iterator,
 
 # Cell
 @sidis.timer
-#@njit
-def bool_integral_risefall(iterator,
-              time_delays,
-              sigmoid_constants,
-              time_constants,
-              predecessors,
-              noise,
-              initial_conditions,
-              hold_times,
-              dt
-             ):
-
+@njit
+def bool_integral_risefall(iterator : np.ndarray,
+                          time_delays : np.ndarray,
+                          sigmoid_constants : np.ndarray,
+                          time_constants : np.ndarray,
+                          predecessors : np.ndarray,
+                          noise : np.ndarray,
+                          initial_conditions : np.ndarray,
+                          hold_times : np.ndarray,
+                          dt : float
+                         ):
+    '''
+    Almost identical to `bool_integral`, with the exception
+    that `time_constants` is an (N,2) vector, where N is the
+    number of nodes, and the [:,0] entry is the rise-time,
+    and the [:,1] entry is the fall-time. Their difference
+    tau[:,1]-tau[:,0] is modulated by the sigmoid function,
+    and used in the calculation of the new denominator of the
+    derivative, which is of the form
+        tau_rise+(tau_fall-tau_rise)*sigmoid(x)
+    '''
     x=np.zeros(noise.shape).astype(np.float64)
     dx=np.zeros(x.shape[-1]).astype(np.float64)
 
@@ -413,17 +448,17 @@ def plot_graph(g,x,dt):
 
 # Cell
 def bool_model( g,
-         T = 15,
-         dt = 0.01,
-         noise = 0,
-         init = None,
-         hold = None,
+         T : int = 15,
+         dt : float = 0.01,
+         noise :float = 0,
+         init : List[float] = None,
+         hold : List[int] = None,
 
-         a = (rng.normal,20,0),
-         tau = (rng.normal,0.5,0),
-         f = XOR,
+         a : Union[float,Tuple[callable,float,float]] = (rng.normal,20,0),
+         tau : Union[np.ndarray,Tuple[callable,np.ndarray,np.ndarray]] = (rng.normal,0.5,0),
+         f : callable = XOR,
 
-         delay = (rng.random,0,0),
+         delay : Union[float,Tuple[callable,float,float]] = (rng.random,0,0),
 
          edge_replacements = dict(
              lengths = 1,
@@ -435,33 +470,45 @@ def bool_model( g,
              ),
              label = lambda g,node,iterable : len(g)+iterable
          ),
-        plot=True,
-        steady=True
-              ):
-        '''
-        Model the dynamics of the graph by ascribing the given node and edge
-        attributes, and converting any edges with the given conversion attrs.
-        Returns the node state array and plots the resulting dynamics.
 
-        Parameters:
-            g : incoming graph data
-            T : integration time
-            dt : integration timestep
-            epsilon : noise amplitude; positive-definite uniformly random
-            node_data : dict containing
-                a : node sigmoid parameter, use np.inf for rounding
-                tau : node time constant, use scalar for single time constant,
-                    or tuple (rise,fall) for rise and fall behavior
-                f : node boolean function
-            edge_data : dict containing
-                delay : time-delay along the given edge
-                replace : None for no edge replacement,
-                    or a dict containing:
-                        lengths : number of replacement nodes along each edge,
-                        use lengths=1 for a multiplexer model.
-                        node attributes of the new nodes replacing that edge,
-                        delay : time delays along new edges
-                        label : node names of new nodes
+        plot : bool = True,
+        steady : bool = True):
+
+        '''
+        Model the dynamics of the graph `g` by giving the node attributes
+
+            f : logical function
+
+            a : sigmoid function
+
+            tau : time constant
+
+        and edge attributes
+
+            delay : time-delay
+
+        and parses each of these arguments if given as a tuple of a
+
+        randomization function and its args; see `parse_kwargs`.
+
+        Converts any edges with the given `edge_replacements` (see
+
+        `convert_edges` function for arguments); useful for `MPX`.
+
+        Sorts the graph in place using `sort_graph` in order to produce
+
+        an iterable with `bool_model_iter`. See also `setup_bool_integral`.
+
+        Initializes the dynamics to `init` using the hold times `hold`;
+
+        see `bool_initial_conditions`. Integrates with `bool_integral`
+
+        and `bool_integral_risefall` if `tau` is given as an array of
+
+        [rise_time,fall_time]. Returns the node state array `x`
+
+        and optionally plots the resulting dynamics with `plot_graph`.
+
         '''
 
         #give node/edge attrs
