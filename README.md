@@ -14,8 +14,8 @@ from networkm import *
 ```
 
     Warming up integrator; future calls will be accelerated.
-    bool_integral : Elapsed time: 2.7585 seconds
-    bool_integral_risefall : Elapsed time: 1.9748 seconds
+    bool_integral : Elapsed time: 2.6098 seconds
+    bool_integral_risefall : Elapsed time: 1.8554 seconds
     
 
 Check out the other pages for detailed examples; here we showcase two example `BooleanNetworks`. Any Boolean Network has dynamics of the form
@@ -58,7 +58,7 @@ m=BooleanNetwork(g=ring(N=3,left=True,right=False,loop=False),
                 )
 ```
 
-    bool_integral : Elapsed time: 1.8040 seconds
+    bool_integral : Elapsed time: 0.0030 seconds
     
 
 
@@ -72,7 +72,7 @@ m
 
 
 
-    <networkm.network_class.BooleanNetwork object at 0x000001EBDEC36948>
+    <networkm.network_class.BooleanNetwork object at 0x0000010D0DD8CB08>
     |Node|Predecessors|Successors|
     |0   |1           |2         |
     |1   |2           |0         |
@@ -116,7 +116,7 @@ m=BooleanNetwork(g = ring(N=16,right=True,left=True,loop=True),
          )
 ```
 
-    bool_integral_risefall : Elapsed time: 0.0164 seconds
+    bool_integral_risefall : Elapsed time: 0.0174 seconds
     
 
 
@@ -134,7 +134,7 @@ m
 
 
 
-    <networkm.network_class.BooleanNetwork object at 0x000001EBDC32AC08>
+    <networkm.network_class.BooleanNetwork object at 0x0000010D0DA4EE88>
     |Node|Predecessors|Successors|
     |0   |16, 17, 31  |16        |
     |1   |16, 17, 18  |17        |
