@@ -227,7 +227,6 @@ def bool_initial_conditions(g,
         original_nodes = [i for i in g.nodes if i not in mpx_nodes]
         if init is None: #default to 1 logic high node
             init = [1]+[0 for i in mpx_nodes[1:]]
-
         #set original nodes to 0
         init=np.array([0 for i in original_nodes]+init)
 

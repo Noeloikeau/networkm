@@ -6,8 +6,8 @@ title: networkm
 keywords: fastai
 sidebar: home_sidebar
 
-summary: "Network Models based on networkx MultiDiGraph objects endowed with dynamics, based on `networkx`. `Graph Functions` contains various manipulation tools for networkx MultiDiGraphs. `Model Functions` contains methods of simulating these graphs as coupled, time-delayed differential equations with noise, with current support for Boolean functions / Boolean networks. `Network Class` contains the culmination of these functions in a single `BooleanNetwork` class object for pipelined analysis. Accelerated with `numba`. "
-description: "Network Models based on networkx MultiDiGraph objects endowed with dynamics, based on `networkx`. `Graph Functions` contains various manipulation tools for networkx MultiDiGraphs. `Model Functions` contains methods of simulating these graphs as coupled, time-delayed differential equations with noise, with current support for Boolean functions / Boolean networks. `Network Class` contains the culmination of these functions in a single `BooleanNetwork` class object for pipelined analysis. Accelerated with `numba`. "
+summary: "Network Models based on `networkx` MultiDiGraph objects endowed with dynamics. `Graph Functions` contains various manipulation tools for graph objects. `Model Functions` contains methods of simulating these graphs as coupled, time-delayed differential equations with noise, with current support for Boolean functions / Boolean networks. `Network Class` contains the culmination of these functions in a single `BooleanNetwork` class object for pipelined analysis. Accelerated with `numba`. "
+description: "Network Models based on `networkx` MultiDiGraph objects endowed with dynamics. `Graph Functions` contains various manipulation tools for graph objects. `Model Functions` contains methods of simulating these graphs as coupled, time-delayed differential equations with noise, with current support for Boolean functions / Boolean networks. `Network Class` contains the culmination of these functions in a single `BooleanNetwork` class object for pipelined analysis. Accelerated with `numba`. "
 nb_path: "index.ipynb"
 ---
 <!--
@@ -70,8 +70,8 @@ nb_path: "index.ipynb"
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Warming up integrator; future calls will be accelerated.
-bool_integral : Elapsed time: 2.7308 seconds
-bool_integral_risefall : Elapsed time: 1.9508 seconds
+bool_integral : Elapsed time: 2.7585 seconds
+bool_integral_risefall : Elapsed time: 1.9748 seconds
 </pre>
 </div>
 </div>
@@ -86,10 +86,10 @@ bool_integral_risefall : Elapsed time: 1.9508 seconds
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Check out the other pages for detailed examples; here we showcase two example <code>BooleanNetworks</code>. Any Boolean Network has dynamics of the form</p>
 
-<pre><code>tau*dxdt=-x(t)+f(y(t-d))+noise
+<pre><code>tau*dxdt=-x(t)+f(y(t-delay))+noise
 
 </code></pre>
-<p>where tau is a time-constant, f is a logical function, y are the nodes flowing into node x after some time-delay d, and the noise term is random.</p>
+<p>where tau is a time-constant, f is a logical function, y are the nodes flowing into node x after some time-delay along the edge, and the noise term is random.</p>
 
 </div>
 </div>
@@ -177,7 +177,7 @@ bool_integral_risefall : Elapsed time: 1.9508 seconds
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>bool_integral : Elapsed time: 2.2616 seconds
+<pre>bool_integral : Elapsed time: 1.8040 seconds
 </pre>
 </div>
 </div>
@@ -222,7 +222,7 @@ bool_integral_risefall : Elapsed time: 1.9508 seconds
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;networkm.network_class.BooleanNetwork object at 0x000002E5E6754348&gt;
+<pre>&lt;networkm.network_class.BooleanNetwork object at 0x000001EBDEC36948&gt;
 |Node|Predecessors|Successors|
 |0   |1           |2         |
 |1   |2           |0         |
@@ -293,7 +293,7 @@ bool_integral_risefall : Elapsed time: 1.9508 seconds
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>bool_integral_risefall : Elapsed time: 0.0169 seconds
+<pre>bool_integral_risefall : Elapsed time: 0.0164 seconds
 </pre>
 </div>
 </div>
@@ -350,7 +350,7 @@ bool_integral_risefall : Elapsed time: 1.9508 seconds
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;networkm.network_class.BooleanNetwork object at 0x000002E5E5232CC8&gt;
+<pre>&lt;networkm.network_class.BooleanNetwork object at 0x000001EBDC32AC08&gt;
 |Node|Predecessors|Successors|
 |0   |16, 17, 31  |16        |
 |1   |16, 17, 18  |17        |

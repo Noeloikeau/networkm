@@ -1,5 +1,5 @@
 # networkm
-> Network Models based on networkx MultiDiGraph objects endowed with dynamics, based on `networkx`. `Graph Functions` contains various manipulation tools for networkx MultiDiGraphs. `Model Functions` contains methods of simulating these graphs as coupled, time-delayed differential equations with noise, with current support for Boolean functions / Boolean networks. `Network Class` contains the culmination of these functions in a single `BooleanNetwork` class object for pipelined analysis. Accelerated with `numba`. 
+> Network Models based on `networkx` MultiDiGraph objects endowed with dynamics. `Graph Functions` contains various manipulation tools for graph objects. `Model Functions` contains methods of simulating these graphs as coupled, time-delayed differential equations with noise, with current support for Boolean functions / Boolean networks. `Network Class` contains the culmination of these functions in a single `BooleanNetwork` class object for pipelined analysis. Accelerated with `numba`. 
 
 
 ## Install
@@ -14,15 +14,15 @@ from networkm import *
 ```
 
     Warming up integrator; future calls will be accelerated.
-    bool_integral : Elapsed time: 2.7308 seconds
-    bool_integral_risefall : Elapsed time: 1.9508 seconds
+    bool_integral : Elapsed time: 2.7585 seconds
+    bool_integral_risefall : Elapsed time: 1.9748 seconds
     
 
 Check out the other pages for detailed examples; here we showcase two example `BooleanNetworks`. Any Boolean Network has dynamics of the form
 
-    tau*dxdt=-x(t)+f(y(t-d))+noise
+    tau*dxdt=-x(t)+f(y(t-delay))+noise
 
-where tau is a time-constant, f is a logical function, y are the nodes flowing into node x after some time-delay d, and the noise term is random.
+where tau is a time-constant, f is a logical function, y are the nodes flowing into node x after some time-delay along the edge, and the noise term is random.
 
 To start, we consider a simple example knwon as a Repressilator https://en.wikipedia.org/wiki/Repressilator, with real-world implications in e.g gene-regulatory networks.
 
@@ -58,7 +58,7 @@ m=BooleanNetwork(g=ring(N=3,left=True,right=False,loop=False),
                 )
 ```
 
-    bool_integral : Elapsed time: 2.2616 seconds
+    bool_integral : Elapsed time: 1.8040 seconds
     
 
 
@@ -72,7 +72,7 @@ m
 
 
 
-    <networkm.network_class.BooleanNetwork object at 0x000002E5E6754348>
+    <networkm.network_class.BooleanNetwork object at 0x000001EBDEC36948>
     |Node|Predecessors|Successors|
     |0   |1           |2         |
     |1   |2           |0         |
@@ -116,7 +116,7 @@ m=BooleanNetwork(g = ring(N=16,right=True,left=True,loop=True),
          )
 ```
 
-    bool_integral_risefall : Elapsed time: 0.0169 seconds
+    bool_integral_risefall : Elapsed time: 0.0164 seconds
     
 
 
@@ -134,7 +134,7 @@ m
 
 
 
-    <networkm.network_class.BooleanNetwork object at 0x000002E5E5232CC8>
+    <networkm.network_class.BooleanNetwork object at 0x000001EBDC32AC08>
     |Node|Predecessors|Successors|
     |0   |16, 17, 31  |16        |
     |1   |16, 17, 18  |17        |

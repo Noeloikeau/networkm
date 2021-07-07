@@ -33,8 +33,8 @@ nb_path: "00_graph_functions.ipynb"
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Warming up integrator; future calls will be accelerated.
-bool_integral : Elapsed time: 2.9360 seconds
-bool_integral_risefall : Elapsed time: 0.0000 seconds
+bool_integral : Elapsed time: 2.8162 seconds
+bool_integral_risefall : Elapsed time: 2.0603 seconds
 </pre>
 </div>
 </div>
@@ -187,14 +187,16 @@ and the successors are the nodes flowing out.</p>
 <div class="output_markdown rendered_html output_subarea ">
 <h4 id="parse_kwargs" class="doc_header"><code>parse_kwargs</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L94" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>parse_kwargs</code>(<strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
-<p>Evaluate delayed function calls by assigning
-attributes as (func, <em>arg) tuples.
-Parse keyword arguments with the convention that
-kwarg = tuple ( callable , </em>args) be returned as
-kwarg = callable ( *args).
-Example: kwargs = {a : (np.random.random,1)}
+<p>Evaluate delayed function calls by replacing
+    kwarg=(func,<em>farg,dict(**fkwarg))
+with
+    kwarg=func(</em>farg,**fkwarg)</p>
+<p>Example: kwargs = {a : (np.random.random,1)}
 becomes  kwargs = {a : np.random.random(1)}
-each time this func is called.</p>
+each time this function is called.</p>
+<p>Used to randomize kwarg assignment for
+an exterior function, e.g setting node
+and edge attributes.</p>
 
 </div>
 
@@ -220,7 +222,7 @@ each time this func is called.</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">parse_kwargs</span><span class="p">(</span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">)</span> <span class="c1">#evaluate func</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">parse_kwargs</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">,</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">shape</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="n">asint</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
 </pre></div>
 
     </div>
@@ -235,7 +237,7 @@ each time this func is called.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;a&#39;: array([0.31584716])}</pre>
+<pre>{&#39;init&#39;: array([1, 0, 0, 0, 1, 1, 1, 1])}</pre>
 </div>
 
 </div>
@@ -253,7 +255,7 @@ each time this func is called.</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">parse_kwargs</span><span class="p">(</span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">)</span> <span class="c1">#call again; diff result</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">parse_kwargs</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">,</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">shape</span><span class="o">=</span><span class="mi">2</span><span class="p">)))</span> <span class="c1">#specify kwargs explicitly</span>
 </pre></div>
 
     </div>
@@ -268,7 +270,7 @@ each time this func is called.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;a&#39;: array([0.50685779])}</pre>
+<pre>{&#39;a&#39;: array([0.54362499, 0.93507242])}</pre>
 </div>
 
 </div>
@@ -286,7 +288,106 @@ each time this func is called.</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">parse_kwargs</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">)</span> <span class="c1">#no arg</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">parse_kwargs</span><span class="p">(</span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">)</span> <span class="c1">#specify args implicitly</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;a&#39;: 0.17767666207035548}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">parse_kwargs</span><span class="p">(</span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">dict</span><span class="p">(</span><span class="n">high</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="p">)</span> <span class="c1">#mix the two</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;a&#39;: 0.38087189791690024}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">parse_kwargs</span><span class="p">(</span> <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">,)</span> <span class="p">)</span> <span class="c1">#tuple of just func calls default func()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;a&#39;: 0.4929181136008872}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">parse_kwargs</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">)</span> <span class="c1">#no tuple assigns kwargs normally</span>
 </pre></div>
 
     </div>
@@ -315,39 +416,6 @@ each time this func is called.</p>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">parse_kwargs</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">,)</span> <span class="p">)</span> <span class="c1">#default arg</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;b&#39;: 1, &#39;a&#39;: 0.8743102133921122}</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
 <div class="output">
@@ -356,7 +424,7 @@ each time this func is called.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="give_nodes" class="doc_header"><code>give_nodes</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L115" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>give_nodes</code>(<strong><code>g</code></strong>:<code>MultiDiGraph</code>, <strong><code>data</code></strong>:<code>Dict</code>[<code>Hashable</code>, <code>dict</code>]=<em><code>None</code></em>, <strong><code>nodes</code></strong>:<code>Iterable</code>[<code>T_co</code>]=<em><code>None</code></em>, <strong>**<code>kwargs</code></strong>)</p>
+<h4 id="give_nodes" class="doc_header"><code>give_nodes</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L127" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>give_nodes</code>(<strong><code>g</code></strong>:<code>MultiDiGraph</code>, <strong><code>data</code></strong>:<code>Dict</code>[<code>Hashable</code>, <code>dict</code>]=<em><code>None</code></em>, <strong><code>nodes</code></strong>:<code>Iterable</code>[<code>T_co</code>]=<em><code>None</code></em>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
 <p>Parse and apply any 'kwargs' to a set of 'nodes'.
 If given, 'data' is a dict-of-dicts keyed by node.
@@ -402,7 +470,7 @@ The inner dict is given to the corresponding node.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>NodeDataView({0: {&#39;a&#39;: array([0.75104067])}, 1: {&#39;a&#39;: array([0.08850452])}, 2: {&#39;a&#39;: array([0.14673088])}})</pre>
+<pre>NodeDataView({0: {&#39;a&#39;: array([0.77071943])}, 1: {&#39;a&#39;: array([0.44057334])}, 2: {&#39;a&#39;: array([0.61472838])}})</pre>
 </div>
 
 </div>
@@ -436,7 +504,7 @@ The inner dict is given to the corresponding node.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>NodeDataView({0: {&#39;a&#39;: array([0.75104067]), &#39;b&#39;: 1}, 1: {&#39;a&#39;: array([0.08850452])}, 2: {&#39;a&#39;: array([0.14673088])}})</pre>
+<pre>NodeDataView({0: {&#39;a&#39;: array([0.77071943]), &#39;b&#39;: 1}, 1: {&#39;a&#39;: array([0.44057334])}, 2: {&#39;a&#39;: array([0.61472838])}})</pre>
 </div>
 
 </div>
@@ -470,7 +538,7 @@ The inner dict is given to the corresponding node.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>NodeDataView({0: {&#39;a&#39;: array([0.75104067]), &#39;b&#39;: 1}, 1: {&#39;a&#39;: array([0.08850452])}, 2: {&#39;a&#39;: array([0.14673088]), &#39;c&#39;: 2}})</pre>
+<pre>NodeDataView({0: {&#39;a&#39;: array([0.77071943]), &#39;b&#39;: 1}, 1: {&#39;a&#39;: array([0.44057334])}, 2: {&#39;a&#39;: array([0.61472838]), &#39;c&#39;: 2}})</pre>
 </div>
 
 </div>
@@ -492,7 +560,7 @@ The inner dict is given to the corresponding node.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="give_edges" class="doc_header"><code>give_edges</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L159" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>give_edges</code>(<strong><code>g</code></strong>:<code>MultiDiGraph</code>, <strong><code>data</code></strong>:<code>Dict</code>[<code>Hashable</code>, <code>dict</code>]=<em><code>None</code></em>, <strong><code>edges</code></strong>:<code>Iterable</code>[<code>T_co</code>]=<em><code>None</code></em>, <strong>**<code>kwargs</code></strong>)</p>
+<h4 id="give_edges" class="doc_header"><code>give_edges</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L171" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>give_edges</code>(<strong><code>g</code></strong>:<code>MultiDiGraph</code>, <strong><code>data</code></strong>:<code>Dict</code>[<code>Hashable</code>, <code>dict</code>]=<em><code>None</code></em>, <strong><code>edges</code></strong>:<code>Iterable</code>[<code>T_co</code>]=<em><code>None</code></em>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
 <p>Parse and apply any 'kwargs' to a set of 'edges'.
 If given, 'data' is a dict-of-dicts keyed by edge.
@@ -594,7 +662,7 @@ The inner dict is given to the corresponding edge.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="node_attrs" class="doc_header"><code>node_attrs</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L184" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>node_attrs</code>(<strong><code>g</code></strong>)</p>
+<h4 id="node_attrs" class="doc_header"><code>node_attrs</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L196" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>node_attrs</code>(<strong><code>g</code></strong>)</p>
 </blockquote>
 <p>Unique node data keys.</p>
 
@@ -659,7 +727,7 @@ The inner dict is given to the corresponding edge.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="edge_attrs" class="doc_header"><code>edge_attrs</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L195" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>edge_attrs</code>(<strong><code>g</code></strong>)</p>
+<h4 id="edge_attrs" class="doc_header"><code>edge_attrs</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L207" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>edge_attrs</code>(<strong><code>g</code></strong>)</p>
 </blockquote>
 <p>Unique edge data keys.</p>
 
@@ -724,7 +792,7 @@ The inner dict is given to the corresponding edge.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="node_data" class="doc_header"><code>node_data</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L206" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>node_data</code>(<strong><code>g</code></strong>, <strong>*<code>args</code></strong>)</p>
+<h4 id="node_data" class="doc_header"><code>node_data</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L218" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>node_data</code>(<strong><code>g</code></strong>, <strong>*<code>args</code></strong>)</p>
 </blockquote>
 <p>Return node attributes 'args' as an array.
 NOTE: The ordering of the array corresponds to the
@@ -769,7 +837,7 @@ ordering of the nodes in the graph.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;a&#39;: array([0.75104067, 0.08850452, 0.14673088]),
+<pre>{&#39;a&#39;: array([0.77071943, 0.44057334, 0.61472838]),
  &#39;c&#39;: array([None, None, 2], dtype=object),
  &#39;b&#39;: array([1, None, None], dtype=object)}</pre>
 </div>
@@ -793,7 +861,7 @@ ordering of the nodes in the graph.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="edge_data" class="doc_header"><code>edge_data</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L224" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>edge_data</code>(<strong><code>g</code></strong>, <strong>*<code>args</code></strong>)</p>
+<h4 id="edge_data" class="doc_header"><code>edge_data</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L236" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>edge_data</code>(<strong><code>g</code></strong>, <strong>*<code>args</code></strong>)</p>
 </blockquote>
 <p>Return edge attributes 'args' as an array.
 NOTE: The ordering of the array corresponds to the
@@ -860,7 +928,7 @@ ordering of the edges in the graph.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="argwhere" class="doc_header"><code>argwhere</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L241" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>argwhere</code>(<strong>*<code>args</code></strong>:<code>List</code>[<code>ndarray</code>])</p>
+<h4 id="argwhere" class="doc_header"><code>argwhere</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L253" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>argwhere</code>(<strong>*<code>args</code></strong>:<code>List</code>[<code>ndarray</code>])</p>
 </blockquote>
 <p>Simplified version of np.argwhere for multiple arrays.
 Returns list of indices where args hold.</p>
@@ -963,7 +1031,7 @@ Returns list of indices where args hold.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="kwargwhere" class="doc_header"><code>kwargwhere</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L263" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>kwargwhere</code>(<strong><code>g</code></strong>:<code>MultiDiGraph</code>, <strong>**<code>kwargs</code></strong>:<code>Dict</code>[<code>str</code>, <code>Any</code>])</p>
+<h4 id="kwargwhere" class="doc_header"><code>kwargwhere</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L275" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>kwargwhere</code>(<strong><code>g</code></strong>:<code>MultiDiGraph</code>, <strong>**<code>kwargs</code></strong>:<code>Dict</code>[<code>str</code>, <code>Any</code>])</p>
 </blockquote>
 <p>Return the node and edges where
 the kwarg equalities hold in the graph.</p>
@@ -1005,7 +1073,7 @@ the kwarg equalities hold in the graph.</p>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[(0, {&#39;a&#39;: array([0.75104067]), &#39;b&#39;: 1}), (1, {&#39;a&#39;: array([0.08850452])}), (2, {&#39;a&#39;: array([0.14673088]), &#39;c&#39;: 2})]
+<pre>[(0, {&#39;a&#39;: array([0.77071943]), &#39;b&#39;: 1}), (1, {&#39;a&#39;: array([0.44057334])}), (2, {&#39;a&#39;: array([0.61472838]), &#39;c&#39;: 2})]
 </pre>
 </div>
 </div>
@@ -1158,7 +1226,7 @@ the kwarg equalities hold in the graph.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="where" class="doc_header"><code>where</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L298" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>where</code>(<strong><code>g</code></strong>, <strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>)</p>
+<h4 id="where" class="doc_header"><code>where</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L310" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>where</code>(<strong><code>g</code></strong>, <strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
 <p>Combine the 'argwhere' and 'kwargwhere' functions for the graph.</p>
 
@@ -1201,7 +1269,7 @@ the kwarg equalities hold in the graph.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>([0], ([0], [(0, 0, 0)]))</pre>
+<pre>([0, 2], ([0], [(0, 0, 0)]))</pre>
 </div>
 
 </div>
@@ -1223,7 +1291,7 @@ the kwarg equalities hold in the graph.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="convert_edges" class="doc_header"><code>convert_edges</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L327" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>convert_edges</code>(<strong><code>g</code></strong>:<code>MultiDiGraph</code>, <strong><code>edges</code></strong>:<code>Union</code>[<code>NoneType</code>, <code>tuple</code>, <code>List</code>[<code>tuple</code>]]=<em><code>None</code></em>, <strong><code>lengths</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>, <code>dict</code>]=<em><code>1</code></em>, <strong><code>node_data</code></strong>:<code>dict</code>=<em><code>{}</code></em>, <strong><code>label</code></strong>:<code>callable</code>=<em><code>&lt;lambda&gt;</code></em>, <strong>**<code>edge_data</code></strong>)</p>
+<h4 id="convert_edges" class="doc_header"><code>convert_edges</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L339" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>convert_edges</code>(<strong><code>g</code></strong>:<code>MultiDiGraph</code>, <strong><code>edges</code></strong>:<code>Union</code>[<code>NoneType</code>, <code>tuple</code>, <code>List</code>[<code>tuple</code>]]=<em><code>None</code></em>, <strong><code>lengths</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>, <code>dict</code>]=<em><code>1</code></em>, <strong><code>node_data</code></strong>:<code>dict</code>=<em><code>{}</code></em>, <strong><code>label</code></strong>:<code>callable</code>=<em><code>&lt;lambda&gt;</code></em>, <strong>**<code>edge_data</code></strong>)</p>
 </blockquote>
 <p>Converts <code>edges</code> in <code>g</code> to paths of the given <code>lengths</code>.
 The new paths follow a tree structure, and each new node
@@ -1407,7 +1475,7 @@ made from new nodes equal to the lengths associated with each path.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="relabel_graph" class="doc_header"><code>relabel_graph</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L393" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>relabel_graph</code>(<strong><code>g</code></strong>:<code>MultiDiGraph</code>, <strong><code>mapping</code></strong>:<code>Union</code>[<code>NoneType</code>, <code>callable</code>, <code>dict</code>]=<em><code>None</code></em>)</p>
+<h4 id="relabel_graph" class="doc_header"><code>relabel_graph</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L405" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>relabel_graph</code>(<strong><code>g</code></strong>:<code>MultiDiGraph</code>, <strong><code>mapping</code></strong>:<code>Union</code>[<code>NoneType</code>, <code>callable</code>, <code>dict</code>]=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Relabel nodes in place with desired 'mapping', and store the
 <code>mapping</code> and <code>inverse_mapping</code> as attributes of <code>g</code>.
@@ -1543,7 +1611,7 @@ as keys and new node labels as values.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="sort_graph" class="doc_header"><code>sort_graph</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L453" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>sort_graph</code>(<strong><code>g</code></strong>:<code>MultiDiGraph</code>, <strong><code>nodes_by</code></strong>=<em><code>'in_degree'</code></em>, <strong><code>node_key</code></strong>=<em><code>&lt;lambda&gt;</code></em>, <strong><code>node_args</code></strong>=<em><code>()</code></em>, <strong><code>nodes_ascending</code></strong>=<em><code>True</code></em>, <strong><code>edges_by</code></strong>=<em><code>None</code></em>, <strong><code>edge_key</code></strong>=<em><code>None</code></em>, <strong><code>edge_args</code></strong>=<em><code>()</code></em>, <strong><code>edges_ascending</code></strong>=<em><code>False</code></em>, <strong><code>relabel</code></strong>=<em><code>False</code></em>)</p>
+<h4 id="sort_graph" class="doc_header"><code>sort_graph</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L465" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>sort_graph</code>(<strong><code>g</code></strong>:<code>MultiDiGraph</code>, <strong><code>nodes_by</code></strong>=<em><code>'in_degree'</code></em>, <strong><code>node_key</code></strong>=<em><code>&lt;lambda&gt;</code></em>, <strong><code>node_args</code></strong>=<em><code>()</code></em>, <strong><code>nodes_ascending</code></strong>=<em><code>True</code></em>, <strong><code>edges_by</code></strong>=<em><code>None</code></em>, <strong><code>edge_key</code></strong>=<em><code>None</code></em>, <strong><code>edge_args</code></strong>=<em><code>()</code></em>, <strong><code>edges_ascending</code></strong>=<em><code>False</code></em>, <strong><code>relabel</code></strong>=<em><code>False</code></em>)</p>
 </blockquote>
 <p>Sort the graph in place by changing node and edge order.
 See <code>sidis.sort</code> documentation for explanation of by, key, and args.
@@ -1637,141 +1705,10 @@ Sorting result: g.sorting
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">notebook2script</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Converted 00_graph_functions.ipynb.
-Converted 01_model_functions.ipynb.
-Converted 02_network_class.ipynb.
-Converted index.ipynb.
-No export destination, ignored:
-#export
-@njit
-def COPY(x : Union[int,float]) -&gt; Union[int,float]:
-    &#39;&#39;&#39;
-    Simply returns `x`.
-    &#39;&#39;&#39;
-    return x
-@njit
-def MPX(x : Union[int,float]) -&gt; Union[int,float]:
-    &#39;&#39;&#39;
-    Simply returns `x`.
-    &#39;&#39;&#39;
-    return x
-@njit
-def NOT(x : Union[int,float]) -&gt; Union[int,float]:
-    &#39;&#39;&#39;
-    Return conjugate of `x`.
-    &#39;&#39;&#39;
-    return 1-x
-@njit
-def AND(x : Union[int,float],
-        y : Union[int,float]) -&gt; Union[int,float]:
-    &#39;&#39;&#39;
-    Return logical AND of `x` and `y`.
-    &#39;&#39;&#39;
-    return x*y
-@njit
-def OR(x : Union[int,float],
-       y : Union[int,float]) -&gt; Union[int,float]:
-    &#39;&#39;&#39;
-    Return logical OR of `x` and `y`. See DeMorgan&#39;s Laws.
-    &#39;&#39;&#39;
-    return x+y-x*y
-@njit
-def XOR2(x : Union[int,float],
-                 y : Union[int,float]) -&gt; Union[int,float]:
-    &#39;&#39;&#39;
-    Return logical exclusive OR of `x` and `y`. See DeMorgan&#39;s Laws.
-    &#39;&#39;&#39;
-    return OR( AND( x , NOT(y) ) , AND ( NOT(x) , y) )
-#@sidis.timer
-@njit
-def XOR(args : Union[int,float,list,np.ndarray]) -&gt; Union[int,float]:
-    &#39;&#39;&#39;
-    Arbitrary input XOR using recursiveness.
-    &#39;&#39;&#39;
-    x=0
-    for a in args:
-        x=XOR2(x,a)
-    return x
-
-@njit
-def UBOOL(x : np.ndarray,
-          mask : int = 0):
-    &#39;&#39;&#39;
-    &#39;x&#39;: 2-D array containing list of list of args
-    for the boolean function defined by `mask`. 
-    &#39;&#39;&#39;
-    y=np.zeros(x.shape[0],dtype=x.dtype)
-    if mask==0:
-        for i in range(x.shape[0]):
-            y[i]=XOR(x[i])
-    elif mask==1:
-        for i in range(x.shape[0]):
-            y[i]=MPX(x[i][0])
-    elif mask==2:
-        for i in range(x.shape[0]):
-            y[i]=NOT(x[i][0])
-    elif mask==3:
-        for i in range(x.shape[0]):
-            y[i]=COPY(x[i][0])
-    elif mask==4:
-        for i in range(x.shape[0]):
-            y[i]=OR(x[i][1],x[i][1])
-    elif mask==5:
-        for i in range(x.shape[0]):
-            y[i]=AND(x[i][1],x[i][1])
-    return y
-Warning: Exporting to &#34;None.py&#34; but this module is not part of this build
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
-<span class="ansi-red-intense-fg ansi-bold">FileNotFoundError</span>                         Traceback (most recent call last)
-<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-52-2155445c27e0&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">----&gt; 1</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>notebook2script<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-green-intense-fg ansi-bold">C:\Anaconda3\lib\site-packages\nbdev\export.py</span> in <span class="ansi-cyan-fg">notebook2script</span><span class="ansi-blue-intense-fg ansi-bold">(fname, silent, to_dict, bare, recursive)</span>
-<span class="ansi-green-fg">    421</span>     d <span class="ansi-yellow-intense-fg ansi-bold">=</span> collections<span class="ansi-yellow-intense-fg ansi-bold">.</span>defaultdict<span class="ansi-yellow-intense-fg ansi-bold">(</span>list<span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-green-intense-fg ansi-bold">if</span> to_dict <span class="ansi-green-intense-fg ansi-bold">else</span> <span class="ansi-green-intense-fg ansi-bold">None</span>
-<span class="ansi-green-fg">    422</span>     modules <span class="ansi-yellow-intense-fg ansi-bold">=</span> create_mod_files<span class="ansi-yellow-intense-fg ansi-bold">(</span>files<span class="ansi-yellow-intense-fg ansi-bold">,</span> to_dict<span class="ansi-yellow-intense-fg ansi-bold">,</span> bare<span class="ansi-yellow-intense-fg ansi-bold">=</span>bare<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 423</span><span class="ansi-yellow-intense-fg ansi-bold">     </span><span class="ansi-green-intense-fg ansi-bold">for</span> f <span class="ansi-green-intense-fg ansi-bold">in</span> sorted<span class="ansi-yellow-intense-fg ansi-bold">(</span>files<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span> d <span class="ansi-yellow-intense-fg ansi-bold">=</span> _notebook2script<span class="ansi-yellow-intense-fg ansi-bold">(</span>f<span class="ansi-yellow-intense-fg ansi-bold">,</span> modules<span class="ansi-yellow-intense-fg ansi-bold">,</span> silent<span class="ansi-yellow-intense-fg ansi-bold">=</span>silent<span class="ansi-yellow-intense-fg ansi-bold">,</span> to_dict<span class="ansi-yellow-intense-fg ansi-bold">=</span>d<span class="ansi-yellow-intense-fg ansi-bold">,</span> bare<span class="ansi-yellow-intense-fg ansi-bold">=</span>bare<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    424</span>     <span class="ansi-green-intense-fg ansi-bold">if</span> to_dict<span class="ansi-yellow-intense-fg ansi-bold">:</span> <span class="ansi-green-intense-fg ansi-bold">return</span> d
-<span class="ansi-green-fg">    425</span>     <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span> add_init<span class="ansi-yellow-intense-fg ansi-bold">(</span>Config<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>path<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#34;lib_path&#34;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-green-intense-fg ansi-bold">C:\Anaconda3\lib\site-packages\nbdev\export.py</span> in <span class="ansi-cyan-fg">_notebook2script</span><span class="ansi-blue-intense-fg ansi-bold">(fname, modules, silent, to_dict, bare)</span>
-<span class="ansi-green-fg">    352</span>         code <span class="ansi-yellow-intense-fg ansi-bold">=</span> _from_future_import<span class="ansi-yellow-intense-fg ansi-bold">(</span>fname_out<span class="ansi-yellow-intense-fg ansi-bold">,</span> flags<span class="ansi-yellow-intense-fg ansi-bold">,</span> code<span class="ansi-yellow-intense-fg ansi-bold">,</span> to_dict<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    353</span>         <span class="ansi-green-intense-fg ansi-bold">if</span> a<span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 354</span><span class="ansi-yellow-intense-fg ansi-bold">             </span><span class="ansi-green-intense-fg ansi-bold">if</span> to_dict <span class="ansi-green-intense-fg ansi-bold">is</span> <span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">:</span> _add2all<span class="ansi-yellow-intense-fg ansi-bold">(</span>fname_out<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-blue-intense-fg ansi-bold">f&#34;&#39;{f}&#39;&#34;</span> <span class="ansi-green-intense-fg ansi-bold">for</span> f <span class="ansi-green-intense-fg ansi-bold">in</span> names <span class="ansi-green-intense-fg ansi-bold">if</span> <span class="ansi-blue-intense-fg ansi-bold">&#39;.&#39;</span> <span class="ansi-green-intense-fg ansi-bold">not</span> <span class="ansi-green-intense-fg ansi-bold">in</span> f <span class="ansi-green-intense-fg ansi-bold">and</span> len<span class="ansi-yellow-intense-fg ansi-bold">(</span>f<span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-yellow-intense-fg ansi-bold">&gt;</span> <span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">]</span> <span class="ansi-yellow-intense-fg ansi-bold">+</span> extra<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    355</span>         mod<span class="ansi-yellow-intense-fg ansi-bold">.</span>index<span class="ansi-yellow-intense-fg ansi-bold">.</span>update<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">{</span>f<span class="ansi-yellow-intense-fg ansi-bold">:</span> fname<span class="ansi-yellow-intense-fg ansi-bold">.</span>name <span class="ansi-green-intense-fg ansi-bold">for</span> f <span class="ansi-green-intense-fg ansi-bold">in</span> names<span class="ansi-yellow-intense-fg ansi-bold">}</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    356</span>         code <span class="ansi-yellow-intense-fg ansi-bold">=</span> re<span class="ansi-yellow-intense-fg ansi-bold">.</span>sub<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">r&#39; +$&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-blue-intense-fg ansi-bold">&#39;&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> code<span class="ansi-yellow-intense-fg ansi-bold">,</span> flags<span class="ansi-yellow-intense-fg ansi-bold">=</span>re<span class="ansi-yellow-intense-fg ansi-bold">.</span>MULTILINE<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-green-intense-fg ansi-bold">C:\Anaconda3\lib\site-packages\nbdev\export.py</span> in <span class="ansi-cyan-fg">_add2all</span><span class="ansi-blue-intense-fg ansi-bold">(fname, names, line_width)</span>
-<span class="ansi-green-fg">    204</span> <span class="ansi-green-intense-fg ansi-bold">def</span> _add2all<span class="ansi-yellow-intense-fg ansi-bold">(</span>fname<span class="ansi-yellow-intense-fg ansi-bold">,</span> names<span class="ansi-yellow-intense-fg ansi-bold">,</span> line_width<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-cyan-intense-fg ansi-bold">120</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">    205</span>     <span class="ansi-green-intense-fg ansi-bold">if</span> len<span class="ansi-yellow-intense-fg ansi-bold">(</span>names<span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-yellow-intense-fg ansi-bold">==</span> <span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">:</span> <span class="ansi-green-intense-fg ansi-bold">return</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 206</span><span class="ansi-yellow-intense-fg ansi-bold">     </span><span class="ansi-green-intense-fg ansi-bold">with</span> open<span class="ansi-yellow-intense-fg ansi-bold">(</span>fname<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-blue-intense-fg ansi-bold">&#39;r&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> encoding<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-blue-intense-fg ansi-bold">&#39;utf8&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-green-intense-fg ansi-bold">as</span> f<span class="ansi-yellow-intense-fg ansi-bold">:</span> text <span class="ansi-yellow-intense-fg ansi-bold">=</span> f<span class="ansi-yellow-intense-fg ansi-bold">.</span>read<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    207</span>     tw <span class="ansi-yellow-intense-fg ansi-bold">=</span> TextWrapper<span class="ansi-yellow-intense-fg ansi-bold">(</span>width<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-cyan-intense-fg ansi-bold">120</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> initial_indent<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-blue-intense-fg ansi-bold">&#39;&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> subsequent_indent<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-blue-intense-fg ansi-bold">&#39; &#39;</span><span class="ansi-yellow-intense-fg ansi-bold">*</span><span class="ansi-cyan-intense-fg ansi-bold">11</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> break_long_words<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-green-intense-fg ansi-bold">False</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    208</span>     re_all <span class="ansi-yellow-intense-fg ansi-bold">=</span> _re__all__def<span class="ansi-yellow-intense-fg ansi-bold">.</span>search<span class="ansi-yellow-intense-fg ansi-bold">(</span>text<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-red-intense-fg ansi-bold">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;C:\\Users\\Noeloikeau Charlot\\Desktop\\Research\\networkm\\networkm\\None.py&#39;</pre>
-</div>
-</div>
-
 </div>
 </div>
 

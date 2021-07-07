@@ -33,8 +33,8 @@ nb_path: "02_network_class.ipynb"
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Warming up integrator; future calls will be accelerated.
-bool_integral : Elapsed time: 2.7519 seconds
-bool_integral_risefall : Elapsed time: 2.0035 seconds
+bool_integral : Elapsed time: 2.9006 seconds
+bool_integral_risefall : Elapsed time: 2.1491 seconds
 </pre>
 </div>
 </div>
@@ -63,7 +63,7 @@ bool_integral_risefall : Elapsed time: 2.0035 seconds
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="BooleanNetwork" class="doc_header"><code>class</code> <code>BooleanNetwork</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/network_class.py#L22" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>BooleanNetwork</code>(<strong><code>g</code></strong>=<em><code>&lt;networkx.classes.multidigraph.MultiDiGraph object at 0x000002155743BA08&gt;</code></em>, <strong><code>a</code></strong>=<em><code>(&lt;bound method RNG.normal of &lt;sidis.conversion.RNG object at 0x0000021557C92C08&gt;&gt;, 20, 0)</code></em>, <strong><code>tau</code></strong>=<em><code>(&lt;bound method RNG.normal of &lt;sidis.conversion.RNG object at 0x0000021557C92C08&gt;&gt;, 0.5, 0)</code></em>, <strong><code>f</code></strong>=<em><code>XOR</code></em>, <strong><code>delay</code></strong>=<em><code>(&lt;bound method RNG.normal of &lt;sidis.conversion.RNG object at 0x0000021557C92C08&gt;&gt;, 0, 0)</code></em>, <strong><code>edge_replacements</code></strong>=<em><code>{'lengths': 1, 'delay': (&lt;bound method RNG.normal of &lt;sidis.conversion.RNG object at 0x0000021557C92C08&gt;&gt;, 0, 0), 'node_attrs': {'a': (&lt;bound method RNG.normal of &lt;sidis.conversion.RNG object at 0x0000021557C92C08&gt;&gt;, 20, 0), 'tau': (&lt;bound method RNG.normal of &lt;sidis.conversion.RNG object at 0x0000021557C92C08&gt;&gt;, 0.2, 0), 'f': CPUDispatcher(&lt;function MPX at 0x0000021554C919D8&gt;)}, 'label': &lt;function BooleanNetwork.&lt;lambda&gt; at 0x0000021558CCE3A8&gt;}</code></em>, <strong><code>T</code></strong>=<em><code>15</code></em>, <strong><code>dt</code></strong>=<em><code>0.01</code></em>, <strong><code>noise</code></strong>=<em><code>0</code></em>, <strong><code>init</code></strong>=<em><code>None</code></em>, <strong><code>hold</code></strong>=<em><code>None</code></em>, <strong><code>steady</code></strong>=<em><code>True</code></em>, <strong><code>view</code></strong>=<em><code>'out'</code></em>, <strong><code>plot</code></strong>=<em><code>True</code></em>) :: <code>MultiDiGraph</code></p>
+<h2 id="BooleanNetwork" class="doc_header"><code>class</code> <code>BooleanNetwork</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/network_class.py#L22" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>BooleanNetwork</code>(<strong><code>g</code></strong>=<em><code>&lt;networkx.classes.multidigraph.MultiDiGraph object at 0x0000028CD94D3F08&gt;</code></em>, <strong><code>a</code></strong>=<em><code>(&lt;bound method RNG.normal of &lt;sidis.utils.RNG object at 0x0000028CD94D3FC8&gt;&gt;, 20, 0)</code></em>, <strong><code>tau</code></strong>=<em><code>(&lt;bound method RNG.normal of &lt;sidis.utils.RNG object at 0x0000028CD94D3FC8&gt;&gt;, 0.5, 0)</code></em>, <strong><code>f</code></strong>=<em><code>XOR</code></em>, <strong><code>delay</code></strong>=<em><code>(&lt;bound method RNG.normal of &lt;sidis.utils.RNG object at 0x0000028CD94D3FC8&gt;&gt;, 0, 0)</code></em>, <strong><code>edge_replacements</code></strong>=<em><code>{'lengths': 1, 'delay': (&lt;bound method RNG.normal of &lt;sidis.utils.RNG object at 0x0000028CD94D3FC8&gt;&gt;, 0, 0), 'node_attrs': {'a': (&lt;bound method RNG.normal of &lt;sidis.utils.RNG object at 0x0000028CD94D3FC8&gt;&gt;, 20, 0), 'tau': (&lt;bound method RNG.normal of &lt;sidis.utils.RNG object at 0x0000028CD94D3FC8&gt;&gt;, 0.2, 0), 'f': CPUDispatcher(&lt;function MPX at 0x0000028CD64D2C18&gt;)}, 'label': &lt;function BooleanNetwork.&lt;lambda&gt; at 0x0000028CD8CC45E8&gt;}</code></em>, <strong><code>T</code></strong>=<em><code>15</code></em>, <strong><code>dt</code></strong>=<em><code>0.01</code></em>, <strong><code>noise</code></strong>=<em><code>0</code></em>, <strong><code>init</code></strong>=<em><code>None</code></em>, <strong><code>hold</code></strong>=<em><code>None</code></em>, <strong><code>steady</code></strong>=<em><code>True</code></em>, <strong><code>view</code></strong>=<em><code>'out'</code></em>, <strong><code>plot</code></strong>=<em><code>True</code></em>) :: <code>MultiDiGraph</code></p>
 </blockquote>
 <p>Model the dynamics of the graph <code>g</code> by giving the node attributes</p>
 
@@ -113,10 +113,10 @@ tau : time constant
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The <a href="/networkm/network_class.html#BooleanNetwork"><code>BooleanNetwork</code></a> class packages the functions from the previous <code>Graph Functions</code> and <code>Model Functions</code> libraries, especially <a href="/networkm/model_functions.html#bool_model"><code>bool_model</code></a>. It pipelines simulations of networks having dynamics of the form</p>
 
-<pre><code>tau*dxdt=-x(t)+f(y(t-d))+noise
+<pre><code>tau*dxdt=-x(t)+f(y(t-delay))+noise
 
 </code></pre>
-<p>where tau is a time-constant, f is a logical function, y are the nodes flowing into node x after some time-delay d, and the noise term is random.</p>
+<p>where tau is a time-constant, f is a logical function, y are the nodes flowing into node x after some time-delay, and the noise term is random.</p>
 
 </div>
 </div>

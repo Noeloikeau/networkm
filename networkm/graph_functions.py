@@ -93,22 +93,34 @@ def print_graph(g : nx.MultiDiGraph,
 # Cell
 def parse_kwargs(**kwargs):
     '''
-    Evaluate delayed function calls by assigning
-    attributes as (func, *arg) tuples.
-    Parse keyword arguments with the convention that
-    kwarg = tuple ( callable , *args) be returned as
-    kwarg = callable ( *args).
+    Evaluate delayed function calls by replacing
+        kwarg=(func,*farg,dict(**fkwarg))
+    with
+        kwarg=func(*farg,**fkwarg)
+
     Example: kwargs = {a : (np.random.random,1)}
     becomes  kwargs = {a : np.random.random(1)}
-    each time this func is called.
+    each time this function is called.
+
+    Used to randomize kwarg assignment for
+    an exterior function, e.g setting node
+    and edge attributes.
     '''
     newkwargs={k:v for k,v in kwargs.items()}
     for k,v in kwargs.items():
         if type(v) is tuple and callable(v[0]):
             if len(v)==1:
                 newkwargs[k]=v[0]()
+            elif len(v)==2:
+                if type(v[-1]) is dict:
+                    newkwargs[k]=v[0](**v[1])
+                else:
+                    newkwargs[k]=v[0](v[1])
             else:
-                newkwargs[k]=v[0](*v[1:])
+                if type(v[-1]) is dict:
+                    newkwargs[k]=v[0](*v[1:-1],**v[-1])
+                else:
+                    newkwargs[k]=v[0](*v[1:])
     return newkwargs
 
 # Cell
