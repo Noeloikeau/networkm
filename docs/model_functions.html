@@ -741,12 +741,12 @@ for each group of nodes sharing the same function.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([[CPUDispatcher(&lt;function NOT at 0x000002C5BDD2A3A8&gt;),
-        CPUDispatcher(&lt;function NOT at 0x000002C5BDD2A3A8&gt;),
-        CPUDispatcher(&lt;function NOT at 0x000002C5BDD2A3A8&gt;),
-        CPUDispatcher(&lt;function MPX at 0x000002C58DF1AAF8&gt;),
-        CPUDispatcher(&lt;function MPX at 0x000002C58DF1AAF8&gt;),
-        CPUDispatcher(&lt;function MPX at 0x000002C58DF1AAF8&gt;)]],
+<pre>array([[CPUDispatcher(&lt;function NOT at 0x0000021E39480708&gt;),
+        CPUDispatcher(&lt;function NOT at 0x0000021E39480708&gt;),
+        CPUDispatcher(&lt;function NOT at 0x0000021E39480708&gt;),
+        CPUDispatcher(&lt;function MPX at 0x0000021E09E93D38&gt;),
+        CPUDispatcher(&lt;function MPX at 0x0000021E09E93D38&gt;),
+        CPUDispatcher(&lt;function MPX at 0x0000021E09E93D38&gt;)]],
       dtype=object)</pre>
 </div>
 
@@ -921,7 +921,7 @@ This mimics the real behavior of the network in hardware with multiplexers.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(array([1, 0, 0]), array([1, 1, 1]))</pre>
+<pre>([1, 0, 0], array([1, 1, 1]))</pre>
 </div>
 
 </div>
@@ -954,7 +954,7 @@ This mimics the real behavior of the network in hardware with multiplexers.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(array([1, 1, 1]), array([1, 1, 1]))</pre>
+<pre>([1, 1, 1], array([1, 1, 1]))</pre>
 </div>
 
 </div>
@@ -1189,7 +1189,7 @@ derivative, which is of the form
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="bool_model" class="doc_header"><code>bool_model</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/model_functions.py#L455" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>bool_model</code>(<strong><code>g</code></strong>, <strong><code>T</code></strong>:<code>int</code>=<em><code>15</code></em>, <strong><code>dt</code></strong>:<code>float</code>=<em><code>0.01</code></em>, <strong><code>noise</code></strong>:<code>float</code>=<em><code>0</code></em>, <strong><code>init</code></strong>:<code>List</code>[<code>float</code>]=<em><code>None</code></em>, <strong><code>hold</code></strong>:<code>List</code>[<code>int</code>]=<em><code>None</code></em>, <strong><code>a</code></strong>:<code>Union</code>[<code>float</code>, <code>Tuple</code>[<code>callable</code>, <code>float</code>, <code>float</code>]]=<em><code>(&lt;bound method RNG.normal of &lt;sidis.utils.RNG object at 0x000001F5A2CA3F88&gt;&gt;, 20, 0)</code></em>, <strong><code>tau</code></strong>:<code>Union</code>[<code>ndarray</code>, <code>Tuple</code>[<code>callable</code>, <code>ndarray</code>, <code>ndarray</code>]]=<em><code>(&lt;bound method RNG.normal of &lt;sidis.utils.RNG object at 0x000001F5A2CA3F88&gt;&gt;, 0.5, 0)</code></em>, <strong><code>f</code></strong>:<code>callable</code>=<em><code>XOR</code></em>, <strong><code>delay</code></strong>:<code>Union</code>[<code>float</code>, <code>Tuple</code>[<code>callable</code>, <code>float</code>, <code>float</code>]]=<em><code>(&lt;bound method RNG.random of &lt;sidis.utils.RNG object at 0x000001F5A2CA3F88&gt;&gt;, 0, 0)</code></em>, <strong><code>edge_replacements</code></strong>=<em><code>{'lengths': 1, 'delay': (&lt;bound method RNG.normal of &lt;sidis.utils.RNG object at 0x000001F5A2CA3F88&gt;&gt;, 0, 0), 'node_attrs': {'a': (&lt;bound method RNG.normal of &lt;sidis.utils.RNG object at 0x000001F5A2CA3F88&gt;&gt;, 20, 0), 'tau': (&lt;bound method RNG.normal of &lt;sidis.utils.RNG object at 0x000001F5A2CA3F88&gt;&gt;, 0.2, 0), 'f': CPUDispatcher(&lt;function MPX at 0x000001F5A2CB8CA8&gt;)}, 'label': &lt;function &lt;lambda&gt; at 0x000001F5A53D10D8&gt;}</code></em>, <strong><code>plot</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>steady</code></strong>:<code>bool</code>=<em><code>True</code></em>)</p>
+<h4 id="bool_model" class="doc_header"><code>bool_model</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/model_functions.py#L455" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>bool_model</code>(<strong><code>g</code></strong>, <strong><code>T</code></strong>:<code>int</code>=<em><code>15</code></em>, <strong><code>dt</code></strong>:<code>float</code>=<em><code>0.01</code></em>, <strong><code>noise</code></strong>:<code>float</code>=<em><code>0</code></em>, <strong><code>init</code></strong>:<code>List</code>[<code>float</code>]=<em><code>None</code></em>, <strong><code>hold</code></strong>:<code>List</code>[<code>int</code>]=<em><code>None</code></em>, <strong><code>a</code></strong>:<code>Union</code>[<code>float</code>, <code>Tuple</code>[<code>callable</code>, <code>float</code>, <code>float</code>]]=<em><code>(&lt;bound method RNG.normal of &lt;sidis.utils.RNG object at 0x000001853EF71F88&gt;&gt;, 20, 0)</code></em>, <strong><code>tau</code></strong>:<code>Union</code>[<code>ndarray</code>, <code>Tuple</code>[<code>callable</code>, <code>ndarray</code>, <code>ndarray</code>]]=<em><code>(&lt;bound method RNG.normal of &lt;sidis.utils.RNG object at 0x000001853EF71F88&gt;&gt;, 0.5, 0)</code></em>, <strong><code>f</code></strong>:<code>callable</code>=<em><code>XOR</code></em>, <strong><code>delay</code></strong>:<code>Union</code>[<code>float</code>, <code>Tuple</code>[<code>callable</code>, <code>float</code>, <code>float</code>]]=<em><code>(&lt;bound method RNG.random of &lt;sidis.utils.RNG object at 0x000001853EF71F88&gt;&gt;, 0, 0)</code></em>, <strong><code>edge_replacements</code></strong>=<em><code>{'lengths': 1, 'delay': (&lt;bound method RNG.normal of &lt;sidis.utils.RNG object at 0x000001853EF71F88&gt;&gt;, 0, 0), 'node_attrs': {'a': (&lt;bound method RNG.normal of &lt;sidis.utils.RNG object at 0x000001853EF71F88&gt;&gt;, 20, 0), 'tau': (&lt;bound method RNG.normal of &lt;sidis.utils.RNG object at 0x000001853EF71F88&gt;&gt;, 0.2, 0), 'f': CPUDispatcher(&lt;function MPX at 0x000001853EF8EB88&gt;)}, 'label': &lt;function &lt;lambda&gt; at 0x00000185416A1798&gt;}</code></em>, <strong><code>plot</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>steady</code></strong>:<code>bool</code>=<em><code>True</code></em>)</p>
 </blockquote>
 <p>Model the dynamics of the graph <code>g</code> by giving the node attributes</p>
 
@@ -1255,7 +1255,7 @@ tau : time constant
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>bool_integral : Elapsed time: 2.6430 seconds
+<pre>bool_integral : Elapsed time: 2.4877 seconds
 </pre>
 </div>
 </div>
@@ -1311,7 +1311,7 @@ tau : time constant
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>bool_integral : Elapsed time: 0.3348 seconds
+<pre>bool_integral : Elapsed time: 0.3283 seconds
 </pre>
 </div>
 </div>
@@ -1390,7 +1390,7 @@ tau : time constant
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>bool_integral_risefall : Elapsed time: 1.7425 seconds
+<pre>bool_integral_risefall : Elapsed time: 1.6756 seconds
 </pre>
 </div>
 </div>
@@ -1448,370 +1448,9 @@ tau : time constant
 <pre>Converted 00_graph_functions.ipynb.
 Converted 01_model_functions.ipynb.
 Converted 02_network_class.ipynb.
-No export destination, ignored:
-#export
-import warnings
-with warnings.catch_warnings(): #ignore warnings
-    warnings.simplefilter(&#34;ignore&#34;)
-    import networkx as nx
-    import numpy as np
-    import sidis
-    rng=sidis.RNG(0)
-    import matplotlib.pyplot as plt
-    import typing
-    from typing import Optional, Tuple, Dict, Callable, Union, Mapping, Sequence, Iterable, Hashable, List, Any
-    from collections import namedtuple
-    import einops
-    import numba
-    from numba import njit
-    #from einops import rearrange, reduce, repeat
-    
-    from networkm.graph_functions import *
-    from networkm.model_functions import *
-    from networkm.network_class import *
-No export destination, ignored:
-#export
-class BooleanNetwork(nx.MultiDiGraph):
-    &#39;&#39;&#39;
-    Model the dynamics of the graph `g` by giving the node attributes
-
-        f : logical function
-
-        a : sigmoid function
-
-        tau : time constant
-
-    and edge attributes
-
-        delay : time-delay
-
-    and parses each of these arguments if given as a tuple of a 
-
-    randomization function and its args; see `parse_kwargs`.
-
-    Converts any edges with the given `edge_replacements` (see 
-
-    `convert_edges` function for arguments); useful for `MPX`. 
-
-    Sorts the graph in place using `sort_graph` in order to produce
-
-    an iterable with `bool_model_iter`. See also `setup_bool_integral`.
-
-    Initializes the dynamics to `init` using the hold times `hold`;
-
-    see `bool_initial_conditions`. Integrates with `bool_integral`
-
-    and `bool_integral_risefall` if `tau` is given as an array of
-
-    [rise_time,fall_time]. Returns the node state array `x` 
-
-    and optionally plots the resulting dynamics with `plot_graph`.
-
-    Includes most functions from the `graph_functions` library.
-    &#39;&#39;&#39;
-
-    def __init__(self,
-                 g = ring(N=16,left=True,right=True,loop=True),
-                 a = (rng.normal,20,0),
-                 tau = (rng.normal,0.5,0),
-                 f = XOR,
-                 delay = (rng.normal,0,0),
-                 edge_replacements = dict(
-                     lengths = 1,
-                     delay = (rng.normal,0,0),
-                     node_attrs = dict(
-                         a = (rng.normal,20,0),
-                         tau = (rng.normal,0.2,0),
-                         f = MPX
-                     ),
-                     label = lambda g,node,iterable : len(g)+iterable
-                 ),
-                 
-                 T = 15,
-                 dt = 0.01,
-                 noise = 0.0,
-                 init = None,
-                 hold = None,
-                 steady = True,
-                 view = &#39;out&#39;,
-                 show = True
-                ):
-        
-        #super init
-        #super().__init__(g)
-        self.__dict__.update({&#39;default_&#39;+k:v for k,v in locals().items() 
-                              if k!=&#39;self&#39; and k!=&#39;view&#39; and k!=&#39;show&#39;})
-        self.view(view)
-        self(g=g,a=a,tau=tau,f=f,delay=delay,edge_replacements=edge_replacements,
-                   T=T,dt=dt,noise=noise,steady=steady,init=init,hold=hold)
-        if show:
-            self.integrate()
-            print(self.__repr__())
-            self.plot()
-        
-    def parse_kwargs(self,**kwargs):
-        for k,v in kwargs.items():
-            if v is None:
-                setattr(self,k,getattr(self,&#39;default_&#39;+k))
-            else:
-                setattr(self,k,v)
-
-    def __call__(self,
-              g=None,
-              a=None,
-              tau=None,
-              f=None,
-              delay=None,
-              edge_replacements=None,
-              T=None,
-              dt=None,
-              noise=None,
-              steady=None,
-              init=None,
-              hold=None):
-        kwargs={k:v for k,v in locals().items() if k!=&#39;self&#39;}
-        self.parse_kwargs(**kwargs)
-        super().__init__(self.g)
-        self.give_nodes(a=self.a,
-                        tau=self.tau,
-                        f=self.f)
-        self.give_edges(delay=self.delay)
-        if self.edge_replacements:
-            convert_edges(self,edges=self.edge_replacements.get(&#39;edges&#39;),
-                               lengths=self.edge_replacements.get(&#39;lengths&#39;),
-                               node_data=self.edge_replacements.get(&#39;node_attrs&#39;),
-                               delay=self.edge_replacements.get(&#39;delay&#39;))
-            #self.default_edge_replacements=None #prevent multiple replacements
-        self.sort()
-        self.itr=bool_model_iter(self)
-        self.T=int(self.T/self.dt)
-        self.node_data(save=True)
-        self.edge_data(save=True)
-        self.init,self.hold=bool_initial_conditions(self,init=self.init,
-                                                    hold=self.hold,steady=self.steady)
-        self.hold=(self.hold/self.dt).astype(np.int64)
-        self.delay=(self.delay/self.dt).astype(np.int64)
-        self.predar=np.concatenate([list(self.predecessors(n)) 
-                                    for n in self.nodes]).astype(np.int64)
-        if len(self.tau.shape)!=1:
-            self.integral=bool_integral_risefall
-        else:
-            self.integral=bool_integral
-        self.noise=rng.random(0,self.noise,absval=True,
-                              shape=(self.T,len(self))).astype(np.float64)
-        
-        
-        
-    def integrate(self,init=None,noise=None,hold=None):
-        if noise is None: #use default noise
-            noise=self.noise
-        else: #use noise val
-            noise=rng.random(0,noise,absval=True,
-                              shape=(self.T,len(self))).astype(np.float64)
-        #else use given noise array
-        #repeat for init and hold
-        if init is not None:
-            init,_=bool_initial_conditions(self,init=init,hold=None,steady=self.steady)
-        else:
-            init=self.init
-        if hold is not None:
-            _,hold=bool_initial_conditions(self,init=None,hold=hold,steady=self.steady)
-            hold=(hold/self.dt).astype(np.int64)
-        else:
-            hold=self.hold
-        #if init is None and hold is None:
-        #    init,hold=self.init,self.hold
-
-        self.x=self.integral(iterator=self.itr,
-                          time_delays=self.delay,
-                          sigmoid_constants=self.a.astype(np.longdouble),
-                          time_constants=self.tau.astype(np.longdouble),
-                          predecessors=self.predar,
-                          noise=noise.astype(np.longdouble),
-                          initial_conditions=init.astype(np.longdouble),
-                          hold_times=hold,
-                          dt=np.array(self.dt).astype(np.longdouble))
-    
-    def view(self,view=&#39;in&#39;):
-        &#39;&#39;&#39;
-        Change default edge view
-        &#39;&#39;&#39;
-        if view==&#39;in&#39;:
-            self.edge_view=nx.classes.reportviews.InMultiEdgeView
-
-        elif view==&#39;out&#39;:
-            self.edge_view=nx.classes.reportviews.OutMultiEdgeView
-            
-    
-    @nx.MultiDiGraph.edges.getter
-    def edges(self):
-        return self.edge_view(self)
-    
-    
-    def sort(self,**kwargs):
-        sort_graph(self,**kwargs)
-        
-
-    def relabel(self,mapping=None):
-        relabel_graph(self,mapping)
-        
-
-    def node_attrs(self):
-        return node_attrs(self)
-    
-
-    def edge_attrs(self):
-        return edge_attrs(self)
-    
-
-    def give_nodes(self,data=None,nodes=None,**kwargs):
-        give_nodes(self,data=data,nodes=nodes,**kwargs)
-            
-
-    def give_edges(self,data=None,edges=None,**kwargs):
-        give_edges(self,data=data,edges=edges,**kwargs)
-
-    def give_self(self,data=None,**kwargs):
-        &#39;&#39;&#39;
-        Give any arg dict and kwargs to self as attrs
-        &#39;&#39;&#39;
-        try:
-            sidis.give(self,**parse_kwargs(**kwargs))
-        except:
-            pass
-
-        if data:
-            for k,v in data.items():
-                try:
-                    self.__dict__.update(parse_kwargs(**v))
-                except KeyError:
-                    pass
-            
-            
-    def clear_nodes(self,*args):
-        &#39;&#39;&#39;
-        Remove arg entries from node dict
-        &#39;&#39;&#39;
-        if not args:
-            args=self.node_attrs()
-        [[sidis.give(self.node[n],arg,None) for n in self.nodes] for arg in args]
-        
-    
-    def clear_edges(self,*args):
-        &#39;&#39;&#39;
-        Remove arg entries from edge dict
-        &#39;&#39;&#39;
-        if not args:
-            args=self.edge_attrs()
-        [[sidis.give(self.edges[e],arg,None) for e in self.edges] for arg in args]
-        
-
-    def node_data(self,*args,save=False):
-        &#39;&#39;&#39;
-        Set node attributes as self attribute array. 
-        &#39;&#39;&#39;
-        if not save:
-            return node_data(self,*args)
-        else:
-            self.give_self(**node_data(self,*args))
-
-
-    def edge_data(self,*args,save=False):        
-        if not save:
-            return edge_data(self,*args)
-        else:
-            self.give_self(**edge_data(self,*args))
-                
-                    
-    def replace_edges(self,
-                      edges : Union[None,tuple,List[tuple]] = None,
-                      lengths : Union[str,int,dict] = 1,
-                      node_data : dict = {},
-                      label : callable = lambda g,node,iterable : len(g)+iterable,
-                      **edge_data):
-        
-        if label is None:
-            label = lambda g,node,iterable : len(g)+iterable
-        if lengths is None:
-            lengths=1
-            
-        convert_edges(self,edges=edges,lengths=lengths,node_data=node_data,label=label,
-                      **edge_data)
-        
-        
-    def where(self,*args,**kwargs):
-        return where(self,*args,**kwargs)
-    
-    def edgewhere(self,*args):
-        return np.array(self.edges)[self.where(*args)]
-    
-    def nodewhere(self,*args):
-        return np.array(self.nodes)[self.where(*args)]
-    
-    def __str__(self):
-        return print_graph(self,string=True)
-    
-    def __repr__(self):
-        s=str(self)
-        S=super().__repr__()
-        spl=s.split(&#39;\n&#39;)
-        if len(spl)&gt;10:
-            spl=spl[:5]+[&#39;...&#39;]+spl[-5:]
-        return S+&#39;\n&#39;+(&#39;\n&#39;).join(spl)
-
-    def plot(self):
-        &#39;&#39;&#39;
-        Make separate plots of the node states `x` for each in-degree grouping.
-        &#39;&#39;&#39;
-        self.node_funcs={n:self.nodes[n][&#39;f&#39;] for n in self.nodes}
-        funcs=nx.utils.groups(sidis.cast(self.node_funcs,dict))
-        funcs={k:list(v) for k,v in funcs.items()}
-        for f,nodes in funcs.items():
-            for i in nodes:
-                plt.plot(np.arange(self.x.shape[0])*self.dt,self.x[:,i])
-                title=f&#39;{f.__name__} Nodes: {nodes[0]} to {nodes[-1]}&#39;
-                plt.title(title)
-                plt.xlabel(&#39;Time (ns)&#39;)
-                plt.ylabel(&#39;Amplitude&#39;)
-            plt.show()
-        
-Warning: Exporting to &#34;None.py&#34; but this module is not part of this build
-Warning: Exporting to &#34;None.py&#34; but this module is not part of this build
+Converted 03_puf_functions.ipynb.
+Converted index.ipynb.
 </pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
-<span class="ansi-red-intense-fg ansi-bold">AttributeError</span>                            Traceback (most recent call last)
-<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-48-2155445c27e0&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">----&gt; 1</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>notebook2script<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-green-intense-fg ansi-bold">C:\Anaconda3\lib\site-packages\nbdev\export.py</span> in <span class="ansi-cyan-fg">notebook2script</span><span class="ansi-blue-intense-fg ansi-bold">(fname, silent, to_dict, bare, recursive)</span>
-<span class="ansi-green-fg">    421</span>     d <span class="ansi-yellow-intense-fg ansi-bold">=</span> collections<span class="ansi-yellow-intense-fg ansi-bold">.</span>defaultdict<span class="ansi-yellow-intense-fg ansi-bold">(</span>list<span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-green-intense-fg ansi-bold">if</span> to_dict <span class="ansi-green-intense-fg ansi-bold">else</span> <span class="ansi-green-intense-fg ansi-bold">None</span>
-<span class="ansi-green-fg">    422</span>     modules <span class="ansi-yellow-intense-fg ansi-bold">=</span> create_mod_files<span class="ansi-yellow-intense-fg ansi-bold">(</span>files<span class="ansi-yellow-intense-fg ansi-bold">,</span> to_dict<span class="ansi-yellow-intense-fg ansi-bold">,</span> bare<span class="ansi-yellow-intense-fg ansi-bold">=</span>bare<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 423</span><span class="ansi-yellow-intense-fg ansi-bold">     </span><span class="ansi-green-intense-fg ansi-bold">for</span> f <span class="ansi-green-intense-fg ansi-bold">in</span> sorted<span class="ansi-yellow-intense-fg ansi-bold">(</span>files<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span> d <span class="ansi-yellow-intense-fg ansi-bold">=</span> _notebook2script<span class="ansi-yellow-intense-fg ansi-bold">(</span>f<span class="ansi-yellow-intense-fg ansi-bold">,</span> modules<span class="ansi-yellow-intense-fg ansi-bold">,</span> silent<span class="ansi-yellow-intense-fg ansi-bold">=</span>silent<span class="ansi-yellow-intense-fg ansi-bold">,</span> to_dict<span class="ansi-yellow-intense-fg ansi-bold">=</span>d<span class="ansi-yellow-intense-fg ansi-bold">,</span> bare<span class="ansi-yellow-intense-fg ansi-bold">=</span>bare<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    424</span>     <span class="ansi-green-intense-fg ansi-bold">if</span> to_dict<span class="ansi-yellow-intense-fg ansi-bold">:</span> <span class="ansi-green-intense-fg ansi-bold">return</span> d
-<span class="ansi-green-fg">    425</span>     <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span> add_init<span class="ansi-yellow-intense-fg ansi-bold">(</span>Config<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>path<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#34;lib_path&#34;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-green-intense-fg ansi-bold">C:\Anaconda3\lib\site-packages\nbdev\export.py</span> in <span class="ansi-cyan-fg">_notebook2script</span><span class="ansi-blue-intense-fg ansi-bold">(fname, modules, silent, to_dict, bare)</span>
-<span class="ansi-green-fg">    352</span>         code <span class="ansi-yellow-intense-fg ansi-bold">=</span> _from_future_import<span class="ansi-yellow-intense-fg ansi-bold">(</span>fname_out<span class="ansi-yellow-intense-fg ansi-bold">,</span> flags<span class="ansi-yellow-intense-fg ansi-bold">,</span> code<span class="ansi-yellow-intense-fg ansi-bold">,</span> to_dict<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    353</span>         <span class="ansi-green-intense-fg ansi-bold">if</span> a<span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 354</span><span class="ansi-yellow-intense-fg ansi-bold">             </span><span class="ansi-green-intense-fg ansi-bold">if</span> to_dict <span class="ansi-green-intense-fg ansi-bold">is</span> <span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">:</span> _add2all<span class="ansi-yellow-intense-fg ansi-bold">(</span>fname_out<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-blue-intense-fg ansi-bold">f&#34;&#39;{f}&#39;&#34;</span> <span class="ansi-green-intense-fg ansi-bold">for</span> f <span class="ansi-green-intense-fg ansi-bold">in</span> names <span class="ansi-green-intense-fg ansi-bold">if</span> <span class="ansi-blue-intense-fg ansi-bold">&#39;.&#39;</span> <span class="ansi-green-intense-fg ansi-bold">not</span> <span class="ansi-green-intense-fg ansi-bold">in</span> f <span class="ansi-green-intense-fg ansi-bold">and</span> len<span class="ansi-yellow-intense-fg ansi-bold">(</span>f<span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-yellow-intense-fg ansi-bold">&gt;</span> <span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">]</span> <span class="ansi-yellow-intense-fg ansi-bold">+</span> extra<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    355</span>         mod<span class="ansi-yellow-intense-fg ansi-bold">.</span>index<span class="ansi-yellow-intense-fg ansi-bold">.</span>update<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">{</span>f<span class="ansi-yellow-intense-fg ansi-bold">:</span> fname<span class="ansi-yellow-intense-fg ansi-bold">.</span>name <span class="ansi-green-intense-fg ansi-bold">for</span> f <span class="ansi-green-intense-fg ansi-bold">in</span> names<span class="ansi-yellow-intense-fg ansi-bold">}</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    356</span>         code <span class="ansi-yellow-intense-fg ansi-bold">=</span> re<span class="ansi-yellow-intense-fg ansi-bold">.</span>sub<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">r&#39; +$&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-blue-intense-fg ansi-bold">&#39;&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> code<span class="ansi-yellow-intense-fg ansi-bold">,</span> flags<span class="ansi-yellow-intense-fg ansi-bold">=</span>re<span class="ansi-yellow-intense-fg ansi-bold">.</span>MULTILINE<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-green-intense-fg ansi-bold">C:\Anaconda3\lib\site-packages\nbdev\export.py</span> in <span class="ansi-cyan-fg">_add2all</span><span class="ansi-blue-intense-fg ansi-bold">(fname, names, line_width)</span>
-<span class="ansi-green-fg">    207</span>     tw <span class="ansi-yellow-intense-fg ansi-bold">=</span> TextWrapper<span class="ansi-yellow-intense-fg ansi-bold">(</span>width<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-cyan-intense-fg ansi-bold">120</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> initial_indent<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-blue-intense-fg ansi-bold">&#39;&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> subsequent_indent<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-blue-intense-fg ansi-bold">&#39; &#39;</span><span class="ansi-yellow-intense-fg ansi-bold">*</span><span class="ansi-cyan-intense-fg ansi-bold">11</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> break_long_words<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-green-intense-fg ansi-bold">False</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    208</span>     re_all <span class="ansi-yellow-intense-fg ansi-bold">=</span> _re__all__def<span class="ansi-yellow-intense-fg ansi-bold">.</span>search<span class="ansi-yellow-intense-fg ansi-bold">(</span>text<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">--&gt; 209</span><span class="ansi-yellow-intense-fg ansi-bold">     </span>start<span class="ansi-yellow-intense-fg ansi-bold">,</span>end <span class="ansi-yellow-intense-fg ansi-bold">=</span> re_all<span class="ansi-yellow-intense-fg ansi-bold">.</span>start<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">,</span>re_all<span class="ansi-yellow-intense-fg ansi-bold">.</span>end<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    210</span>     text_all <span class="ansi-yellow-intense-fg ansi-bold">=</span> tw<span class="ansi-yellow-intense-fg ansi-bold">.</span>wrap<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">f&#34;{text[start:end-1]}{&#39;&#39; if text[end-2]==&#39;[&#39; else &#39;, &#39;}{&#39;, &#39;.join(names)}]&#34;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">    211</span>     <span class="ansi-green-intense-fg ansi-bold">with</span> open<span class="ansi-yellow-intense-fg ansi-bold">(</span>fname<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-blue-intense-fg ansi-bold">&#39;w&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> encoding<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-blue-intense-fg ansi-bold">&#39;utf8&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-green-intense-fg ansi-bold">as</span> f<span class="ansi-yellow-intense-fg ansi-bold">:</span> f<span class="ansi-yellow-intense-fg ansi-bold">.</span>write<span class="ansi-yellow-intense-fg ansi-bold">(</span>text<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>start<span class="ansi-yellow-intense-fg ansi-bold">]</span> <span class="ansi-yellow-intense-fg ansi-bold">+</span> <span class="ansi-blue-intense-fg ansi-bold">&#39;\n&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>join<span class="ansi-yellow-intense-fg ansi-bold">(</span>text_all<span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-yellow-intense-fg ansi-bold">+</span> text<span class="ansi-yellow-intense-fg ansi-bold">[</span>end<span class="ansi-yellow-intense-fg ansi-bold">:</span><span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-red-intense-fg ansi-bold">AttributeError</span>: &#39;NoneType&#39; object has no attribute &#39;start&#39;</pre>
 </div>
 </div>
 

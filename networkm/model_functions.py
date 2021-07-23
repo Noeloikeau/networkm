@@ -252,8 +252,8 @@ def bool_initial_conditions(g,
         else:
             hold = np.array(hold)
 
-    init=np.array([0 for i in range(len(g)-len(init))]+list(init))
-    hold=np.array([0 for i in range(len(g)-len(hold))]+list(hold))
+    #init=np.array([0 for i in range(len(g)-len(init))]+list(init))
+    #hold=np.array([0 for i in range(len(g)-len(hold))]+list(hold))
 
     return init,hold
 
