@@ -114,27 +114,33 @@ class BooleanNetwork(nx.MultiDiGraph):
         self.delay=(self.delay/dt).astype(np.int64)
         self.predar=np.concatenate([list(self.predecessors(n))
                                     for n in self.nodes]).astype(np.int64)
-        self.noise=rng.random(0,noise,absval=True,shape=(self.T,len(self))).astype(np.float64)
+        self.noise=rng.random(0,noise,absval=True,
+                              shape=(self.T,len(self))).astype(np.float64)
         if len(self.tau.shape)!=1:
             self.integral=bool_integral_risefall
         else:
             self.integral=bool_integral
-        self.integrate(init=self.init,hold=self.hold)
+        #self.integrate(init=self.init,hold=self.hold)
 
         if plot:
+            self.integrate(init=self.init,hold=self.hold)
             self.plot()
 
 
-    def integrate(self,init=None,hold=None):
+    def integrate(self,init=None,hold=None,noise=None):
         if init is None and hold is None:
             self.init,self.hold=bool_initial_conditions(self,init,hold)
             self.hold=(self.hold/dt).astype(np.int64)
+        if noise is None:
+            noise=self.noise
+        else: #reroll
+            noise=rng.random(0,noise,absval=True,shape=(self.T,len(self))).astype(np.float64)
         self.x=self.integral(iterator=self.itr,
                           time_delays=self.delay,
                           sigmoid_constants=self.a,
                           time_constants=self.tau,
                           predecessors=self.predar,
-                          noise=self.noise,
+                          noise=noise,
                           initial_conditions=self.init,
                           hold_times=self.hold,
                           dt=self.dt)

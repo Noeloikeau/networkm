@@ -18,6 +18,9 @@ entries:
     - output: web,pdf
       title: Network Class
       url: network_class.html
+    - output: web,pdf
+      title: puf_functions
+      url: puf_functions.html
     output: web
     title: networkm
   output: web

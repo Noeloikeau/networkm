@@ -2,9 +2,9 @@
 
 __all__ = ['XOR', 'boolxor', 'smoothxor', 'test', 'MPX', 'MUX', 'boolmux', 'smoothmux', 'test', 'NOT', 'boolnot',
            'smoothnot', 'test', 'COPY', 'boolcopy', 'smoothcopy', 'test', 'AND', 'booland', 'smoothand', 'test', 'OR',
-           'boolor', 'smoothor', 'test', 'BOOL', 'test', 'sigmoid', 'test', 'bool_model_iter',
+           'boolor', 'smoothor', 'test', 'BOOL', 'test', 'sigmoid', 'nextafter', 'test', 'bool_model_iter',
            'bool_initial_conditions', 'setup_bool_integral', 'bool_integral', 'bool_integral_risefall', 'plot_graph',
-           'bool_model', 'g', 'x', 'g', 'x', 'g', 'x', 'g', 'x']
+           'bool_model']
 
 # Cell
 import warnings
@@ -155,6 +155,7 @@ def BOOL(x : np.ndarray,
 test=BOOL(np.array([list(s) for s in np.ndindex((2,2,2))]),mask=0)
 
 # Cell
+nextafter=np.nextafter(0., 1.)
 @njit
 def sigmoid(x : Union[int,float,np.ndarray],
             a : Union[int,float,np.ndarray] = np.inf):
@@ -169,7 +170,7 @@ def sigmoid(x : Union[int,float,np.ndarray],
     Adds small value to fix edge case x=0.5
     which otherwise returns np.nan when a=np.inf.
     '''
-    A=(1+np.tanh(a*(x-0.5+0.00001)))/2
+    A=(1+np.tanh(a*(x-0.5+nextafter)))/2
     return A
 
 # Cell
@@ -228,13 +229,13 @@ def bool_initial_conditions(g,
         if init is None: #default to 1 logic high node
             init = [1]+[0 for i in mpx_nodes[1:]]
         #set original nodes to 0
-        init=np.array([0 for i in original_nodes]+init)
+        init=np.array([0 for i in original_nodes]+list(init))
 
         if hold is None: #default to hold time of 1 for mpxs
             hold = [1 for i in mpx_nodes]
 
         #don't hold non-mpxs
-        hold = np.array([0 for i in original_nodes]+hold)
+        hold = np.array([0 for i in original_nodes]+list(hold))
 
     else: #not mpx model; need to transform challenge
         if init is None: #default to 1 node logic high
@@ -251,6 +252,9 @@ def bool_initial_conditions(g,
         else:
             hold = np.array(hold)
 
+    init=np.array([0 for i in range(len(g)-len(init))]+list(init))
+    hold=np.array([0 for i in range(len(g)-len(hold))]+list(hold))
+
     return init,hold
 
 # Cell
@@ -259,7 +263,7 @@ def setup_bool_integral(g : nx.MultiDiGraph,
                    hold : Optional[List[int]] = None,
                    T : int = 15,
                    dt : float = 0.01,
-                   noise : float = 0.01,
+                   noise : float = 0,
                    steady : bool = True
                   ):
     '''
@@ -274,15 +278,15 @@ def setup_bool_integral(g : nx.MultiDiGraph,
     iterator = bool_model_iter(g)
     T=int(T/dt)
 
-    ndata=node_data(g,'delay','a','tau')
-    edata=edge_data(g,'delay','a','tau')
+    ndata=node_data(g,'a','tau')
+    edata=edge_data(g,'delay')
 
     time_delays=np.array(edata['delay']).astype(np.int64)
-    sigmoid_constants=np.array(ndata['a']).astype(np.float64)
-    time_constants=np.array(ndata['tau']).astype(np.float64)
+    sigmoid_constants=np.array(ndata['a']).astype(np.longdouble)
+    time_constants=np.array(ndata['tau']).astype(np.longdouble)
     predecessors=np.concatenate([list(g.predecessors(n)) for n in g.nodes]).astype(np.int64)
 
-    noise=rng.random(0,noise,absval=True,shape=(T,len(g))).astype(np.float64)
+    noise=rng.random(-noise,noise,shape=(T,len(g))).astype(np.longdouble)
 
     initial_conditions,hold_times=bool_initial_conditions(g,
                                                           init=init,
@@ -325,8 +329,8 @@ def bool_integral(iterator : np.ndarray,
     squeezed again, and the derivative calculated
     with the Euler method.
     '''
-    x=np.zeros(noise.shape).astype(np.float64)
-    dx=np.zeros(x.shape[-1]).astype(np.float64)
+    x=np.zeros(noise.shape).astype(np.longdouble)
+    dx=np.zeros(x.shape[-1]).astype(np.longdouble)
 
     for t in range(x.shape[0]-1):
         edge_index=0
@@ -346,7 +350,7 @@ def bool_integral(iterator : np.ndarray,
             a=sigmoid_constants[n1:n2].reshape((n2-n1,1))
             edge_index+=(n2-n1)*deg
 
-            y=np.zeros((n2-n1,deg)).astype(np.float64)
+            y=np.zeros((n2-n1,deg)).astype(np.longdouble)
 
             for k in range(n2-n1):
                 for j in range(deg):
@@ -356,7 +360,8 @@ def bool_integral(iterator : np.ndarray,
 
             y=sigmoid(x=y,a=a)
             dx[n1:n2]=BOOL(y,mask)
-            dx[n1:n2]=sigmoid(dx[n1:n2],sigmoid_constants[n1:n2])
+
+        dx=sigmoid(dx,sigmoid_constants)
 
         dxdt=(-x[t]+dx+noise[t])/time_constants
 
@@ -387,8 +392,8 @@ def bool_integral_risefall(iterator : np.ndarray,
     derivative, which is of the form
         tau_rise+(tau_fall-tau_rise)*sigmoid(x)
     '''
-    x=np.zeros(noise.shape).astype(np.float64)
-    dx=np.zeros(x.shape[-1]).astype(np.float64)
+    x=np.zeros(noise.shape).astype(np.longdouble)
+    dx=np.zeros(x.shape[-1]).astype(np.longdouble)
 
     for t in range(x.shape[0]-1):
         edge_index=0
@@ -408,7 +413,7 @@ def bool_integral_risefall(iterator : np.ndarray,
             a=sigmoid_constants[n1:n2].reshape((n2-n1,1))
             edge_index+=(n2-n1)*deg
 
-            y=np.zeros((n2-n1,deg)).astype(np.float64)
+            y=np.zeros((n2-n1,deg)).astype(np.longdouble)
 
             for k in range(n2-n1):
                 for j in range(deg):
@@ -418,7 +423,8 @@ def bool_integral_risefall(iterator : np.ndarray,
 
             y=sigmoid(x=y,a=a)
             dx[n1:n2]=BOOL(y,mask)
-            dx[n1:n2]=sigmoid(dx[n1:n2],sigmoid_constants[n1:n2])
+
+        dx=sigmoid(dx,sigmoid_constants)
 
         tau=time_constants[:,0]+(time_constants[:,1]-time_constants[:,0])*sigmoid(x[t],
                                                                           sigmoid_constants)
@@ -441,7 +447,7 @@ def plot_graph(g,x,dt):
             plt.plot(np.arange(x.shape[0])*dt,x[:,i])
             title=f'{f.__name__} Nodes: {nodes[0]} to {nodes[-1]}'
             plt.title(title)
-            plt.xlabel('Time (ns)')
+            plt.xlabel(r'\tau')
             plt.ylabel('Amplitude')
         plt.show()
 
@@ -560,14 +566,3 @@ def bool_model( g,
             plot_graph(g=g,x=x,dt=dt)
 
         return x
-
-# Cell
-print('Warming up integrator; future calls will be accelerated.')
-g=ring(N=2,left=True,right=False,loop=True)
-x=bool_model(g,T=0.02,tau=0,a=0,f=COPY,edge_replacements=None,plot=False)
-g=None
-x=None
-g=ring(N=2,left=True,right=False,loop=False)
-x=bool_model(g,T=0.02,f=COPY,tau=[1,1],edge_replacements=None,plot=False)
-g=None
-x=None

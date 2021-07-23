@@ -3,6 +3,7 @@
     "Overview": "/",
     "Graph Functions": "graph_functions.html",
     "Model Functions": "model_functions.html",
-    "Network Class": "network_class.html"
+    "Network Class": "network_class.html",
+    "puf_functions": "puf_functions.html"
   }
 }

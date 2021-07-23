@@ -48,6 +48,7 @@ index = {"ring": "00_graph_functions.ipynb",
          "smoothor": "01_model_functions.ipynb",
          "BOOL": "01_model_functions.ipynb",
          "sigmoid": "01_model_functions.ipynb",
+         "nextafter": "01_model_functions.ipynb",
          "bool_model_iter": "01_model_functions.ipynb",
          "bool_initial_conditions": "01_model_functions.ipynb",
          "setup_bool_integral": "01_model_functions.ipynb",
@@ -55,13 +56,21 @@ index = {"ring": "00_graph_functions.ipynb",
          "bool_integral_risefall": "01_model_functions.ipynb",
          "plot_graph": "01_model_functions.ipynb",
          "bool_model": "01_model_functions.ipynb",
-         "g": "01_model_functions.ipynb",
-         "x": "01_model_functions.ipynb",
-         "BooleanNetwork": "02_network_class.ipynb"}
+         "BooleanNetwork": "02_network_class.ipynb",
+         "puf_statistics": "03_puf_functions.ipynb",
+         "bool_lyapunov": "03_puf_functions.ipynb",
+         "lya_fit": "03_puf_functions.ipynb",
+         "booleanize": "03_puf_functions.ipynb",
+         "ensemble": "03_puf_functions.ipynb",
+         "query_rise": "03_puf_functions.ipynb",
+         "query_fall": "03_puf_functions.ipynb",
+         "analyze": "03_puf_functions.ipynb",
+         "query": "03_puf_functions.ipynb"}
 
 modules = ["graph_functions.py",
            "model_functions.py",
-           "network_class.py"]
+           "network_class.py",
+           "puf_functions.py"]
 
 doc_url = "https://Noeloikeau.github.io/networkm/"
 
