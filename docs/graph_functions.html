@@ -26,22 +26,6 @@ nb_path: "00_graph_functions.ipynb"
     
 <div class="cell border-box-sizing code_cell rendered">
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Warming up integrator; future calls will be accelerated.
-bool_integral : Elapsed time: 2.8162 seconds
-bool_integral_risefall : Elapsed time: 2.0603 seconds
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
     {% endraw %}
 
@@ -65,7 +49,7 @@ bool_integral_risefall : Elapsed time: 2.0603 seconds
 <div class="output_markdown rendered_html output_subarea ">
 <h4 id="ring" class="doc_header"><code>ring</code><a href="https://github.com/Noeloikeau/networkm/tree/master/networkm/graph_functions.py#L20" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>ring</code>(<strong><code>N</code></strong>:<code>int</code>=<em><code>3</code></em>, <strong><code>left</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>right</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>loop</code></strong>:<code>bool</code>=<em><code>False</code></em>)</p>
 </blockquote>
-<p>Return <a href="/networkm/model_functions.html#g"><code>g</code></a>, a ring topology networkx graph with <code>N</code> nodes.
+<p>Return <code>g</code>, a ring topology networkx graph with <code>N</code> nodes.
 Booleans <code>left</code>, <code>right</code>, <code>loop</code> determine the directed edges.</p>
 
 </div>
@@ -303,7 +287,7 @@ and edge attributes.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;a&#39;: 0.17767666207035548}</pre>
+<pre>{&#39;a&#39;: 0.9957327011121017}</pre>
 </div>
 
 </div>
@@ -336,7 +320,7 @@ and edge attributes.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;a&#39;: 0.38087189791690024}</pre>
+<pre>{&#39;a&#39;: 0.2571581456075053}</pre>
 </div>
 
 </div>
@@ -369,7 +353,7 @@ and edge attributes.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;a&#39;: 0.4929181136008872}</pre>
+<pre>{&#39;a&#39;: 0.968339261201048}</pre>
 </div>
 
 </div>
@@ -470,7 +454,7 @@ The inner dict is given to the corresponding node.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>NodeDataView({0: {&#39;a&#39;: array([0.77071943])}, 1: {&#39;a&#39;: array([0.44057334])}, 2: {&#39;a&#39;: array([0.61472838])}})</pre>
+<pre>NodeDataView({0: {&#39;a&#39;: array([0.83597281])}, 1: {&#39;a&#39;: array([0.58115496])}, 2: {&#39;a&#39;: array([0.00429846])}})</pre>
 </div>
 
 </div>
@@ -504,7 +488,7 @@ The inner dict is given to the corresponding node.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>NodeDataView({0: {&#39;a&#39;: array([0.77071943]), &#39;b&#39;: 1}, 1: {&#39;a&#39;: array([0.44057334])}, 2: {&#39;a&#39;: array([0.61472838])}})</pre>
+<pre>NodeDataView({0: {&#39;a&#39;: array([0.83597281]), &#39;b&#39;: 1}, 1: {&#39;a&#39;: array([0.58115496])}, 2: {&#39;a&#39;: array([0.00429846])}})</pre>
 </div>
 
 </div>
@@ -538,7 +522,7 @@ The inner dict is given to the corresponding node.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>NodeDataView({0: {&#39;a&#39;: array([0.77071943]), &#39;b&#39;: 1}, 1: {&#39;a&#39;: array([0.44057334])}, 2: {&#39;a&#39;: array([0.61472838]), &#39;c&#39;: 2}})</pre>
+<pre>NodeDataView({0: {&#39;a&#39;: array([0.83597281]), &#39;b&#39;: 1}, 1: {&#39;a&#39;: array([0.58115496])}, 2: {&#39;a&#39;: array([0.00429846]), &#39;c&#39;: 2}})</pre>
 </div>
 
 </div>
@@ -705,7 +689,7 @@ The inner dict is given to the corresponding edge.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&#39;a&#39;, &#39;c&#39;, &#39;b&#39;]</pre>
+<pre>[&#39;c&#39;, &#39;b&#39;, &#39;a&#39;]</pre>
 </div>
 
 </div>
@@ -837,9 +821,9 @@ ordering of the nodes in the graph.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;a&#39;: array([0.77071943, 0.44057334, 0.61472838]),
- &#39;c&#39;: array([None, None, 2], dtype=object),
- &#39;b&#39;: array([1, None, None], dtype=object)}</pre>
+<pre>{&#39;c&#39;: array([None, None, 2], dtype=object),
+ &#39;b&#39;: array([1, None, None], dtype=object),
+ &#39;a&#39;: array([0.83597281, 0.58115496, 0.00429846])}</pre>
 </div>
 
 </div>
@@ -1073,7 +1057,7 @@ the kwarg equalities hold in the graph.</p>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[(0, {&#39;a&#39;: array([0.77071943]), &#39;b&#39;: 1}), (1, {&#39;a&#39;: array([0.44057334])}), (2, {&#39;a&#39;: array([0.61472838]), &#39;c&#39;: 2})]
+<pre>[(0, {&#39;a&#39;: array([0.83597281]), &#39;b&#39;: 1}), (1, {&#39;a&#39;: array([0.58115496])}), (2, {&#39;a&#39;: array([0.00429846]), &#39;c&#39;: 2})]
 </pre>
 </div>
 </div>
@@ -1269,7 +1253,7 @@ the kwarg equalities hold in the graph.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>([0, 2], ([0], [(0, 0, 0)]))</pre>
+<pre>([0, 1], ([0], [(0, 0, 0)]))</pre>
 </div>
 
 </div>
@@ -1705,10 +1689,1360 @@ Sorting result: g.sorting
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">notebook2script</span><span class="p">()</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Converted 00_graph_functions.ipynb.
+Converted 01_model_functions.ipynb.
+Converted 02_network_class.ipynb.
+No export destination, ignored:
+#export
+import warnings
+with warnings.catch_warnings(): #ignore warnings
+    warnings.simplefilter(&#34;ignore&#34;)
+    import networkx as nx
+    import numpy as np
+    import sidis
+    rng=sidis.RNG(0)
+    import matplotlib.pyplot as plt
+    import typing
+    from typing import Optional, Tuple, Dict, Callable, Union, Mapping, Sequence, Iterable, Hashable, List, Any
+    from collections import namedtuple
+    import einops
+    import numba
+    from numba import njit
+    from scipy import stats
+    import scipy.optimize as sciopt
+    
+    from networkm.graph_functions import *
+    from networkm.model_functions import *
+    #from networkm.network_class import *
+No export destination, ignored:
+#export
+@njit
+def query_rise(iterator_matrix,
+               time_delay_matrix,
+               sigmoid_constant_matrix,
+               time_constant_matrix,
+               predecessor_matrix,
+               initial_condition_matrix,
+               hold_time_matrix,
+               dt,
+               T,
+               N,
+               noise_scale,
+               decimation
+              ):
+    &#39;&#39;&#39;
+    Jit accelerated integration routine for the `query` function for an `ensemble` of
+    `BooleanNetwork`s which have the same rise and fall time. Nearly identical to 
+    `bool_integral` with a loop over `classes,instances,challenges,repeats`. 
+    &#39;&#39;&#39;
+    classes=iterator_matrix.shape[0]
+    challenges=initial_condition_matrix.shape[0]
+    repeats=initial_condition_matrix.shape[1]
+    instances=time_delay_matrix.shape[1]
+
+    responses = np.zeros((classes,instances,challenges,repeats,int(T/decimation),N))
+
+    for c,q,h,r in np.ndindex(responses.shape[:-2]): #class,inst,chal,rep
+        iterator=iterator_matrix[c]
+        time_delays=time_delay_matrix[c,q]
+        sigmoid_constants=sigmoid_constant_matrix[c,q]
+        time_constants=time_constant_matrix[c,q]
+        predecessors=predecessor_matrix[c]
+        initial_conditions=initial_condition_matrix[h,r]
+        hold_times=hold_time_matrix[c]   
+        x=np.zeros((T,N)).astype(np.longdouble)
+        dx=np.zeros(x.shape[-1]).astype(np.longdouble)
+        for t in range(x.shape[0]-1):
+            noise=np.empty(x.shape[1])
+            for n in range(x.shape[1]):
+                noise[n]=np.random.random()*noise_scale
+            #noise=noise*noise_scale
+            edge_index=0
+            if t&lt;max(hold_times):
+                for n in range(x.shape[-1]):
+                    if hold_times[n]&gt;=t:
+                        x[t,n]=initial_conditions[n]
+            for i in range(len(iterator)): 
+                n1,n2,deg,mask=iterator[i]
+                d=-time_delays[edge_index:edge_index+(n2-n1)*deg].reshape((n2-n1,deg))
+                d+=t
+                p=predecessors[edge_index:edge_index+(n2-n1)*deg].reshape((n2-n1,deg))
+                a=sigmoid_constants[n1:n2].reshape((n2-n1,1))
+                edge_index+=(n2-n1)*deg
+                y=np.zeros((n2-n1,deg))#.astype(np.longdouble)
+                for k in range(n2-n1):
+                    for j in range(deg):
+                        de=d[k,j]
+                        pr=p[k,j]
+                        y[k,j]=x[de,pr]
+                y=sigmoid(x=y,a=a)
+                dx[n1:n2]=BOOL(y,mask)
+            dx=sigmoid(dx,sigmoid_constants)
+            dxdt=(-x[t]+dx+noise)/time_constants
+            x[t+1]=x[t]+dt*dxdt
+        
+        responses[c,q,h,r]=x[::decimation]
+                
+    return responses
+No export destination, ignored:
+#export
+@njit
+def njintegral(iterator,
+               time_delays,
+               sigmoid_constants,
+               time_constants,
+               predecessors,
+               initial_condition_matrix,
+               hold_times,
+               dt,
+               T,
+               noise_scale,
+               decimation,
+               repeats=1
+              ):
+    &#39;&#39;&#39;
+    Jit accelerated integration routine for the `query` function for an `ensemble` of
+    `BooleanNetwork`s which have the same rise and fall time. Nearly identical to 
+    `bool_integral` with a loop over `classes,instances,challenges,repeats`. 
+    &#39;&#39;&#39;
+    C,N=initial_condition_matrix.shape #challenges,repeats,nodes
+    responses = np.zeros((C,R,int(T/decimation),N))
+
+    for c,r in np.ndindex(C,R): #diff inits
+        initial_conditions=initial_condition_matrix[c]
+        x=np.zeros((T,N)).astype(np.longdouble)
+        dx=np.zeros(x.shape[-1]).astype(np.longdouble)
+        for t in range(x.shape[0]-1):
+            noise=np.empty(x.shape[1])
+            for n in range(x.shape[1]):
+                noise[n]=np.random.random()*noise_scale
+            #noise=noise*noise_scale
+            edge_index=0
+            if t&lt;max(hold_times):
+                for n in range(x.shape[-1]):
+                    if hold_times[n]&gt;=t:
+                        x[t,n]=initial_conditions[n]
+            for i in range(len(iterator)): 
+                n1,n2,deg,mask=iterator[i]
+                d=-time_delays[edge_index:edge_index+(n2-n1)*deg].reshape((n2-n1,deg))
+                d+=t
+                p=predecessors[edge_index:edge_index+(n2-n1)*deg].reshape((n2-n1,deg))
+                a=sigmoid_constants[n1:n2].reshape((n2-n1,1))
+                edge_index+=(n2-n1)*deg
+                y=np.zeros((n2-n1,deg))#.astype(np.longdouble)
+                for k in range(n2-n1):
+                    for j in range(deg):
+                        de=d[k,j]
+                        pr=p[k,j]
+                        y[k,j]=x[de,pr]
+                y=sigmoid(x=y,a=a)
+                dx[n1:n2]=BOOL(y,mask)
+            dx=sigmoid(dx,sigmoid_constants)
+            dxdt=(-x[t]+dx+noise)/time_constants
+            x[t+1]=x[t]+dt*dxdt
+        
+        responses[c,r]=x[::decimation]
+                
+    return responses
+No export destination, ignored:
+#export
+class BooleanNetwork(nx.MultiDiGraph):
+    &#39;&#39;&#39;
+    Model the dynamics of the graph `g` by giving the node attributes
+
+        f : logical function
+
+        a : sigmoid function
+
+        tau : time constant
+
+    and edge attributes
+
+        delay : time-delay
+
+    and parses each of these arguments if given as a tuple of a 
+
+    randomization function and its args; see `parse_kwargs`.
+
+    Converts any edges with the given `edge_replacements` (see 
+
+    `convert_edges` function for arguments); useful for `MPX`. 
+
+    Sorts the graph in place using `sort_graph` in order to produce
+
+    an iterable with `bool_model_iter`. See also `setup_bool_integral`.
+
+    Initializes the dynamics to `init` using the hold times `hold`;
+
+    see `bool_initial_conditions`. Integrates with `bool_integral`
+
+    and `bool_integral_risefall` if `tau` is given as an array of
+
+    [rise_time,fall_time]. Returns the node state array `x` 
+
+    and optionally plots the resulting dynamics with `plot_graph`.
+
+    Includes most functions from the `graph_functions` library.
+    &#39;&#39;&#39;
+    
+    def edge_replacements(
+        lengths = 1,
+        delay = 0,
+        a = np.inf,
+        tau = 1,
+        f = MPX,
+        label = lambda g,node,iterable : len(g)+iterable
+    ):
+        return dict(lengths=lengths,delay=delay,label=label,node_attrs=dict(a=a,f=f,tau=tau))
+        
+    mpx_edges = edge_replacements(lengths=1,delay=0,a=np.inf,tau=1,f=MPX)
+    
+    delay_edges = edge_replacements(f=COPY,lengths=&#39;delay&#39;,a=np.inf,tau=1,delay=0)
+    
+    def ring(N=3,left=True,right=False,loop=False,
+             a=np.inf,tau=1,delay=0,f=NOT,edge_replacements=None,
+             dt=0.01,T=15,noise=0,init=None,hold=None,steady=False,plot=False,view=&#39;out&#39;):
+        g=ring(N=N,left=left,right=right,loop=loop)
+        return BooleanNetwork(g=g,a=a,tau=tau,f=f,delay=delay,
+                    edge_replacements=edge_replacements,
+                   T=T,dt=dt,noise=noise,init=init,hold=hold,steady=steady,plot=plot,view=view)
+    
+    def random(N=16,k=3,a=np.inf,tau=1,delay=0,f=NOT,edge_replacements=None,
+             dt=0.01,T=15,noise=0,init=None,hold=None,steady=False,plot=False,view=&#39;out&#39;):
+        g=nx.random_regular_graph(k,N)
+        return BooleanNetwork(g=g,a=a,tau=tau,f=f,delay=delay,
+                    edge_replacements=edge_replacements,
+                   T=T,dt=dt,noise=noise,init=init,hold=hold,steady=steady,plot=plot,view=view)
+    &#39;&#39;&#39;policy: values in the graph object will be left untouched,
+               and self attributes will be arrays of functional
+               transforms from these values, automatically parsed when needed.
+               Ex: changing .nodes[0][&#39;data&#39;] should be reflected in a
+               .data attribute after calling .func(data).&#39;&#39;&#39;
+    def __init__(self,
+                 g = ring(N=3,right=True,left=False,loop=False),
+                 a = np.inf,
+                 tau = 1,
+                 f = XOR,
+                 delay = 0,
+                 edge_replacements = None,
+                 T = 10,
+                 dt = 1,
+                 noise = 0,
+                 init = None,
+                 hold = None,
+                 steady = False,
+                 view = &#39;out&#39;,
+                 plot = False,
+                 init = None,
+                 hold = 1
+                ):
+        
+        #super init
+        self.kwargs={k:v for k,v in locals().items() if k!=&#39;self&#39;}
+        super().__init__(g)
+        self.view(view)
+        
+        self.original_nodes=list(g.nodes)
+        self.original_edges=list(g.edges)
+        
+        if edge_replacements:
+            self.convert_edges(edge_replacements)
+            self.new_nodes=[n for n in self.nodes if n not in self.original_nodes]
+            self.new_edges=[n for n in self.edges if n not in self.original_edges]
+        else:
+            self.new_nodes=None
+            self.new_edges=None
+            
+        self.give_nodes(nodes=self.original_nodes,a=a,tau=tau,f=f)
+        self.give_edges(edges=self.original_edges,delay=delay)
+        
+        self.sort()
+        self.iter,funcs=bool_model_iter(self,return_funcs=True)
+        
+        #set aliases for functions as self attrs
+        for k,v in funcs.items():
+            setattr(self,k.__name__,v)
+        
+        #set nodes to be forced for initial conds
+        if self.MPX is not None:
+            self.dynamical_nodes=self.MPX
+        else:
+            self.dynamical_nodes=original_nodes
+        
+        self.noise=noise
+        self.dt=dt
+        self.T=int(T/dt)
+        self.delay=(self.delay/dt).astype(np.int64)
+        self.node_data(save=True)
+        self.edge_data(save=True)
+        self.init,self.hold=bool_initial_conditions(self,init=init,hold=hold,steady=steady)
+        self.hold=(self.hold/dt).astype(np.int64)
+        self.predar=np.concatenate([list(self.predecessors(n)) for n in self.nodes]).astype(np.int64)
+        if len(self.tau.shape)!=1:
+            self.integral=bool_integral_risefall
+        else:
+            self.integral=bool_integral
+        
+        
+        #self(g=g,a=a,tau=tau,f=f,delay=delay,edge_replacements=edge_replacements,
+        #           T=T,dt=dt,noise=noise,steady=steady,init=init,hold=hold,plot=plot)
+    
+    
+    def __call__(self,
+                 g=None,
+                 a=None,
+                 tau=None,
+                 f=None,
+                 delay=None,
+                 edge_replacements=None,
+                 T=None,
+                 dt=None,
+                 noise=None,
+                 steady=None,
+                 init=None,
+                 hold=None,
+                 plot=None):
+        if g is None:
+            g = self.kwargs[&#39;g&#39;]
+        if a is None: 
+            a = self.kwargs[&#39;a&#39;]
+        if tau is None: 
+            tau = self.kwargs[&#39;tau&#39;]
+        if f is None: 
+            f = self.kwargs[&#39;f&#39;]
+        if delay is None: 
+            delay = self.kwargs[&#39;delay&#39;]
+        if edge_replacements is None: 
+            edge_replacements = self.kwargs[&#39;edge_replacements&#39;]
+        if T is None: 
+            T = self.kwargs[&#39;T&#39;]
+        if dt is None: 
+            dt = self.kwargs[&#39;dt&#39;]
+        if noise is None: 
+            noise = self.kwargs[&#39;noise&#39;]
+        if steady is None: 
+            steady = self.kwargs[&#39;steady&#39;]
+        if init is None: 
+            init = self.kwargs[&#39;init&#39;]
+        if hold is None: 
+            hold = self.kwargs[&#39;hold&#39;]
+        if plot is None: 
+            plot = self.kwargs[&#39;plot&#39;]
+        super().__init__(g)
+        self.give_nodes(a=a,tau=tau,f=f)
+        self.give_edges(delay=delay)
+        original_nodes=list(self.nodes)
+        if edge_replacements:
+            convert_edges(self,edges=edge_replacements.get(&#39;edges&#39;),
+                               lengths=edge_replacements.get(&#39;lengths&#39;),
+                               node_data=edge_replacements.get(&#39;node_attrs&#39;),
+                               delay=edge_replacements.get(&#39;delay&#39;))
+        self.sort()
+        self.itr=bool_model_iter(self)
+        node_funcs={n:self.nodes[n][&#39;f&#39;] for n in self.nodes}
+        funcs=nx.utils.groups(sidis.cast(node_funcs,dict))
+        funcs={k:list(v) for k,v in funcs.items()}
+        for k,v in funcs.items():
+            setattr(self,k.__name__,v)
+        if self.MPX is not None:
+            self.dynamical_nodes=self.MPX
+        else:
+            self.dynamical_nodes=original_nodes
+        self.dt=dt
+        self.T=int(T/dt)
+        self.node_data(save=True)
+        self.edge_data(save=True)
+        self.init,self.hold=bool_initial_conditions(self,init=init,hold=hold,steady=steady)
+        self.hold=(self.hold/dt).astype(np.int64)
+        self.delay=(self.delay/dt).astype(np.int64)
+        self.predar=np.concatenate([list(self.predecessors(n)) for n in self.nodes]).astype(np.int64)
+        if len(self.tau.shape)!=1:
+            self.integral=njintegral
+        else:
+            self.integral=njintegral
+        if plot:
+            self.integrate(init=self.init,hold=self.hold)
+            self.plot()
+
+    def initial_condition(self,init=None,steady=False,bias=0):
+        if init is None:
+            init=np.zeros((len(self.dynamical_nodes)))
+            init[0]=1
+        init=np.array(init)
+        new_init=np.zeros((len(self)))
+        new_init[self.dynamical_nodes]=init[:len(self.dynamical_nodes)]
+        if steady:
+            new_init=np.array([self.nodes[n][&#39;f&#39;](
+                np.array([new_init[j] for j in list(self.predecessors(n))])) for n in self.nodes])
+        new_init+=bias
+        new_init=np.clip(new_init,0,1)
+        return new_init
+    
+    def parse_initial_condition(self,init=None,hold=None,steady=False,override=False):
+        if not override:
+            if init is not None and hold is not None: #if both given, replace current
+                self.init,self.hold=bool_initial_conditions(self,init=init,hold=hold,steady=steady)
+                self.hold=(self.hold/dt).astype(np.int64)
+            if init is None: #replace hold
+                _,self.hold=bool_initial_conditions(self,init=init,hold=hold,steady=steady)
+                self.hold=(self.hold/dt).astype(np.int64)
+            if hold is None: #replace init
+                self.init,_=bool_initial_conditions(self,init=init,hold=hold,steady=steady)
+        else:
+            self.init,self.hold=init,hold
+
+    def perturb(self,*args,scale=0.1):
+        for a in args:
+            setattr(self,a,perturb(getattr(self,a),scale))
+        
+    def integrate(self,init=None,hold=None,noise=None,T=None,dt=None,steady=False,override=False,
+                  repeats=1,decimation=1):
+        if decimation is None:
+            decimation=int(1/dt)
+        if T is None:
+            T=self.T
+        if dt is not None:
+            self.dt=dt
+        if T is not None:
+            self.T=int(T/self.dt)
+        if noise is not None:
+            self.noise=noise
+
+        if isinstance(init,np.ndarray) and len(init.shape)&gt;1:
+            inits=[]
+            for i in init:
+                self.parse_initial_condition(init=i,hold=hold,steady=steady,override=override)
+                inits+=[self.init]
+            self.init=np.array(init)
+        else:
+            self.parse_initial_condition(init=init,hold=hold,steady=steady,override=override)
+        
+        x=self.integral(iterator=self.iter,
+                        time_delays=self.delay,
+                        sigmoid_constants=self.a,
+                        time_constants=self.tau,
+                        predecessors=self.predar,
+                        initial_condition_matrix=self.init if len(self.init.shape)==2 else stack(
+                            self.init,times=1,axis=0),
+                        hold_times=self.hold,
+                        dt=self.dt,
+                        T=self.T,
+                        noise_scale=self.noise,
+                        decimation=decimation,
+                        repeats=repeats
+                       )
+
+        return np.squeeze(x)
+    
+    def view(self,view=&#39;in&#39;):
+        &#39;&#39;&#39;
+        Change default edge view
+        &#39;&#39;&#39;
+        if view==&#39;in&#39;:
+            self.edge_view=nx.classes.reportviews.InMultiEdgeView
+
+        elif view==&#39;out&#39;:
+            self.edge_view=nx.classes.reportviews.OutMultiEdgeView
+            
+    
+    @nx.MultiDiGraph.edges.getter
+    def edges(self):
+        return self.edge_view(self)
+    
+    
+    def sort(self,**kwargs):
+        sort_graph(self,**kwargs)
+        
+
+    def relabel(self,mapping=None):
+        relabel_graph(self,mapping)
+        
+
+    def node_attrs(self):
+        return node_attrs(self)
+    
+
+    def edge_attrs(self):
+        return edge_attrs(self)
+    
+
+    def give_nodes(self,data=None,nodes=None,**kwargs):
+        give_nodes(self,data=data,nodes=nodes,**kwargs)
+            
+
+    def give_edges(self,data=None,edges=None,**kwargs):
+        give_edges(self,data=data,edges=edges,**kwargs)
+
+    def give_self(self,data=None,**kwargs):
+        &#39;&#39;&#39;
+        Give any arg dict and kwargs to self as attrs
+        &#39;&#39;&#39;
+        try:
+            sidis.give(self,**parse_kwargs(**kwargs))
+        except:
+            pass
+
+        if data:
+            for k,v in data.items():
+                try:
+                    self.__dict__.update(parse_kwargs(**v))
+                except KeyError:
+                    pass
+            
+            
+    def clear_nodes(self,*args):
+        &#39;&#39;&#39;
+        Remove arg entries from node dict
+        &#39;&#39;&#39;
+        if not args:
+            args=self.node_attrs()
+        [[sidis.give(self.node[n],arg,None) for n in self.nodes] for arg in args]
+        
+    
+    def clear_edges(self,*args):
+        &#39;&#39;&#39;
+        Remove arg entries from edge dict
+        &#39;&#39;&#39;
+        if not args:
+            args=self.edge_attrs()
+        [[sidis.give(self.edges[e],arg,None) for e in self.edges] for arg in args]
+        
+
+    def node_data(self,*args,save=False):
+        &#39;&#39;&#39;
+        Set node attributes as self attribute array. 
+        &#39;&#39;&#39;
+        if not save:
+            return node_data(self,*args)
+        else:
+            self.give_self(**node_data(self,*args))
+
+
+    def edge_data(self,*args,save=False):        
+        if not save:
+            return edge_data(self,*args)
+        else:
+            self.give_self(**edge_data(self,*args))
+                
+                    
+    def replace_edges(self,edge_replacements=None):
+        if edge_replacements is not None:
+            edges=edge_replacements.get(&#39;edges&#39;)
+            lengths=edge_replacements.get(&#39;lengths&#39;)
+            node_data=edge_replacements.get(&#39;node_attrs&#39;)
+            a=node_data.get(&#39;a&#39;)
+            tau=node_data.get(&#39;tau&#39;)
+            f=node_data.get(&#39;f&#39;)
+            delay=edge_replacements.get(&#39;delay&#39;)
+            if label is None:
+                label = lambda g,node,iterable : len(g)+iterable
+            if lengths is None:
+                lengths=1
+            if delay is None:
+                delay = 0
+            if a is None:
+                a=np.inf
+            if tau is None:
+                tau=1
+            if f is None:
+                f=MPX
+            convert_edges(self,edges=edges,
+                          **BooleanNetwork.edge_replacements(
+                              lengths=lengths,a=a,f=f,tau=tau,delay=delay,label=label))
+        
+        
+    def where(self,*args,**kwargs):
+        return where(self,*args,**kwargs)
+    
+    def edgewhere(self,*args):
+        return np.array(self.edges)[self.where(*args)]
+    
+    def nodewhere(self,*args):
+        return np.array(self.nodes)[self.where(*args)]
+    
+    def __str__(self):
+        return print_graph(self,string=True)
+    
+    def __repr__(self):
+        s=str(self)
+        S=super().__repr__()
+        spl=s.split(&#39;\n&#39;)
+        if len(spl)&gt;10:
+            spl=spl[:5]+[&#39;...&#39;]+spl[-5:]
+        return S+&#39;\n&#39;+(&#39;\n&#39;).join(spl)
+
+    def plot(self):
+        &#39;&#39;&#39;
+        Make separate plots of the node states `x` for each in-degree grouping.
+        &#39;&#39;&#39;
+        self.node_funcs={n:self.nodes[n][&#39;f&#39;] for n in self.nodes}
+        funcs=nx.utils.groups(sidis.cast(self.node_funcs,dict))
+        funcs={k:list(v) for k,v in funcs.items()}
+        for f,nodes in funcs.items():
+            for i in nodes:
+                plt.plot(np.arange(self.x.shape[0])*self.dt,self.x[:,i])
+                title=f&#39;{f.__name__} Nodes: {nodes[0]} to {nodes[-1]}&#39;
+                plt.title(title)
+                plt.xlabel(&#39;Time (ns)&#39;)
+                plt.ylabel(&#39;Amplitude&#39;)
+            plt.show()
+        
+No export destination, ignored:
+#export
+def puf_statistics(responses : np.ndarray,
+                   shape : str = &#39;challenge repeat time instance node&#39;
+                  ) -&gt; Tuple[Union[np.ndarray,float,int]]:
+    &#39;&#39;&#39;
+    Given an array of `responses` of a given `shape`, calculate the inter and intra
+    PUF statistics mu_inter and mu_intra and their standard deviations over time.
+    Return these as arrays over time, as well as their maximum separation mu_opt
+    and the time at which this occurs t_opt. 
+    `shape` must be a permutation of the words &#39;challenge repeat time instance node&#39;
+    and describes the input shape of the array.
+    &#39;&#39;&#39;
+    resp=einops.rearrange(responses,shape+
+                          &#39;-&gt; challenge repeat time instance node&#39;).astype(float)
+    n_distinct=resp.shape[0]
+    n_repeat=resp.shape[1]
+    measure_time=resp.shape[2]
+    n_synth=resp.shape[3]
+    n=resp.shape[4]
+    #Number of pairwise combinations for inter and intra calculations.
+    l_intra=n_repeat*(n_repeat-1)/2
+    l_inter=n_synth*(n_synth-1)/2
+    #Pairwise differences of timeseries from responses used for comparison.
+    pdt_intra=np.zeros((n_distinct,n_synth,int(l_intra),measure_time))
+    pdt_inter=np.zeros((n_distinct,n_repeat,int(l_inter),measure_time))
+    #Loop over each pairwise combination and form fractional hamming distances at each time.
+    for i in range(n_distinct):
+        for g in range(n_synth):
+            l=0
+            for j in range(n_repeat):
+                for k in range(j+1,n_repeat):
+                    pdt_intra[i,g,l]=np.sum(abs(resp[i,j,:,g,:]-resp[i,k,:,g,:]),axis=-1)/n
+                    l+=1
+        for g in range(n_repeat):
+            l=0
+            for j in range(n_synth):
+                for k in range(j+1,n_synth):
+                    pdt_inter[i,g,l]=np.sum(abs(resp[i,g,:,j,:]-resp[i,g,:,k,:]),axis=-1)/n
+                    l+=1
+    #Compute means on a per-device and overall level.
+    #Intra block below. Copies along axes for quick vector calculations.
+    mu_intra_per_device=np.mean(pdt_intra,axis=(0,2))
+    mu_intra_per_device_copy=np.repeat(\
+        np.repeat(mu_intra_per_device[:,np.newaxis,:],\
+            l_intra,axis=1)[np.newaxis,:],n_distinct,axis=0)
+    sigma_intra_per_device= np.sqrt(np.mean((np.square(pdt_intra-mu_intra_per_device_copy)),axis=(0,2)))
+    mu_intra=np.mean(mu_intra_per_device,axis=0)
+    sigma_intra=np.mean(sigma_intra_per_device,axis=0)
+    #Inter block below. Copies along axes for quick vector calculations.
+    mu_inter_per_device=np.mean(pdt_inter,axis=(0,2))
+    mu_inter_per_device_copy=np.repeat(np.repeat(\
+        mu_inter_per_device[:,np.newaxis,:],l_inter,axis=1)[np.newaxis,:],\
+            n_distinct,axis=0)
+    sigma_inter_per_device= np.sqrt(np.mean((np.square(pdt_inter-mu_inter_per_device_copy)),axis=(0,2)))
+    mu_inter=np.mean(mu_inter_per_device,axis=0)
+    sigma_inter=np.mean(sigma_inter_per_device,axis=0)
+    #Find optimum measurement time and save time series.
+    t_opt=np.argmin(mu_intra-mu_inter)
+    mu_opt=mu_inter[t_opt]-mu_intra[t_opt]
+    return mu_inter,mu_intra,sigma_inter,sigma_intra,mu_opt,t_opt
+No export destination, ignored:
+#export
+def bool_lyapunov(responses : np.ndarray,
+                  window : int = 5,
+                  shape : str = &#39;challenge repeat time node&#39;
+                 ) -&gt; Tuple[np.ndarray]:
+    &#34;&#34;&#34;
+    Boolean timeseries Lyapunov exponent calculator.
+    Takes as input the time series of PUF responses
+    and calculates the maximum Lyapunov exponent to determine if the system is chaotic.
+    Args:
+        responses: array of PUF responses for a single instance
+        window: Temporal window length for comparison of Boolean distance between time series.
+        shape: input shape of PUF responses for a single instance
+    &#34;&#34;&#34;
+    T=window
+    resp=einops.rearrange(responses,shape+
+                          &#39;-&gt; challenge repeat time node&#39;).astype(float)
+    nrp= resp.shape[1] #number of reps
+    nch= resp.shape[0] #number of challenges
+    measure_time=resp.shape[2]
+    n=resp.shape[-1]
+    #We loop over pairwise combinations of timeseries comparisons and compute the
+    #average Boolean distance within the window length.
+    clist=[]
+    for c in range(nch):
+        ilist=[]
+        for i in range(1,nrp):
+            tlist=[]
+            for t in range(measure_time-T):
+                d=np.sum(abs(resp[c,i,t:t+T]-resp[c,0,t:t+T]))/(n*T)
+                if d!=0:
+                    first_t=t
+                    break
+                else:
+                    first_t=0
+            for t in range(first_t,measure_time-T):
+                d=np.sum(abs(resp[c,i,t:t+T]-resp[c,0,t:t+T]))/(n*T)
+                tlist+=[d]
+            if tlist!=[]:
+                ilist+=[tlist]
+        if ilist!=[]:
+            clist+=[ilist]
+
+    avgln=[0 for t in range(measure_time-T)]
+    tcounterlist=[0 for t in range(measure_time-T)]
+    longesttime=-1
+    for c in range(nch):
+        for i in range(len(clist[c])):
+            for t in range(len(clist[c][i])):
+                tcounterlist[t]+=1
+                avgln[t]+=np.log(clist[c][i][t]) if clist[c][i][t]!=0 else np.log(0.01)
+                longesttime=t if t&gt;longesttime else longesttime
+
+    avgln=avgln[:longesttime+1]
+    tcounterlist=tcounterlist[:longesttime+1]
+
+    for t in range(len(avgln)):
+        avgln[t]=avgln[t]/tcounterlist[t]
+
+    sigmaln=[0 for t in range(len(avgln))]
+    for c in range(nch):
+        for i in range(len(clist[c])):
+            for t in range(len(clist[c][i])):
+                xi=np.log(clist[c][i][t]) if clist[c][i][t]!=0 else np.log(0.01)
+                sigmaln[t]+=(xi-avgln[t])**2
+
+    for t in range(len(avgln)):
+        sigmaln[t]=np.sqrt(sigmaln[t]/(tcounterlist[t]-1))
+    
+    return avgln,sigmaln
+No export destination, ignored:
+#export
+def lya_fit(avgln,sigmaln,lstart=0,lend=5,intercept=False):
+    &#34;&#34;&#34;
+    Fits average logarithm of boolean distances calculated in lya() function.
+    Calculates resulting maximum lyapunov exponent.
+    Args:
+        lstart: Start of linear fit.
+        lend: End of linear fit.
+    &#34;&#34;&#34;
+    linearstart=lstart
+    linearend=lend
+    xdata=np.arange(linearstart,linearend+1)
+    ydata=np.asarray(avgln[linearstart:linearend+1])
+    sdata=np.asarray(sigmaln[linearstart:linearend+1])
+    def lin(x,m,b):
+        return m*x+b
+    popt, pcov = sciopt.curve_fit(lin, xdata, ydata, sigma=sdata, absolute_sigma=True)
+    m=popt[0]
+    b=popt[1]
+    p_sigma = np.sqrt(np.diag(pcov))
+    m_sigma = p_sigma[0]
+    residuals = ydata- lin(xdata, m,b)
+    ss_res = np.sum(residuals**2)
+    ss_tot = np.sum((ydata-np.mean(ydata))**2)
+    r_squared = 1 - (ss_res / ss_tot)
+    lya_b=b
+    lya_max=m
+    lya_max_err=m_sigma
+    if not intercept:
+        return lya_max,lya_max_err
+    else:
+        return lya_max,lya_max_err,lya_b
+No export destination, ignored:
+#export
+@njit
+def booleanize(vn, threshold=0.5):
+    &#39;&#39;&#39;
+    Convert the numpy array `vn` into a bitstream
+    according to `threshold`; values of `vn&gt;=threshold`
+    will be set to `1`, and values of `vn&lt;threshold`
+    will be set to `0`. If `threshold` is not supplied,
+    it defaults to halfway between the range of `vn`.
+    &#39;&#39;&#39;
+    if threshold is None:
+        threshold=(np.max(vn)-np.min(vn))/2
+    B=np.zeros(vn.shape).astype(vn.dtype)
+    for s in np.ndindex(vn.shape):
+        if vn[s]&gt;=threshold:
+            B[s]+=1.
+    return B
+No export destination, ignored:
+#export
+def ensemble(classes = 3,
+             instances = 3,
+             challenges = 3,
+             repeats = 3,
+             inter_variation = 0.1,
+             T = 15,
+             dt = 0.01,
+             hold = (rng.normal,1,0.1),
+             noise = 0.01,
+             decimation = None,
+             g = (nx.random_regular_graph,3,16),
+             a = (rng.normal,20,2),
+             tau = (rng.normal,1,0.1),
+             f = XOR,
+             delay = (rng.random,0,1),
+             edge_replacements = dict(
+                 lengths = 1,
+                 delay = (rng.random,0,0.5),
+                 node_attrs = dict(
+                     a = (rng.normal,20,2),
+                     tau = (rng.normal,0.5,0.05),
+                     f = MPX)
+             ),
+             return_classes = False
+            ):
+    &#39;&#39;&#39;
+    Generates an ensemble of BooleanNetworks class objects over a distribution,
+    and an additional set of arrays containing slight perturbations to the parameter
+    space of each BooleanNetwork. Returns a dictionary containing the characteristic 
+    parameters of each BooleanNetwork as arrays, which are used as the arguments to
+    a jit accelerated integration routine `query_rise` and `query_fall`.
+    &#39;&#39;&#39;
+    if decimation is None:
+        decimation=int(1/dt)
+    perturb = lambda a: (a*(1.+rng.random(-inter_variation/2.,inter_variation/2.,shape=a.shape))
+                        ).astype(a.dtype)
+    
+    models = [None for c in range(classes)]
+    hold_times = [None for c in range(classes)]
+    iterators = [None for c in range(classes)]
+    predecessors = [None for c in range(classes)]
+    
+    time_delays = [[None for i in range(instances)] for c in range(classes)]
+    sigmoid_constants = [[None for i in range(instances)] for c in range(classes)]
+    time_constants = [[None for i in range(instances)] for c in range(classes)]
+
+    for c in range(classes):
+        graph = parse_kwargs(g=g)[&#39;g&#39;]
+        N = len(graph) #assume all graphs same len
+        hold_args = tuple(list(hold)+[dict(shape=N)])
+        model = BooleanNetwork(g=graph,
+                               init=None,
+                               hold=parse_kwargs(k=hold_args)[&#39;k&#39;],
+                               a=a,
+                               T=T,
+                               dt=dt,
+                               noise=noise,
+                               f=f,
+                               tau=tau,
+                               delay=delay,
+                               edge_replacements=edge_replacements,
+                               plot=False)
+        models[c] = model
+        hold_times[c] = model.hold
+        iterators[c] = model.itr
+        predecessors[c] = model.predar
+        
+        for i in range(instances):
+            time_delays[c][i] = perturb(model.delay)
+            sigmoid_constants[c][i] = perturb(model.a)
+            time_constants[c][i] = perturb(model.tau)
+            
+    iterators = np.array(iterators)
+    predecessors = np.array(predecessors)
+    time_delays =  np.array(time_delays)
+    sigmoid_constants = np.array(sigmoid_constants)
+    time_constants = np.array(time_constants)
+    hold_times = np.array(hold_times)
+    
+    initial_conditions = np.empty((challenges,repeats,len(model)))
+    for h in range(challenges): #assume length of all classes equal 
+        initial_conditions[h,:],_=bool_initial_conditions(model,
+                    init=rng.random(0,1,absval=True,asint=True,shape=N),
+                    hold=None,
+                    steady=True)
+
+    int_type = np.int64
+    float_type = np.longdouble
+    data = dict(
+        iterator_matrix=iterators.astype(int_type),
+        time_delay_matrix=time_delays.astype(int_type),
+        sigmoid_constant_matrix=sigmoid_constants.astype(float_type),
+        time_constant_matrix=time_constants.astype(float_type),
+        predecessor_matrix=predecessors.astype(int_type),
+        initial_condition_matrix=initial_conditions.astype(float_type),
+        hold_time_matrix=hold_times.astype(int_type),
+        dt=dt,
+        noise_scale=noise,
+        T=T,
+        N=len(model),
+        decimation=decimation
+    )
+    if return_classes:
+        return models,data
+    else:
+        return data
+No export destination, ignored:
+#export
+@njit
+def query_rise(iterator_matrix,
+               time_delay_matrix,
+               sigmoid_constant_matrix,
+               time_constant_matrix,
+               predecessor_matrix,
+               initial_condition_matrix,
+               hold_time_matrix,
+               dt,
+               T,
+               N,
+               noise_scale,
+               decimation
+              ):
+    &#39;&#39;&#39;
+    Jit accelerated integration routine for the `query` function for an `ensemble` of
+    `BooleanNetwork`s which have the same rise and fall time. Nearly identical to 
+    `bool_integral` with a loop over `classes,instances,challenges,repeats`. 
+    &#39;&#39;&#39;
+    classes=iterator_matrix.shape[0]
+    challenges=initial_condition_matrix.shape[0]
+    repeats=initial_condition_matrix.shape[1]
+    instances=time_delay_matrix.shape[1]
+
+    responses = np.zeros((classes,instances,challenges,repeats,T,N))
+
+    for c,q,h,r in np.ndindex(responses.shape[:-2]): #class,inst,chal,rep
+        iterator=iterator_matrix[c]
+        time_delays=time_delay_matrix[c,q]
+        sigmoid_constants=sigmoid_constant_matrix[c,q]
+        time_constants=time_constant_matrix[c,q]
+        predecessors=predecessor_matrix[c]
+        initial_conditions=initial_condition_matrix[h,r]
+        hold_times=hold_time_matrix[c]   
+        x=np.zeros((int(T/dt),N)).astype(np.longdouble)
+        dx=np.zeros(x.shape[-1]).astype(np.longdouble)
+        for t in range(x.shape[0]-1):
+            noise=np.empty(x.shape[1])
+            for n in range(x.shape[1]):
+                noise[n]=np.random.random()*noise_scale
+            #noise=noise*noise_scale
+            edge_index=0
+            if t&lt;max(hold_times):
+                for n in range(x.shape[-1]):
+                    if hold_times[n]&gt;=t:
+                        x[t,n]=initial_conditions[n]
+            for i in range(len(iterator)): 
+                n1,n2,deg,mask=iterator[i]
+                d=-time_delays[edge_index:edge_index+(n2-n1)*deg].reshape((n2-n1,deg))
+                d+=t
+                p=predecessors[edge_index:edge_index+(n2-n1)*deg].reshape((n2-n1,deg))
+                a=sigmoid_constants[n1:n2].reshape((n2-n1,1))
+                edge_index+=(n2-n1)*deg
+                y=np.zeros((n2-n1,deg))#.astype(np.longdouble)
+                for k in range(n2-n1):
+                    for j in range(deg):
+                        de=d[k,j]
+                        pr=p[k,j]
+                        y[k,j]=x[de,pr]
+                y=sigmoid(x=y,a=a)
+                dx[n1:n2]=BOOL(y,mask)
+            dx=sigmoid(dx,sigmoid_constants)
+            dxdt=(-x[t]+dx+noise)/time_constants
+            x[t+1]=x[t]+dt*dxdt
+        
+        responses[c,q,h,r]=x[::decimation]
+                
+    return responses
+No export destination, ignored:
+#export
+@njit
+def query_fall(iterator_matrix,
+               time_delay_matrix,
+               sigmoid_constant_matrix,
+               time_constant_matrix,
+               predecessor_matrix,
+               initial_condition_matrix,
+               hold_time_matrix,
+               dt,
+               T,
+               N,
+               noise_scale,
+               decimation
+              ):
+    &#39;&#39;&#39;
+    Jit accelerated integration routine for the `query` function for an `ensemble` of
+    `BooleanNetwork`s which have different rise and fall times. Nearly identical to 
+    `bool_integral_risefall` with a loop over `classes,instances,challenges,repeats`. 
+    &#39;&#39;&#39;
+    classes=iterator_matrix.shape[0]
+    challenges=initial_condition_matrix.shape[0]
+    repeats=initial_condition_matrix.shape[1]
+    instances=time_delay_matrix.shape[1]
+
+    responses = np.zeros((classes,instances,challenges,repeats,T,N))
+
+    for c,q,h,r in np.ndindex(responses.shape[:-2]): #class,inst,chal,rep
+        iterator=iterator_matrix[c]
+        time_delays=time_delay_matrix[c,q]
+        sigmoid_constants=sigmoid_constant_matrix[c,q]
+        time_constants=time_constant_matrix[c,q]
+        predecessors=predecessor_matrix[c]
+        initial_conditions=initial_condition_matrix[h,r]
+        hold_times=hold_time_matrix[c]   
+        x=np.zeros((int(T/dt),N)).astype(np.longdouble)
+        dx=np.zeros(x.shape[-1]).astype(np.longdouble)
+        for t in range(x.shape[0]-1):
+            noise=np.empty(x.shape[1])
+            for n in range(x.shape[1]):
+                noise[n]=np.random.random()
+            noise=noise*noise_scale
+            edge_index=0
+            if t&lt;max(hold_times):
+                for n in range(x.shape[-1]):
+                    if hold_times[n]&gt;=t:
+                        x[t,n]=initial_conditions[n]
+            for i in range(len(iterator)): 
+                n1,n2,deg,mask=iterator[i]
+                d=-time_delays[edge_index:edge_index+(n2-n1)*deg].reshape((n2-n1,deg))
+                d+=t
+                p=predecessors[edge_index:edge_index+(n2-n1)*deg].reshape((n2-n1,deg))
+                a=sigmoid_constants[n1:n2].reshape((n2-n1,1))
+                edge_index+=(n2-n1)*deg
+                y=np.zeros((n2-n1,deg))#.astype(np.longdouble)
+                for k in range(n2-n1):
+                    for j in range(deg):
+                        de=d[k,j]
+                        pr=p[k,j]
+                        y[k,j]=x[de,pr]
+                y=sigmoid(x=y,a=a)
+                dx[n1:n2]=BOOL(y,mask)
+            dx=sigmoid(dx,sigmoid_constants)
+            tau=time_constants[:,0]+(time_constants[:,1]-time_constants[:,0]
+                                    )*sigmoid(x[t],sigmoid_constants)
+            dxdt=(-x[t]+dx+noise)/tau
+        
+        responses[c,q,h,r]=x[::decimation]
+                
+    return responses
+No export destination, ignored:
+#export
+def analyze(responses,
+           shape = &#39;design instance challenge repeat time node&#39;,
+           window = 5
+          ):
+    &#39;&#39;&#39;
+    Calculates the `puf_statistics` and `boolean_lyapunov` for an array of `responses`.
+    &#39;&#39;&#39;
+    responses = einops.rearrange(responses,
+                                 shape+&#39;-&gt;design instance challenge repeat time node&#39;)
+    classes,instances,challenges,repeats,T,N=responses.shape
+    boolean = booleanize(responses).astype(int)
+    mu_inter=np.empty((classes,T,2))
+    mu_intra=np.empty((classes,T,2))
+    delta_mu=np.empty((classes,2))
+    t_opt=np.empty((classes))
+    
+    for s in range(responses.shape[0]):
+        muinter,muintra,dmuinter,dmuintra,muopt,topt=puf_statistics(
+            responses=boolean[s],shape=&#39;instance challenge repeat time node&#39;)
+        mu_inter[s,:,0]=muinter
+        mu_inter[s,:,1]=dmuinter
+        mu_intra[s,:,0]=muintra
+        mu_intra[s,:,1]=dmuintra
+        t_opt[s]=topt
+        delta_mu[s,0]=muopt
+        delta_mu[s,1]=np.sqrt((muintra[topt]*dmuinter[topt])**2+(muinter[topt]*dmuintra[topt])**2)
+
+        
+    log_dist=np.empty((classes,instances,T-window,2))
+    lyapunov=np.empty((classes,instances,2))
+    intercept=np.empty((classes,instances))
+    
+    for s in np.ndindex(responses.shape[:2]):
+        avgln,sigmaln=bool_lyapunov(boolean[s],window,shape= &#39;challenge repeat time node&#39;)
+        lya,dlya,b=lya_fit(avgln,sigmaln,lstart=0,lend=int(T/2),intercept=True)
+        a=np.array([avgln,sigmaln])
+        a=a.T
+        log_dist[s]=a
+        a=np.array([lya,dlya])
+        a=a.T
+        lyapunov[s]=a
+        intercept[s]=b
+    
+    return dict(mu_inter=mu_inter,mu_intra=mu_intra,delta_mu=delta_mu,t_opt=t_opt,
+               log_dist=log_dist,lyapunov=lyapunov,intercept=intercept)
+        
+No export destination, ignored:
+#export
+@sidis.timer
+def query(classes = 3,
+         instances = 3,
+         challenges = 3,
+         repeats = 3,
+         inter_variation = 0.1,
+         decimation = None,
+         g = (nx.random_regular_graph,3,16),
+         a = (rng.normal,20,2),
+         tau = (rng.normal,1,0.1),
+         f = XOR,
+         delay = (rng.random,0,1),
+         edge_replacements = dict(
+             lengths = 1,
+             delay = (rng.random,0,0.5),
+             node_attrs = dict(
+                 a = (rng.normal,20,2),
+                 tau = (rng.normal,0.5,0.05),
+                 f = MPX)
+         ),
+         T = 15,
+         dt = 0.01,
+         hold = (rng.normal,1,0.1),
+         noise = 0.01,
+         enroll = True
+         ):
+    &#39;&#39;&#39;
+    Generates an `ensemble` of BooleanNetworks and calculates their `puf_statistics`
+    and `boolean_lyapunov` with `analyze`.
+    &#39;&#39;&#39;
+    model_data = ensemble(**{k:v for k,v in locals().items() if k!=&#39;enroll&#39;})
+    if model_data[&#39;time_constant_matrix&#39;].shape[-1]==2:
+        integrator = query_fall
+    else:
+        integrator = query_rise
+    response = integrator(**model_data)
+    if enroll:
+        stats = analyze(response)
+        return response,stats
+    else:
+        return response
+No export destination, ignored:
+#export
+def ensemble(classes = 1,
+             instances = 1,
+             challenges = 1,
+             repeats = 1,
+             inter_variation = 0.,
+             T = 100,
+             dt = 0.01,
+             hold = (rng.normal,1,0),
+             noise = 0.0,
+             decimation = None,
+             g = ring(left=True,right=False,loop=False),
+             a = np.inf,
+             tau = 1,
+             f = NOT,
+             delay = 0,
+             edge_replacements = None,
+             return_classes = True,
+             steady = True
+            ):
+    &#39;&#39;&#39;
+    Generates an ensemble of BooleanNetworks class objects over a distribution,
+    and an additional set of arrays containing slight perturbations to the parameter
+    space of each BooleanNetwork. Returns a dictionary containing the characteristic 
+    parameters of each BooleanNetwork as arrays, which are used as the arguments to
+    a jit accelerated integration routine `query_rise` and `query_fall`.
+    &#39;&#39;&#39;
+    if decimation is None:
+        decimation=int(1/dt)
+    perturb = lambda a: (a*(1.+rng.random(-inter_variation/2.,inter_variation/2.,shape=a.shape))
+                        ).astype(a.dtype)
+    
+    models = [None for c in range(classes)]
+    hold_times = [None for c in range(classes)]
+    iterators = [None for c in range(classes)]
+    predecessors = [None for c in range(classes)]
+    
+    time_delays = [[None for i in range(instances)] for c in range(classes)]
+    sigmoid_constants = [[None for i in range(instances)] for c in range(classes)]
+    time_constants = [[None for i in range(instances)] for c in range(classes)]
+
+    for c in range(classes):
+        graph = parse_kwargs(g=g)[&#39;g&#39;]
+        N = len(graph) #assume all graphs same len
+        hold_args = tuple(list(hold)+[dict(shape=N)])
+        model = BooleanNetwork(g=graph,
+                               init=None,
+                               hold=parse_kwargs(k=hold_args)[&#39;k&#39;],
+                               a=a,
+                               T=T,
+                               dt=dt,
+                               noise=noise,
+                               f=f,
+                               tau=tau,
+                               delay=delay,
+                               edge_replacements=edge_replacements,
+                               plot=False)
+        models[c] = model
+        hold_times[c] = model.hold
+        iterators[c] = model.itr
+        predecessors[c] = model.predar
+        
+        for i in range(instances):
+            time_delays[c][i] = perturb(model.delay)
+            sigmoid_constants[c][i] = perturb(model.a)
+            time_constants[c][i] = perturb(model.tau)
+            
+    iterators = np.array(iterators)
+    predecessors = np.array(predecessors)
+    time_delays =  np.array(time_delays)
+    sigmoid_constants = np.array(sigmoid_constants)
+    time_constants = np.array(time_constants)
+    hold_times = np.array(hold_times)
+    
+    if type(challenges) is int:
+        initial_conditions = np.empty((challenges,repeats,len(model)))
+        for h in range(challenges): #assume length of all classes equal 
+            initial_conditions[h,:],_=bool_initial_conditions(model,
+                        init=rng.random(0,1,absval=True,asint=True,shape=N),
+                        hold=None,
+                        steady=steady)
+    else:
+        initial_conditions = np.empty((challenges.shape[0],repeats,len(model)))
+        for h,chal in enumerate(challenges): #assume length of all classes equal 
+            initial_conditions[h,:],_=bool_initial_conditions(model,
+                        init=chal,
+                        hold=None,
+                        steady=steady)
+
+    int_type = np.int64
+    float_type = np.longdouble
+    data = dict(
+        iterator_matrix=iterators.astype(int_type),
+        time_delay_matrix=time_delays.astype(int_type),
+        sigmoid_constant_matrix=sigmoid_constants.astype(float_type),
+        time_constant_matrix=time_constants.astype(float_type),
+        predecessor_matrix=predecessors.astype(int_type),
+        initial_condition_matrix=initial_conditions.astype(float_type),
+        hold_time_matrix=hold_times.astype(int_type),
+        dt=dt,
+        noise_scale=noise,
+        T=model.T,
+        N=len(model),
+        decimation=decimation
+    )
+    if return_classes:
+        return models,data
+    else:
+        return data
+No export destination, ignored:
+#export
+@njit
+def query_rise(iterator_matrix,
+               time_delay_matrix,
+               sigmoid_constant_matrix,
+               time_constant_matrix,
+               predecessor_matrix,
+               initial_condition_matrix,
+               hold_time_matrix,
+               dt,
+               T,
+               N,
+               noise_scale,
+               decimation
+              ):
+    &#39;&#39;&#39;
+    Jit accelerated integration routine for the `query` function for an `ensemble` of
+    `BooleanNetwork`s which have the same rise and fall time. Nearly identical to 
+    `bool_integral` with a loop over `classes,instances,challenges,repeats`. 
+    &#39;&#39;&#39;
+    classes=iterator_matrix.shape[0]
+    challenges=initial_condition_matrix.shape[0]
+    repeats=initial_condition_matrix.shape[1]
+    instances=time_delay_matrix.shape[1]
+
+    responses = np.zeros((classes,instances,challenges,repeats,int(T/decimation),N))
+
+    for c,q,h,r in np.ndindex(responses.shape[:-2]): #class,inst,chal,rep
+        iterator=iterator_matrix[c]
+        time_delays=time_delay_matrix[c,q]
+        sigmoid_constants=sigmoid_constant_matrix[c,q]
+        time_constants=time_constant_matrix[c,q]
+        predecessors=predecessor_matrix[c]
+        initial_conditions=initial_condition_matrix[h,r]
+        hold_times=hold_time_matrix[c]   
+        x=np.zeros((T,N)).astype(np.longdouble)
+        dx=np.zeros(x.shape[-1]).astype(np.longdouble)
+        for t in range(x.shape[0]-1):
+            noise=np.empty(x.shape[1])
+            for n in range(x.shape[1]):
+                noise[n]=np.random.random()*noise_scale
+            #noise=noise*noise_scale
+            edge_index=0
+            if t&lt;max(hold_times):
+                for n in range(x.shape[-1]):
+                    if hold_times[n]&gt;=t:
+                        x[t,n]=initial_conditions[n]
+            for i in range(len(iterator)): 
+                n1,n2,deg,mask=iterator[i]
+                d=-time_delays[edge_index:edge_index+(n2-n1)*deg].reshape((n2-n1,deg))
+                d+=t
+                p=predecessors[edge_index:edge_index+(n2-n1)*deg].reshape((n2-n1,deg))
+                a=sigmoid_constants[n1:n2].reshape((n2-n1,1))
+                edge_index+=(n2-n1)*deg
+                y=np.zeros((n2-n1,deg))#.astype(np.longdouble)
+                for k in range(n2-n1):
+                    for j in range(deg):
+                        de=d[k,j]
+                        pr=p[k,j]
+                        y[k,j]=x[de,pr]
+                y=sigmoid(x=y,a=a)
+                dx[n1:n2]=BOOL(y,mask)
+            dx=sigmoid(dx,sigmoid_constants)
+            dxdt=(-x[t]+dx+noise)/time_constants
+            x[t+1]=x[t]+dt*dxdt
+        
+        responses[c,q,h,r]=x[::decimation]
+                
+    return responses
+Warning: Exporting to &#34;None.py&#34; but this module is not part of this build
+Warning: Exporting to &#34;None.py&#34; but this module is not part of this build
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">AttributeError</span>                            Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-54-2155445c27e0&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 1</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>notebook2script<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+
+<span class="ansi-green-intense-fg ansi-bold">C:\Anaconda3\lib\site-packages\nbdev\export.py</span> in <span class="ansi-cyan-fg">notebook2script</span><span class="ansi-blue-intense-fg ansi-bold">(fname, silent, to_dict, bare, recursive)</span>
+<span class="ansi-green-fg">    421</span>     d <span class="ansi-yellow-intense-fg ansi-bold">=</span> collections<span class="ansi-yellow-intense-fg ansi-bold">.</span>defaultdict<span class="ansi-yellow-intense-fg ansi-bold">(</span>list<span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-green-intense-fg ansi-bold">if</span> to_dict <span class="ansi-green-intense-fg ansi-bold">else</span> <span class="ansi-green-intense-fg ansi-bold">None</span>
+<span class="ansi-green-fg">    422</span>     modules <span class="ansi-yellow-intense-fg ansi-bold">=</span> create_mod_files<span class="ansi-yellow-intense-fg ansi-bold">(</span>files<span class="ansi-yellow-intense-fg ansi-bold">,</span> to_dict<span class="ansi-yellow-intense-fg ansi-bold">,</span> bare<span class="ansi-yellow-intense-fg ansi-bold">=</span>bare<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 423</span><span class="ansi-yellow-intense-fg ansi-bold">     </span><span class="ansi-green-intense-fg ansi-bold">for</span> f <span class="ansi-green-intense-fg ansi-bold">in</span> sorted<span class="ansi-yellow-intense-fg ansi-bold">(</span>files<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span> d <span class="ansi-yellow-intense-fg ansi-bold">=</span> _notebook2script<span class="ansi-yellow-intense-fg ansi-bold">(</span>f<span class="ansi-yellow-intense-fg ansi-bold">,</span> modules<span class="ansi-yellow-intense-fg ansi-bold">,</span> silent<span class="ansi-yellow-intense-fg ansi-bold">=</span>silent<span class="ansi-yellow-intense-fg ansi-bold">,</span> to_dict<span class="ansi-yellow-intense-fg ansi-bold">=</span>d<span class="ansi-yellow-intense-fg ansi-bold">,</span> bare<span class="ansi-yellow-intense-fg ansi-bold">=</span>bare<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    424</span>     <span class="ansi-green-intense-fg ansi-bold">if</span> to_dict<span class="ansi-yellow-intense-fg ansi-bold">:</span> <span class="ansi-green-intense-fg ansi-bold">return</span> d
+<span class="ansi-green-fg">    425</span>     <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span> add_init<span class="ansi-yellow-intense-fg ansi-bold">(</span>Config<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>path<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#34;lib_path&#34;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+
+<span class="ansi-green-intense-fg ansi-bold">C:\Anaconda3\lib\site-packages\nbdev\export.py</span> in <span class="ansi-cyan-fg">_notebook2script</span><span class="ansi-blue-intense-fg ansi-bold">(fname, modules, silent, to_dict, bare)</span>
+<span class="ansi-green-fg">    352</span>         code <span class="ansi-yellow-intense-fg ansi-bold">=</span> _from_future_import<span class="ansi-yellow-intense-fg ansi-bold">(</span>fname_out<span class="ansi-yellow-intense-fg ansi-bold">,</span> flags<span class="ansi-yellow-intense-fg ansi-bold">,</span> code<span class="ansi-yellow-intense-fg ansi-bold">,</span> to_dict<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    353</span>         <span class="ansi-green-intense-fg ansi-bold">if</span> a<span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 354</span><span class="ansi-yellow-intense-fg ansi-bold">             </span><span class="ansi-green-intense-fg ansi-bold">if</span> to_dict <span class="ansi-green-intense-fg ansi-bold">is</span> <span class="ansi-green-intense-fg ansi-bold">None</span><span class="ansi-yellow-intense-fg ansi-bold">:</span> _add2all<span class="ansi-yellow-intense-fg ansi-bold">(</span>fname_out<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-blue-intense-fg ansi-bold">f&#34;&#39;{f}&#39;&#34;</span> <span class="ansi-green-intense-fg ansi-bold">for</span> f <span class="ansi-green-intense-fg ansi-bold">in</span> names <span class="ansi-green-intense-fg ansi-bold">if</span> <span class="ansi-blue-intense-fg ansi-bold">&#39;.&#39;</span> <span class="ansi-green-intense-fg ansi-bold">not</span> <span class="ansi-green-intense-fg ansi-bold">in</span> f <span class="ansi-green-intense-fg ansi-bold">and</span> len<span class="ansi-yellow-intense-fg ansi-bold">(</span>f<span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-yellow-intense-fg ansi-bold">&gt;</span> <span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">]</span> <span class="ansi-yellow-intense-fg ansi-bold">+</span> extra<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    355</span>         mod<span class="ansi-yellow-intense-fg ansi-bold">.</span>index<span class="ansi-yellow-intense-fg ansi-bold">.</span>update<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">{</span>f<span class="ansi-yellow-intense-fg ansi-bold">:</span> fname<span class="ansi-yellow-intense-fg ansi-bold">.</span>name <span class="ansi-green-intense-fg ansi-bold">for</span> f <span class="ansi-green-intense-fg ansi-bold">in</span> names<span class="ansi-yellow-intense-fg ansi-bold">}</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    356</span>         code <span class="ansi-yellow-intense-fg ansi-bold">=</span> re<span class="ansi-yellow-intense-fg ansi-bold">.</span>sub<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">r&#39; +$&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-blue-intense-fg ansi-bold">&#39;&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> code<span class="ansi-yellow-intense-fg ansi-bold">,</span> flags<span class="ansi-yellow-intense-fg ansi-bold">=</span>re<span class="ansi-yellow-intense-fg ansi-bold">.</span>MULTILINE<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+
+<span class="ansi-green-intense-fg ansi-bold">C:\Anaconda3\lib\site-packages\nbdev\export.py</span> in <span class="ansi-cyan-fg">_add2all</span><span class="ansi-blue-intense-fg ansi-bold">(fname, names, line_width)</span>
+<span class="ansi-green-fg">    207</span>     tw <span class="ansi-yellow-intense-fg ansi-bold">=</span> TextWrapper<span class="ansi-yellow-intense-fg ansi-bold">(</span>width<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-cyan-intense-fg ansi-bold">120</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> initial_indent<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-blue-intense-fg ansi-bold">&#39;&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> subsequent_indent<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-blue-intense-fg ansi-bold">&#39; &#39;</span><span class="ansi-yellow-intense-fg ansi-bold">*</span><span class="ansi-cyan-intense-fg ansi-bold">11</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> break_long_words<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-green-intense-fg ansi-bold">False</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    208</span>     re_all <span class="ansi-yellow-intense-fg ansi-bold">=</span> _re__all__def<span class="ansi-yellow-intense-fg ansi-bold">.</span>search<span class="ansi-yellow-intense-fg ansi-bold">(</span>text<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 209</span><span class="ansi-yellow-intense-fg ansi-bold">     </span>start<span class="ansi-yellow-intense-fg ansi-bold">,</span>end <span class="ansi-yellow-intense-fg ansi-bold">=</span> re_all<span class="ansi-yellow-intense-fg ansi-bold">.</span>start<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">,</span>re_all<span class="ansi-yellow-intense-fg ansi-bold">.</span>end<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    210</span>     text_all <span class="ansi-yellow-intense-fg ansi-bold">=</span> tw<span class="ansi-yellow-intense-fg ansi-bold">.</span>wrap<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">f&#34;{text[start:end-1]}{&#39;&#39; if text[end-2]==&#39;[&#39; else &#39;, &#39;}{&#39;, &#39;.join(names)}]&#34;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    211</span>     <span class="ansi-green-intense-fg ansi-bold">with</span> open<span class="ansi-yellow-intense-fg ansi-bold">(</span>fname<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-blue-intense-fg ansi-bold">&#39;w&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> encoding<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-blue-intense-fg ansi-bold">&#39;utf8&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-green-intense-fg ansi-bold">as</span> f<span class="ansi-yellow-intense-fg ansi-bold">:</span> f<span class="ansi-yellow-intense-fg ansi-bold">.</span>write<span class="ansi-yellow-intense-fg ansi-bold">(</span>text<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>start<span class="ansi-yellow-intense-fg ansi-bold">]</span> <span class="ansi-yellow-intense-fg ansi-bold">+</span> <span class="ansi-blue-intense-fg ansi-bold">&#39;\n&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>join<span class="ansi-yellow-intense-fg ansi-bold">(</span>text_all<span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-yellow-intense-fg ansi-bold">+</span> text<span class="ansi-yellow-intense-fg ansi-bold">[</span>end<span class="ansi-yellow-intense-fg ansi-bold">:</span><span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+
+<span class="ansi-red-intense-fg ansi-bold">AttributeError</span>: &#39;NoneType&#39; object has no attribute &#39;start&#39;</pre>
+</div>
+</div>
+
 </div>
 </div>
 

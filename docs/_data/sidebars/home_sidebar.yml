@@ -19,8 +19,8 @@ entries:
       title: Network Class
       url: network_class.html
     - output: web,pdf
-      title: puf_functions
-      url: puf_functions.html
+      title: Hybrid Boolean Networks as Physically Unclonable Functions
+      url: hbn_puf.html
     output: web
     title: networkm
   output: web

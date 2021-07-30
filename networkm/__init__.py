@@ -15,4 +15,5 @@ with warnings.catch_warnings(): #ignore warnings
     from networkm.graph_functions import *
     from networkm.model_functions import *
     from networkm.network_class import *
+    from networkm.puf_functions import *
     
