@@ -15,9 +15,9 @@ from networkm import *
 
 This package models Boolean Networks with dynamics of the form
 
-$\bf{\tau_{i}\frac{dx_{i}}{dt}=-x_{i}(t)+f_{i}[pred_{i}(t-delays)]+noise}$
+$\tau_{i}\frac{dx_{i}}{dt}=-x_{i}(t)+f_{i}[pred_{i}(t-delays)]+noise$
 
-where tau is a time-constant, f is a logical function, pred_{i} are the nodes flowing into node x_{i} after some time-delay along the edge, and the noise term is random.
+where tau is a time-constant, f is a logical function, $pred_{i}$ are the nodes flowing into node $x_{i}$ after some time-delay along each edge, and the noise term is random.
 
 We can quickly simulate entire distributions of complex networks and analyze their statistics:
 
@@ -44,12 +44,8 @@ plot_lya(bne.data)
 
 
 ```python
-bne[0].plot_graph(layout=nx.circular_layout,layout_kwargs={})
+bne[0].plot_graph()
 ```
-
-
-![png](docs/images/output_7_0.png)
-
 
 Or start more simply, and consider a Ring Oscillator / Repressilator: https://en.wikipedia.org/wiki/Ring_oscillator , https://en.wikipedia.org/wiki/Repressilator. Real-world implications in e.g circuit design and gene-regulatory networks.
 
@@ -90,12 +86,14 @@ ro.plot_timeseries()
 ![png](docs/images/output_11_0.png)
 
 
+The dynamics are not restricted to the edges of a hypercube, allowing Boolean Networks to explore regions of the analog phase space in ways that traditional models forcing only binary valued states don't capture:
+
 ```python
 ro.plot_3d()
 ```
 
 
-![png](docs/images/output_12_0.png)
+![png](docs/images/output_13_0.png)
 
 
 For a more complex example we consider a "Hybrid Boolean Network" composed of a multiplexer - which forces inital conditions using a clock - connected to a chaotic ring network, which executes the XOR function. This has real-world implications in e.g cryptography and physically unclonable functions (PUF) as an HBN-PUF - see https://ieeexplore.ieee.org/document/9380284.
@@ -128,7 +126,7 @@ b.plot_graph()
 ```
 
 
-![png](docs/images/output_15_0.png)
+![png](docs/images/output_16_0.png)
 
 
 We can quickly analyze differences between e.g randomly shuffled attributes and noise:
@@ -143,7 +141,7 @@ plot_comparison(x,x0,y,y0,i=0)
 ```
 
 
-![png](docs/images/output_17_0.png)
+![png](docs/images/output_18_0.png)
 
 
 ```python
