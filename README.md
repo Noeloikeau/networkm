@@ -47,6 +47,10 @@ plot_lya(bne.data)
 bne[0].plot_graph()
 ```
 
+
+![png](docs/images/output_7_0.png)
+
+
 Or start more simply, and consider a Ring Oscillator / Repressilator: https://en.wikipedia.org/wiki/Ring_oscillator , https://en.wikipedia.org/wiki/Repressilator. Real-world implications in e.g circuit design and gene-regulatory networks.
 
 The system is a ring of 3 nodes which connect to their left neighbor and cyclically invert eachother.
